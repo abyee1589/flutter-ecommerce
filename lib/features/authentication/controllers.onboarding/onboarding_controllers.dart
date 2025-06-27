@@ -1,24 +1,40 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController {
-    static OnBoardingController get instance => Get.find();
+  static OnBoardingController get instance => Get.find();
 
-    /// Variables 
-
-    /// Update current index when page scroll
-    void uodatePageIndicator(index) {}
-
-
-    /// Jump to the specific selected page 
-    void dotNavigationClick(index) {}
+  /// Variables 
+  final pageController = PageController();
+  Rx<int> currentInex = 0.obs;
+  /// Update current index when page scroll
+  void updatePageIndicator(index) => currentInex.value = index;
 
 
-    /// Update current index and jump to next page
-    void nextPage() {}
+  /// Jump to the specific selected page 
+  void dotNavigationClick(index) {
+    currentInex.value = index;
+    pageController.jumpTo(index);
+  }
 
 
-    /// Update current indexand jump to the last page
-    void skipPage() {}
+  /// Update current index and jump to next page
+  void skipPage() {
+    currentInex.value = 2;
+    pageController.jumpToPage(2);
+  }
+
+
+  /// Update current indexand jump to the last page
+  void nextPage() {
+    if(currentInex.value == 2) {
+      // Get.to(LoginScreen());
+    } else {
+      int page = currentInex.value + 1;
+      pageController.jumpToPage (page);
+
+    }
+  }
 
 
 

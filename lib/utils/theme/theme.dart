@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/theme/custom_themes/appBar_theme.dart';
 import 'package:flutter_app/utils/theme/custom_themes/bottom_sheet_theme.dart';
-import 'package:flutter_app/utils/theme/custom_themes/checkbox_theme.dart';
+//import 'package:flutter_app/utils/theme/custom_themes/checkbox_theme.dart';
 import 'package:flutter_app/utils/theme/custom_themes/chip_theme.dart';
 import 'package:flutter_app/utils/theme/custom_themes/elevated_button_theme.dart';
 import 'package:flutter_app/utils/theme/custom_themes/outlined_button_theme.dart';
@@ -20,7 +20,6 @@ class AbAppTheme {
     chipTheme: AbChipTheme.lightChipTheme,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AbAppBarTheme.lightAppBarTheme,
-    checkboxTheme: AbCheckboxTheme.lightCheckboxTheme,
     bottomSheetTheme: AbBottomSheetTheme.lightBottomSheetTheme,
     elevatedButtonTheme: AbElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: AbOutlinedButtonTheme.lightOutlinedButtonTheme,
@@ -36,7 +35,6 @@ class AbAppTheme {
     chipTheme: AbChipTheme.darkChipTheme,
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AbAppBarTheme.darkAppBarTheme,
-    checkboxTheme: AbCheckboxTheme.darkCheckboxTheme,
     bottomSheetTheme: AbBottomSheetTheme.darkBottomSheetTheme,
     elevatedButtonTheme: AbElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: AbOutlinedButtonTheme.darkOutlinedButtonTheme,
