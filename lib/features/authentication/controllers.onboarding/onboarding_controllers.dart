@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/features/authentication/screens/login/login.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController {
@@ -28,7 +29,7 @@ class OnBoardingController {
   /// Update current indexand jump to the last page
   void nextPage() {
     if(currentInex.value == 2) {
-      // Get.to(LoginScreen());
+      Get.offAll(LoginScreen());
     } else {
       int page = currentInex.value + 1;
       pageController.jumpToPage (page);

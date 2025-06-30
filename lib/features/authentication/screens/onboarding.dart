@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/features/authentication/controllers.onboarding/onboarding_controllers.dart';
 import 'package:flutter_app/features/authentication/screens/widgets/onboarding_next_button.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:flutter_app/features/authentication/screens/widgets/onboarding_dot_navigation.dart';
 import 'package:flutter_app/features/authentication/screens/widgets/onboarding_skip.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
-import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
-import 'package:flutter_app/utils/device/device_utility.dart';
 import 'widgets/onboarding_page.dart';
 
 
@@ -29,16 +26,16 @@ class OnBoardingScreen extends StatelessWidget {
                   children: [
                     OnBoardingPage(
                       image: AbImages.onBoardingImage1, 
-                      title: AbTexts.title1, 
-                      subTitle: AbTexts.subTitle1),
+                      title: AbTexts.onBoardingTitle1, 
+                      subTitle: AbTexts.onBoardingSubTitle1),
+                    OnBoardingPage(
+                      image: AbImages.onBoardingImage2, 
+                      title: AbTexts.onBoardingTitle1, 
+                      subTitle: AbTexts.onBoardingSubTitle1),
                     OnBoardingPage(
                       image: AbImages.onBoardingImage1, 
-                      title: AbTexts.title1, 
-                      subTitle: AbTexts.subTitle1),
-                    OnBoardingPage(
-                      image: AbImages.onBoardingImage1, 
-                      title: AbTexts.title1, 
-                      subTitle: AbTexts.subTitle1),
+                      title: AbTexts.onBoardingTitle1, 
+                      subTitle: AbTexts.onBoardingSubTitle1),
                     
                    ],
                 ),
