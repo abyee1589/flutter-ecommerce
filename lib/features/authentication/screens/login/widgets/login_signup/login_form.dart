@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/features/authentication/screens/paswword_configuration/forget_password.dart';
 import 'package:flutter_app/features/authentication/screens/signup/signup.dart';
+import 'package:flutter_app/navigation_menu.dart';
+import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
@@ -44,15 +47,16 @@ class AbLoginForm extends StatelessWidget {
                     ],
                   ),
                   TextButton(
-                    onPressed: () {}, 
-                    child: const Text(AbTexts.forgetPassword))
+                    onPressed: () => Get.to(() => ForgetPassword(image: AbImages.onBoardingImage1, title: AbTexts.forgetPassword, subTitle: AbTexts.abContinue)), 
+                    child: const Text(AbTexts.forgetPassword)
+                  )
                 ],
               ),
               const SizedBox(height: AbSizes.spaceBtwSections),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: (){}, 
+                  onPressed: (() => Get.to(() => NavigationMenu())), 
                   child: Text(AbTexts.signIn)
                   ),
                 ),
@@ -60,7 +64,7 @@ class AbLoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: (){Get.to(() => SignupScreen());}, 
+                  onPressed: () => Get.to(() => SignupScreen()), 
                   child: Text(AbTexts.createAccount)
                 ),
               ),

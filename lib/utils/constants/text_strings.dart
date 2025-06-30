@@ -35,13 +35,21 @@ class AbTexts {
   static const String loginTitle = 'Welcome Back,';
   static const String loginSubTile = 'Discover litiless choices and onmatches convinience.';
   static const String signupTtle = 'Let\'s createe your account';
-  static const String forgotPaswwordTitle = 'Forgot Password';
-  static const String forgotPaswwordSubTitle = 'Don\'t worry sometimes google can forget too, enter your emaila and we will send you a password reset link.';
+  static const String forgetPasswordTitle = 'Forgot Password';
+  static const String forgetPasswordSubTitle = 'Don\'t worry sometimes google can forget too, enter your emaila and we will send you a password reset link.';
   static const String changeYourPasswordTitle = 'Password Reset Email Sent.';
   static const String changeYourPasswordSubTitle = 'Your account security is our priority, We have sent you a secure link to safely change your password and keep your account protected.';
   static const String confirmEmail = 'Verify Your Email Address';
-  static const String confirmEmailSubTItle = 'COngratulations! Your Account Awaits: Verify your email to start shopping and experience a world of unreviled basis and perosonalized offer!';
+  static const String confirmEmailSubTItle = 'Congratulations! Your Account Awaits: Verify your email to start shopping and experience a world of unreviled basis and perosonalized offer!';
   static const String and = 'and';
+  static const String submit = 'Submit';
+  static const String abContinue = 'continue';
+  static const String done = 'Done';
+  static const String reSendEmail = 'Resend Email';
   static const String privacyPolicy = 'Privacy Policy';
   static const String tersOfUse = 'Terms of Use';
+  static const String yourAccountCreatedTitle = 'Your account is created successfully';
+  static const String yourAccountCreatedSubTitle = 'Your account is created successfully';
+  static const String passwordEmailSentTitle = 'Password Reset Email Sent';
+  static const String passwordEmailSentsubTitle = 'Password Reset Email Sent';
 }
