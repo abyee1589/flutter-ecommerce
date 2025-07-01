@@ -52,4 +52,6 @@ class AbTexts {
   static const String yourAccountCreatedSubTitle = 'Your account is created successfully';
   static const String passwordEmailSentTitle = 'Password Reset Email Sent';
   static const String passwordEmailSentsubTitle = 'Password Reset Email Sent';
+  static const String homeAppbarTitle = 'Good day for shopping!';
+  static const String homeAppbarSubTitle = 'Abdi B.';
 }

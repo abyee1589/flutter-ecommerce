@@ -11,7 +11,7 @@ class AbImages {
     static const String onBoardingImage3 = 'images/on_boarding_images/sammyline_delivery.gif';
 
     // Animations
-    static const String productdsIllustration = 'images/on_boarding_images/sammyline_searching.gif';
+    static const String productdsIllustration = 'images/on_boarding_images/productsIllustration.jpg';
     static const String productsSaleIllustration = 'images/on_boarding_images/sammyline_searching.gif';
     static const String staticSuccessIllustraton = 'images/on_boarding_images/sammyline_delivery.gif';
     static const String deliveredInPlaceIllustration = 'images/on_boarding_images/sammyline_delivery.gif';
