@@ -23,7 +23,7 @@ class OnBoardingScreen extends StatelessWidget {
                 PageView(
                   controller: controller.pageController,
                   onPageChanged: controller.updatePageIndicator,
-                  children: [
+                  children: const [
                     OnBoardingPage(
                       image: AbImages.onBoardingImage1, 
                       title: AbTexts.onBoardingTitle1, 
@@ -39,9 +39,9 @@ class OnBoardingScreen extends StatelessWidget {
                     
                    ],
                 ),
-                OnBoardingSkip(),                
-                OnBoardingDotNavigation(),
-                OnBoardingNextButton(),
+                const OnBoardingSkip(),                
+                const OnBoardingDotNavigation(),
+                const OnBoardingNextButton(),
                 
 
                     /// Skip button

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -9,13 +10,14 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-                body: Stack(
+                body: Column(
                         children: [
                           Image(
                             width: AbHelperFunctions.screenWidth() * 0.8,
                             height: AbHelperFunctions.screenHeight() * 0.6,
                             image: AssetImage(image),
                           ),
+                          const SizedBox(height: AbSizes.md),
                           Text(
                             title,
                             style: Theme.of(context).textTheme.headlineMedium,
