@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:flutter_app/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/authentication/screens/home/widgets/home_appbar.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
-import 'package:flutter_app/utils/constants/text_strings.dart';
+import 'package:flutter_app/utils/constants/image_strings.dart';
+import 'package:flutter_app/utils/constants/sizes.dart';
+import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 
@@ -18,32 +22,37 @@ class HomeScreen extends StatelessWidget {
             AbPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  AbAppBar(
-                     title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+
+                  /// Appbar
+                  const AbHomeAppBar(), 
+                  const SizedBox(height: AbSizes.spaceBtwSections),
+                  
+                  /// Searchbar
+                  const AbSearchContainer(text: 'Search in Store', icon: Iconsax.search_normal),
+                  const SizedBox(height: AbSizes.spaceBtwSections),
+
+                  /// Categories
+                  Padding(
+                    padding: const EdgeInsets.only(left: AbSizes.defaultSpace), 
+                    child: Column(
                       children: [
-                        Text(AbTexts.homeAppbarTitle, style: Theme.of(context).textTheme.headlineMedium!.apply(color: AbColors.grey)),
-                        Text(AbTexts.homeAppbarSubTitle, style: Theme.of(context).textTheme.headlineMedium!.apply(color: AbColors.grey)),
-                      ]
-                    ),
-                    actions: [
-                      Stack(children: [
-                        IconButton(onPressed: (() {}), icon: Icon(Iconsax.shopping_bag), color: AbColors.white),
-                        Positioned(
-                          right: 0,
-                          child: Container(
-                            height: 18,
-                            width: 18,
-                            decoration: BoxDecoration(
-                              color: AbColors.black,
-                              borderRadius: BorderRadius.circular(100)
-                            ),
-                          ),
-                        ),
-                      ]
-                      )
-                    ],
-                  ) 
+
+                        /// Heading
+                        const AbSectionHeading(title: 'Popular categories', showActionButton: false, textColor: AbColors.white),
+                        const SizedBox(height: AbSizes.spaceBtwItems),
+
+                        /// Categories
+                        SizedBox(
+                          height: 80,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: 6, 
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (_, index) {
+                              return AbVerticalImageText(image: AbImages.google, title: 'Shoes Category', onTap: (){},);
+                            }),
+                        )
+                  ],),)
                 ]
               ),
             )
@@ -54,4 +63,53 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+class AbVerticalImageText extends StatelessWidget {
+  const AbVerticalImageText({
+    super.key, required this.image, required this.title, this.textColor = AbColors.white, this.backgroundColor = AbColors.white, this.onTap,
+  });
+  final String image, title;
+  final Color textColor;
+  final Color? backgroundColor;
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = AbHelperFunctions.isDarkMode(context);
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsetsGeometry.only(right: AbSizes.spaceBtwItems),
+        child: Column(
+          children: [
+            /// Circular icon
+            Container(
+              width: 56,
+              height: 56,
+              padding: const EdgeInsets.all(AbSizes.sm),
+              decoration: BoxDecoration(
+                color: backgroundColor ?? (dark ? AbColors.black : AbColors.white),
+                borderRadius: BorderRadius.circular(100)
+              ),
+              child: Center(
+                child: Image(image: AssetImage(image), fit: BoxFit.cover, color: AbColors.dark,),
+              ),
+            ),
+            const SizedBox(height: AbSizes.spaceBtwItems / 2),
+            /// Text
+            SizedBox(
+              width: 55,
+              child: Text(title, 
+                style: Theme.of(context).textTheme.labelMedium!.apply(color: AbColors.white),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
