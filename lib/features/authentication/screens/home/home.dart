@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/authentication/screens/home/widgets/homee_categories.dart';
 import 'package:flutter_app/features/authentication/screens/home/widgets/home_appbar.dart';
@@ -52,7 +53,13 @@ class HomeScreen extends StatelessWidget {
             /// Body
             Padding(
               padding: EdgeInsets.all(AbSizes.defaultSpace),
-              child: AbPromoSlider(banners: [AbImages.promoBanner1, AbImages.promoBanner1]),
+              child: Column(
+                children: [
+                  AbPromoSlider(banners: [AbImages.promoBanner1, AbImages.promoBanner1]),
+                  SizedBox(height: AbSizes.spaceBtwSections),
+                  AbProductCardVertical(),
+                ],
+              ),
             ),
           ],               
         ),

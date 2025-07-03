@@ -34,4 +34,8 @@ class AbImages {
   static const String promoBanner2 = 'images/banners/promo-banner-1.png';
   static const String promoBanner3 = 'images/banners/promo-banner-1.png';
 
+  /// Products
+  static const String productImage1 = 'images/products/product-1.jpg';
+ 
+
 }

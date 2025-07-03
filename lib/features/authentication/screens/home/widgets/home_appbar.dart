@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
-import 'package:flutter_app/common/widgets/appbar/products/cart/cart_icon_menu.dart';
+import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
 
