@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
-import 'package:flutter_app/features/authentication/screens/home/home_categories.dart/homee_categories.dart';
+import 'package:flutter_app/features/authentication/screens/home/widgets/homee_categories.dart';
 import 'package:flutter_app/features/authentication/screens/home/widgets/home_appbar.dart';
+import 'package:flutter_app/features/authentication/screens/home/widgets/promo_slider.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
+import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -45,7 +47,13 @@ class HomeScreen extends StatelessWidget {
                   ],),)
                 ]
               ),
-            )
+            ),
+
+            /// Body
+            Padding(
+              padding: EdgeInsets.all(AbSizes.defaultSpace),
+              child: AbPromoSlider(banners: [AbImages.promoBanner1, AbImages.promoBanner1]),
+            ),
           ],               
         ),
                 
@@ -53,5 +61,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
 

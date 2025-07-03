@@ -21,6 +21,7 @@ class AbVerticalImageText extends StatelessWidget {
         padding: const EdgeInsetsGeometry.only(right: AbSizes.spaceBtwItems),
         child: Column(
           children: [
+            
             /// Circular icon
             Container(
               width: 56,
@@ -35,6 +36,7 @@ class AbVerticalImageText extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AbSizes.spaceBtwItems / 2),
+
             /// Text
             SizedBox(
               width: 55,

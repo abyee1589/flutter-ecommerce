@@ -3,25 +3,36 @@ import 'package:flutter_app/utils/constants/colors.dart';
 
 class CircularContainer extends StatelessWidget {
   const CircularContainer({
-    super.key, this.width, this.height, this.radius, this.padding, this.child, required this.backgroundColor,
+    super.key,
+    this.child, 
+    this.width = 400, 
+    this.height = 400, 
+    this.radius = 400, 
+    this.padding = 0,
+    this.margin,  
+    this.backgroundColor = AbColors.white, 
+    
   });
 
   final double? width;
   final double? height;
-  final double? radius;
-  final double? padding;
+  final double radius;
+  final double padding;
+  final EdgeInsets?  margin;
   final Widget? child;
   final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
-      height: 400,
-      padding: EdgeInsets.all(0),
+      width: width,
+      height: height,
+      padding: EdgeInsets.all(padding),
+      margin: margin,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(400),
-        color: AbColors.textWhite.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(radius),
+        color: backgroundColor,
+        
     
       ),
       
