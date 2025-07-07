@@ -3,6 +3,7 @@ import 'package:flutter_app/common/style/shadows.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/icon/ab_circular_icon.dart';
 import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
+import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
@@ -66,13 +67,7 @@ class AbProductCardVertical extends StatelessWidget {
                 children: [
                   const AbProductTitleText(title: 'Nike Air Shoes', smallSize: true),
                   const SizedBox(height: AbSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text('Nike', overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.labelMedium,),
-                      const SizedBox(width: AbSizes.xs),
-                      const Icon(Iconsax.verify5, color: AbColors.primary, size: AbSizes.iconXs,)
-                    ],
-                  ),
+                  const AbBrandTextWithVerifiedIcon(title: 'Nike',),
       
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,6 +103,7 @@ class AbProductCardVertical extends StatelessWidget {
     );
   }
 }
+
 
 
 

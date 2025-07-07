@@ -6,12 +6,19 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbSearchContainer extends StatelessWidget {
   const AbSearchContainer({
-    super.key, required this.text, this.icon, this.showBackground = true, this.showBorder = true, this.onTap,
+    super.key, 
+    required this.text, 
+    this.icon, 
+    this.showBackground = true, 
+    this.showBorder = true, 
+    this.onTap, 
+    this.padding = const EdgeInsets.symmetric(horizontal: AbSizes.defaultSpace),
   });
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,7 @@ class AbSearchContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AbSizes.defaultSpace),
+        padding: padding,
         child: Container(
           width: AbDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(AbSizes.md),

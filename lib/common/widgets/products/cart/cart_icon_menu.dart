@@ -12,7 +12,7 @@ class AbCartCounterIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      IconButton(onPressed: (() {}), icon: Icon(Iconsax.shopping_bag), color: AbColors.white),
+      IconButton(onPressed: (() {}), icon: const Icon(Iconsax.shopping_bag), color: AbColors.white),
       Positioned(
         right: 0,
         child: Container(

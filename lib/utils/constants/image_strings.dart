@@ -20,7 +20,7 @@ class AbImages {
 
     // Category Icons
     static const String sportIcon = 'images/icons/categpries/productsIllustration.jpg';
-    static const String clothIcon = 'images/icons/categpries/sammyline_searching.gif';
+    static const String clothIcon = 'images/icons/cloth-icon.png';
     static const String shoeIcon = 'images/icons/categpries/sammyline_delivery.gif';
     static const String cosmeticsIcon = 'images/icons/categpries/sammyline_delivery.gif';
     static const String animalIcon = 'images/icons/categpries/sammyline_delivery.gif';
