@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/features/authentication/screens/home/home.dart';
 import 'package:flutter_app/features/authentication/screens/onboarding.dart';
 import 'package:flutter_app/features/authentication/screens/store/store.dart';
 import 'package:flutter_app/utils/theme/theme.dart';

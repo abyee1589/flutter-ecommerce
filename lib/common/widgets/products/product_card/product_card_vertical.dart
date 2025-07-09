@@ -4,6 +4,7 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_cont
 import 'package:flutter_app/common/widgets/custom_shapes/icon/ab_circular_icon.dart';
 import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
+import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
@@ -60,42 +61,40 @@ class AbProductCardVertical extends StatelessWidget {
             ),
             const SizedBox(height: AbSizes.spaceBtwItems / 2),
             /// Details
-            Padding(
-              padding: const EdgeInsetsGeometry.only(left: AbSizes.sm),
+            const Padding(
+              padding: EdgeInsetsGeometry.only(left: AbSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AbProductTitleText(title: 'Nike Air Shoes', smallSize: true),
-                  const SizedBox(height: AbSizes.spaceBtwItems / 2),
-                  const AbBrandTextWithVerifiedIcon(title: 'Nike',),
-      
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// Price
-                      Text(
-                        '\$35.5',
-                        overflow: TextOverflow.ellipsis, 
-                        maxLines: 1, 
-                        style: Theme.of(context).textTheme.headlineMedium
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: AbColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(AbSizes.cardRadiusMd),
-                            bottomRight: Radius.circular(AbSizes.productImageRadius)
-                            )
-                        ),
-                        child: const SizedBox(
-                          width: AbSizes.iconLg * 1.2,
-                          height: AbSizes.iconLg * 1.2,
-                          child: Icon(Iconsax.add, color: AbColors.white,)),
-                      ),
-                    ],
-                  ),
+                  AbProductTitleText(title: 'Nike Air Shoes', smallSize: true),
+                  SizedBox(height: AbSizes.spaceBtwItems / 2),
+                  AbBrandTextWithVerifiedIcon(title: 'Nike',),
                 ],
               ),
+            ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Price
+                const Padding(
+                  padding: EdgeInsets.only(left: AbSizes.sm),
+                  child: ProductPriceText(price: '35.0'),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: AbColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(AbSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(AbSizes.productImageRadius)
+                      )
+                  ),
+                  child: const SizedBox(
+                    width: AbSizes.iconLg * 1.2,
+                    height: AbSizes.iconLg * 1.2,
+                    child: Icon(Iconsax.add, color: AbColors.white,)),
+                ),
+              ],
             ),
           ],
         ),
