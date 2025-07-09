@@ -6,10 +6,11 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/search_conta
 import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/brand_card/brand_card.dart';
+import 'package:flutter_app/common/widgets/products/brand_card/brand_show_case.dart';
 import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
-import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/authentication/screens/store/widgets/category_tab.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
@@ -133,41 +134,17 @@ class StoreScreen extends StatelessWidget {
             ),
           ];
         },
-        body: TabBarView(children: [
+        body: const TabBarView(children: [
           /// Brands
-          Padding(
-            padding: const EdgeInsets.all(AbSizes.defaultSpace),
-            child: Column(
-              children: [
-                AbRoundedContainer(
-                  showBorder: true,
-                  borderColor: AbColors.darkGrey,
-                  backgroundColor: Colors.transparent,
-                  margin: const EdgeInsets.only(bottom: AbSizes.spaceBtwItems),
-                  child: Column(children: [
-                    /// Brand with prouducts count
-                    const AbBrandCard(showBorder: false),
-
-                    /// Brand Top 3 product images
-                    Row(children: [
-                      AbRoundedContainer(
-                        height: 100,
-                        backgroundColor: AbHelperFunctions.isDarkMode(context) ? AbColors.darkGrey : AbColors.white,
-                        margin: const EdgeInsets.only(right: AbSizes.sm),
-                      ),
-                    ],)
-                  ],
-                ),
-                ),
-              ],
-            ),
-          ),
+          AbCategoryTab(),
+          AbCategoryTab(),
+          AbCategoryTab(),
+          AbCategoryTab(),
+          AbCategoryTab(),
         ]),
         ),
       ),
     );
   }
 }
-
-
 
