@@ -23,10 +23,10 @@ class LoginScreen extends StatelessWidget {
                   children: [
                   /// Log, Title, Sub-title
                     AbLoginHeader(dark: dark),
-                    AbLoginForm(),
+                    const AbLoginForm(),
                     AbFormDivider(dividerText: AbTexts.orSignInWith.capitalize!),
                     const SizedBox(height: AbSizes.spaceBtwSections),
-                    AbSocialButtons(),
+                    const AbSocialButtons(),
                   ],
                 ),
               ),

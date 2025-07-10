@@ -29,7 +29,7 @@ class OnBoardingController {
   /// Update current indexand jump to the last page
   void nextPage() {
     if(currentInex.value == 2) {
-      Get.offAll(LoginScreen());
+      Get.offAll(const LoginScreen());
     } else {
       int page = currentInex.value + 1;
       pageController.jumpToPage (page);

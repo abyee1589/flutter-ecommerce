@@ -5,7 +5,12 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbVerticalImageText extends StatelessWidget {
   const AbVerticalImageText({
-    super.key, required this.image, required this.title, this.textColor = AbColors.white, this.backgroundColor = AbColors.white, this.onTap,
+    super.key, 
+    required this.image, 
+    required this.title, 
+    this.textColor = AbColors.white, 
+    this.backgroundColor,
+    this.onTap,
   });
   final String image, title;
   final Color textColor;

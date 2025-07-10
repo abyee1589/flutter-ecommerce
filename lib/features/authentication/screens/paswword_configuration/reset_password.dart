@@ -16,29 +16,29 @@ class ResetPassword extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(onPressed: (() => Get.back()), icon: Icon(CupertinoIcons.clear)),
+          IconButton(onPressed: (() => Get.back()), icon: const Icon(CupertinoIcons.clear)),
         ],
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(AbSizes.defaultSpace),
+          padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             children: [
               /// Image with 60% of the width
-              Image(image: AssetImage(AbImages.deliveredEmailIllustration), width: AbHelperFunctions.screenWidth() * 0.6),
-              SizedBox(height: AbSizes.spaceBtwSections),
+              Image(image: const AssetImage(AbImages.deliveredEmailIllustration), width: AbHelperFunctions.screenWidth() * 0.6),
+              const SizedBox(height: AbSizes.spaceBtwSections),
 
               /// Title and Subtitle
               Text(AbTexts.changeYourPasswordTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
-              SizedBox(height: AbSizes.spaceBtwItems),
+              const SizedBox(height: AbSizes.spaceBtwItems),
               Text(AbTexts.changeYourPasswordSubTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
-              SizedBox(height: AbSizes.spaceBtwSections),
+              const SizedBox(height: AbSizes.spaceBtwSections),
 
               /// Buttons
               
-              SizedBox( width: double.infinity, child: ElevatedButton(onPressed: (() => Get.off(() => LoginScreen())), child: Text(AbTexts.done))),
-              SizedBox(height: AbSizes.spaceBtwItems),
-              SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: Text(AbTexts.resendEmail))),
+              SizedBox( width: double.infinity, child: ElevatedButton(onPressed: (() => Get.off(() => const LoginScreen())), child: const Text(AbTexts.done))),
+              const SizedBox(height: AbSizes.spaceBtwItems),
+              SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: const Text(AbTexts.resendEmail))),
 
             ],
           ),

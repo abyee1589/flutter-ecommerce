@@ -17,7 +17,7 @@ class AbSocialButtons extends StatelessWidget {
           decoration: BoxDecoration(border: Border.all(color: AbColors.grey), borderRadius: BorderRadius.circular(100)),
           child: IconButton(
             onPressed: (){},
-            icon: Image(
+            icon: const Image(
               width: AbSizes.iconMd,
               height: AbSizes.iconMd,
               image: AssetImage(AbImages.google)
@@ -29,7 +29,7 @@ class AbSocialButtons extends StatelessWidget {
           decoration: BoxDecoration(border: Border.all(color: AbColors.grey), borderRadius: BorderRadius.circular(100)),
           child: IconButton(
             onPressed: (){},
-            icon: Image(
+            icon: const Image(
               width: AbSizes.iconMd,
               height: AbSizes.iconMd,
               image: AssetImage(AbImages.facebook)

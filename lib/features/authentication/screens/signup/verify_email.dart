@@ -18,11 +18,11 @@ class VerifyEmailScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(onPressed: () => Get.offAll(() => LoginScreen()), icon: const Icon(CupertinoIcons.clear))
+          IconButton(onPressed: () => Get.offAll(() => const LoginScreen()), icon: const Icon(CupertinoIcons.clear))
         ]
       ),
       body: SingleChildScrollView(
-        child: Padding(padding: EdgeInsets.all(AbSizes.defaultSpace),
+        child: Padding(padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             children: [
               Image(image: const AssetImage(AbImages.onBoardingImage1), width: AbHelperFunctions.screenHeight() * 0.6),
@@ -48,7 +48,7 @@ class VerifyEmailScreen extends StatelessWidget {
                   child: const Text(AbTexts.done))
               ),
               const SizedBox(height: AbSizes.spaceBtwItems),
-              SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: Text(AbTexts.reSendEmail))),
+              SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: const Text(AbTexts.reSendEmail))),
             ],
           ),
         )

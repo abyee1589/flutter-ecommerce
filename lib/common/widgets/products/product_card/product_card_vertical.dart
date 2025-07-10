@@ -60,7 +60,8 @@ class AbProductCardVertical extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AbSizes.spaceBtwItems / 2),
-            /// Details
+
+            /// Product Details
             const Padding(
               padding: EdgeInsetsGeometry.only(left: AbSizes.sm),
               child: Column(
@@ -76,6 +77,7 @@ class AbProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                
                 /// Price
                 const Padding(
                   padding: EdgeInsets.only(left: AbSizes.sm),

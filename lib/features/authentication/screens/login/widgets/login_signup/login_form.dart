@@ -17,18 +17,18 @@ class AbLoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: AbSizes.spaceBtwSections),
+        padding: const EdgeInsets.symmetric(vertical: AbSizes.spaceBtwSections),
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.direct_right,), 
                   labelText: AbTexts.email,
                 ),
               ),
               const SizedBox(height: AbSizes.spaceBtwInputFields),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   prefixIcon: Icon(Iconsax.password_check,),
                   labelText: AbTexts.newPassword,
                   suffixIcon: Icon(Iconsax.eye_slash),
@@ -47,7 +47,7 @@ class AbLoginForm extends StatelessWidget {
                     ],
                   ),
                   TextButton(
-                    onPressed: () => Get.to(() => ForgetPassword(image: AbImages.onBoardingImage1, title: AbTexts.forgetPassword, subTitle: AbTexts.abContinue)), 
+                    onPressed: () => Get.to(() => const ForgetPassword(image: AbImages.onBoardingImage1, title: AbTexts.forgetPassword, subTitle: AbTexts.abContinue)), 
                     child: const Text(AbTexts.forgetPassword)
                   )
                 ],
@@ -56,16 +56,16 @@ class AbLoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: (() => Get.to(() => NavigationMenu())), 
-                  child: Text(AbTexts.signIn)
+                  onPressed: (() => Get.to(() => const NavigationMenu())), 
+                  child: const Text(AbTexts.signIn)
                   ),
                 ),
               const SizedBox(height: AbSizes.spaceBtwItems),
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: () => Get.to(() => SignupScreen()), 
-                  child: Text(AbTexts.createAccount)
+                  onPressed: () => Get.to(() => const SignupScreen()), 
+                  child: const Text(AbTexts.createAccount)
                 ),
               ),
             ],

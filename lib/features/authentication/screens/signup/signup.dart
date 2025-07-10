@@ -15,13 +15,13 @@ class SignupScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(AbSizes.defaultSpace),
+          padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(AbTexts.signupTtle, style: Theme.of(context).textTheme.headlineMedium),
               const SizedBox(height: AbSizes.spaceBtwItems),
-              AbSignupForm(),
+              const AbSignupForm(),
               /// Divider
               const SizedBox(height: AbSizes.spaceBtwSections),
               AbFormDivider(dividerText: AbTexts.orSignUpWith.capitalize!),

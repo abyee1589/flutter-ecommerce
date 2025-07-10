@@ -5,12 +5,10 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_cont
 import 'package:flutter_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
-import 'package:flutter_app/common/widgets/products/brand_card/brand_card.dart';
-import 'package:flutter_app/common/widgets/products/brand_card/brand_show_case.dart';
 import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
-import 'package:flutter_app/features/authentication/screens/store/widgets/category_tab.dart';
+import 'package:flutter_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
@@ -146,5 +144,6 @@ class StoreScreen extends StatelessWidget {
       ),
     );
   }
-}
+} 
+
 

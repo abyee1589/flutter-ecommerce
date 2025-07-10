@@ -63,11 +63,11 @@ class AbSignupForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AbSizes.spaceBtwSections),
-          AbTermsAndConditionsCheckbox(),
+          const AbTermsAndConditionsCheckbox(),
           const SizedBox(height: AbSizes.spaceBtwSections),
     
           /// Signup Button
-          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (() => Get.to(VerifyEmailScreen())), child: Text(AbTexts.createAccount)),)
+          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (() => Get.to(const VerifyEmailScreen())), child: const Text(AbTexts.createAccount)),)
         ],
       ),
     );

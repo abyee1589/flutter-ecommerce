@@ -4,9 +4,9 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/search_conta
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
-import 'package:flutter_app/features/authentication/screens/home/widgets/homee_categories.dart';
-import 'package:flutter_app/features/authentication/screens/home/widgets/home_appbar.dart';
-import 'package:flutter_app/features/authentication/screens/home/widgets/promo_slider.dart';
+import 'package:flutter_app/features/shop/screens/home/widgets/homee_categories.dart';
+import 'package:flutter_app/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:flutter_app/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
@@ -38,7 +38,8 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       AbSectionHeading(title: 'Popular categories', showActionButton: false, textColor: AbColors.white),
                       SizedBox(height: AbSizes.spaceBtwItems),
-                      HomeCategories()
+                      HomeCategories(),
+                      SizedBox(height: AbSizes.spaceBtwSections,)
                     ],
                   ),
                 )
@@ -51,7 +52,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(AbSizes.defaultSpace),
             child: Column(
               children: [
-                const AbPromoSlider(banners: [AbImages.promoBanner1, AbImages.promoBanner1]),
+                const AbPromoSlider(banners: [AbImages.clothIcon, AbImages.promoBanner1]),
                 const SizedBox(height: AbSizes.spaceBtwSections),
                 AbSectionHeading(title: 'Popular products', onPressed: () {}),
                 AbGridLayout(itemCount: 4, itemBuilder: (_, index) => const AbProductCardVertical()),

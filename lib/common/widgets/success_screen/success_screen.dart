@@ -32,9 +32,9 @@ class SuccessScreen extends StatelessWidget {
           const SizedBox(height: AbSizes.spaceBtwSections),
 
           /// Buttons
-          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (() => Get.to(const LoginScreen())), child: Text(AbTexts.done))),
+          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (() => Get.to(const LoginScreen())), child: const Text(AbTexts.done))),
           const SizedBox(height: AbSizes.spaceBtwItems),
-          SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: Text(AbTexts.reSendEmail))),
+          SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: const Text(AbTexts.reSendEmail))),
         ]),
       ),
     );

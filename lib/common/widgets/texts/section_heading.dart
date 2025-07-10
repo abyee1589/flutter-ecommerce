@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 class AbSectionHeading extends StatelessWidget {
   const AbSectionHeading({
-    super.key, this.textColor, this.showActionButton = false, required this.title, this.buttonTitle = 'View all', this.onPressed,
+    super.key, 
+    this.textColor, 
+    this.showActionButton = false, 
+    required this.title, 
+    this.buttonTitle = 'View all', 
+    this.onPressed,
   });
   final Color? textColor;
   final bool showActionButton;

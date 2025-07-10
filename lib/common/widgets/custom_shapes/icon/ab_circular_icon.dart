@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
-import 'package:iconsax/iconsax.dart';
 
 class AbCircularIcon extends StatelessWidget {
   const AbCircularIcon({

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
-import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
@@ -14,7 +13,7 @@ class AbCircularImage extends StatelessWidget {
     this.backgroundColor,
     this.overlayColor, 
     this.fit, 
-    required this.isNetworkImage,
+    this.isNetworkImage = false,
   });
    final double width, height, padding;
   final String image;
@@ -36,7 +35,7 @@ class AbCircularImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(100)
       ),
       child: Image(
-        image: isNetworkImage ? const NetworkImage(AbImages.clothIcon) : const AssetImage(AbImages.clothIcon),
+        image: isNetworkImage ? NetworkImage(image) : AssetImage(image),
         color: overlayColor ,
       ),
     );
