@@ -4,14 +4,15 @@ import 'package:flutter_app/common/widgets/custom_shapes/curved_edges/custom_cur
 
 class AbCurvedEdgeWidget extends StatelessWidget {
   const AbCurvedEdgeWidget({
-    super.key, this.child,
+    super.key,
+    required this.child,
   });
-  final Widget? child;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: AbCurvedEdges(),
+      clipper: AbCustomCurvedEdges(),
       child: child,
     );
   }

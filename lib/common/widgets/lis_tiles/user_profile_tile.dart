@@ -6,8 +6,11 @@ import 'package:iconsax/iconsax.dart';
 
 class AbUserProfileTile extends StatelessWidget {
   const AbUserProfileTile({
-    super.key,
+    super.key, 
+    required this.onPressed,
   });
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class AbUserProfileTile extends StatelessWidget {
     
     title: Text('Coding with Ab', style: Theme.of(context).textTheme.headlineSmall!.apply(color: AbColors.white)),
     subtitle: Text('abdibekele2021@gmail.com', style: Theme.of(context).textTheme.bodyMedium!.apply(color: AbColors.white)),
-    trailing: IconButton(onPressed: (){}, icon: const Icon(Iconsax.edit, color: AbColors.white,)),
+    trailing: IconButton(onPressed: onPressed, icon: const Icon(Iconsax.edit, color: AbColors.white,)),
     );
   }
 }

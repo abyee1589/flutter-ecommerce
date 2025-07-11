@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/features/personilation/screens/settings/setting.dart';
+import 'package:flutter_app/features/personalization/screens/settings/setting.dart';
 import 'package:flutter_app/features/shop/screens/home/home.dart';
 import 'package:flutter_app/features/shop/screens/store/store.dart';
 import 'package:flutter_app/features/shop/screens/wishlist/wishlist.dart';

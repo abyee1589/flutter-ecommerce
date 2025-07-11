@@ -9,7 +9,7 @@ class AbRoundedImage extends StatelessWidget {
     this.height, 
     required this.imageUrl, 
     this.applyImageRadius = true, 
-    this.border, 
+    this.border,
     this.backgroundColor,
     this.fit = BoxFit.contain, 
     this.padding, 
