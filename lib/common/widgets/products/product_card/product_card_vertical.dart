@@ -83,7 +83,7 @@ class AbProductCardVertical extends StatelessWidget {
                 /// Price
                 const Padding(
                   padding: EdgeInsets.only(left: AbSizes.sm),
-                  child: ProductPriceText(price: '35.0'),
+                  child: AbProductPriceText(price: '35.0'),
                 ),
                 Container(
                   decoration: const BoxDecoration(
