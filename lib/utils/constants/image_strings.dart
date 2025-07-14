@@ -36,6 +36,7 @@ class AbImages {
 
   /// Products
   static const String productImage1 = 'images/products/product-1.jpg';
+  static const String productImage2 = 'images/products/product-2.png';
 
   /// User
   static const String user = 'assets/images/user/hacker.png';
