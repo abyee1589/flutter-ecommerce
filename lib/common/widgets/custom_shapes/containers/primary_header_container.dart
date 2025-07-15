@@ -17,8 +17,8 @@ class AbPrimaryHeaderContainer extends StatelessWidget {
         padding: const EdgeInsets.all(0),
         child: Stack(
           children: [
-            Positioned(top: -150, right: -250, child: CircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1))),
-            Positioned(top: 100, right: -300, child: CircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1))),    
+            Positioned(top: -150, right: -250, child: AbCircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1))),
+            Positioned(top: 100, right: -300, child: AbCircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1))),    
             child,               
           ],                
         ),

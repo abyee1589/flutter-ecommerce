@@ -18,8 +18,7 @@ dependencies:
   intl: ^0.20.2
   flutter_native_splash: ^2.4.6
   smooth_page_indicator: ^1.2.1
-  carousel_slider: ^5.1.1
-
+  
   # Icons  
   cupertino_icons: ^1.0.8
   iconsax: ^0.0.8
@@ -27,6 +26,11 @@ dependencies:
   # State management
   get: ^4.7.2
   get_storage: ^2.1.1
+
+  # Product specific
+  carousel_slider: ^5.1.1
+  readmore: ^3.0.0
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
