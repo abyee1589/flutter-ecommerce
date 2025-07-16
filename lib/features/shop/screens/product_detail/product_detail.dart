@@ -20,6 +20,8 @@ class ProductdetailScreen extends StatelessWidget {
       bottomNavigationBar: const BottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
+
+          /// Product Details
           children: [
 
             /// Product image slider
@@ -80,9 +82,7 @@ class ProductdetailScreen extends StatelessWidget {
                   const SizedBox(height: AbSizes.spaceBtwSections),
                 ],
               ),
-            )
-            /// product details
-            
+            )   
           ],
         ),
       ),

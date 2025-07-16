@@ -8,7 +8,7 @@ class AbRoundedContainer extends StatelessWidget {
     this.child, 
     this.width, 
     this.height, 
-    this.radius =AbSizes.borderRadiusLg, 
+    this.radius = AbSizes.borderRadiusLg, 
     this.showBorder = false,
     this.padding,
     this.margin,  
