@@ -26,7 +26,8 @@ class UseraddressScreen extends StatelessWidget {
           padding: EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             children: [
-              AbSingleAddress(selectedAddress: true)
+              AbSingleAddress(selectedAddress: true),
+              AbSingleAddress(selectedAddress: false)
             ],
           ),
         ),

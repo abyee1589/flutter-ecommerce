@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AbTextFormFieldTheme {
-  AbTextFormFieldTheme._();
+  const AbTextFormFieldTheme._();
 
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
