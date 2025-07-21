@@ -27,8 +27,11 @@ class AbCircularIcon extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: backgroundColor
-         ?? (dark ? AbColors.black.withOpacity(0.9) : (AbColors.white.withOpacity(0.9))),
+        color: backgroundColor != null
+          ? backgroundColor! 
+          : dark 
+            ? AbColors.black.withOpacity(0.9) 
+            : (AbColors.white.withOpacity(0.9)),
         borderRadius: BorderRadius.circular(100),
       ),
       child: IconButton(onPressed: onPressed, icon: Icon(icon, color: color, size: size) ),
