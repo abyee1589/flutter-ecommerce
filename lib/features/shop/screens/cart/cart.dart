@@ -22,6 +22,8 @@ class CartScreen extends StatelessWidget {
           child: AbCartItems(),
         ),
       ),
+
+      /// Checkout Button
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(AbSizes.defaultSpace),
         child: ElevatedButton(onPressed: () => Get.to(() => const CheckoutScreen()), child: const Text('Checkout \$256.0')),

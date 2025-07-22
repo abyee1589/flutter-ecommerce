@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/style/spacing_style.dart';
-import 'package:flutter_app/features/authentication/screens/login/login.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
-import 'package:get/get.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key, required this.image, required this.title, required this.subTitle, required this.onPressed});
@@ -32,9 +30,15 @@ class SuccessScreen extends StatelessWidget {
           const SizedBox(height: AbSizes.spaceBtwSections),
 
           /// Buttons
-          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (() => Get.to(const LoginScreen())), child: const Text(AbTexts.done))),
-          const SizedBox(height: AbSizes.spaceBtwItems),
-          SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: const Text(AbTexts.reSendEmail))),
+          SizedBox(
+            width: double.infinity, 
+            child: ElevatedButton(
+              onPressed: onPressed, 
+              child: const Text(AbTexts.abContinue,)
+            )
+          ),
+          // const SizedBox(height: AbSizes.spaceBtwItems),
+          // SizedBox(width: double.infinity, child: TextButton(onPressed: (() {}), child: const Text(AbTexts.reSendEmail))),
         ]),
       ),
     );
