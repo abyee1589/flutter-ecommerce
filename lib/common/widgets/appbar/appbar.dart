@@ -12,14 +12,15 @@ class AbAppBar extends StatelessWidget implements PreferredSizeWidget{
   this.showBackArrow = false, 
   this.leadingIcon,
   this.actions,
-  this.leadingOnpressed});
+  this.onLeadingIconPressed,
+});
 
 
   final Widget? title;
   final bool showBackArrow;
   final IconData? leadingIcon;
   final List<Widget>? actions;
-  final VoidCallback? leadingOnpressed;
+  final VoidCallback? onLeadingIconPressed;
 
 
   @override
@@ -31,7 +32,7 @@ class AbAppBar extends StatelessWidget implements PreferredSizeWidget{
         automaticallyImplyLeading: false,
         leading: showBackArrow
         ? IconButton(onPressed: (() => Get.back()), icon: Icon(Iconsax.arrow_left, color: dark ? AbColors.white : AbColors.black,))
-        : leadingIcon != null ? IconButton(onPressed: leadingOnpressed, icon: Icon(leadingIcon)) : null,
+        : leadingIcon != null ? IconButton(onPressed: onLeadingIconPressed, icon: Icon(leadingIcon)) : null,
         title: title,
         actions: actions,
       ),
