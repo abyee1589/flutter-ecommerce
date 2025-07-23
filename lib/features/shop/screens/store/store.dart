@@ -8,12 +8,14 @@ import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/screens/brand/all_brands.dart';
 import 'package:flutter_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({
@@ -74,7 +76,10 @@ class StoreScreen extends StatelessWidget {
                     const SizedBox(height: AbSizes.spaceBtwSections),
       
                     /// Feaured Brands
-                    AbSectionHeading( title: 'Featured Brands', onPressed: (){},),
+                    AbSectionHeading( 
+                      title: 'Featured Brands', 
+                      onPressed: () => Get.to(() => const AllBrandsScreen()), 
+                      showActionButton: true,),
                     const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
       
                     AbGridLayout(itemCount: 4, mainAxisExtent: 80, itemBuilder: (_, index){

@@ -12,6 +12,7 @@ class AbOrderListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
     return ListView.separated(
+      shrinkWrap: true,
       itemCount: 4,
       separatorBuilder: (_, _)=> const SizedBox(height: AbSizes.spaceBtwItems, ),
       itemBuilder: (_, index) => AbRoundedContainer(

@@ -28,8 +28,10 @@ class AbProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [AbShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(AbSizes.productImageRadius),
-          color: dark ? AbColors.darkGrey : AbColors.white,
+          color: dark ? AbColors.darkerGrey : AbColors.white,
         ),
+
+        /// Thubnail, Wishlist Button, Discount Tag
         child: Column(
           children: [
             AbRoundedContainer(
@@ -38,10 +40,11 @@ class AbProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? AbColors.dark : AbColors.light,
               child: Stack(
                 children: [
+
                   /// Thubnail image
                   const AbRoundedImage(imageUrl: AbImages.productImage1, applyImageRadius: true,),
                   
-                  /// Sale
+                  /// Sale tag
                   Positioned(
                     top: 7,
                     child: AbRoundedContainer(
@@ -76,15 +79,19 @@ class AbProductCardVertical extends StatelessWidget {
               ),
             ),
             const Spacer(),
+
+            /// Price Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 
-                /// Price
+                /// Price 
                 const Padding(
                   padding: EdgeInsets.only(left: AbSizes.sm),
                   child: AbProductPriceText(price: '35.0'),
                 ),
+
+                /// Add to Cart
                 Container(
                   decoration: const BoxDecoration(
                     color: AbColors.dark,

@@ -30,6 +30,8 @@ class AbBrandCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+
+            /// Icon
             Flexible(
               child: AbCircularImage(
                 image: AbImages.clothIcon, 
