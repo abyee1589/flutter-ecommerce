@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/bindings/general_binding.dart';
 import 'package:flutter_app/features/authentication/screens/onboarding.dart';
 import 'package:flutter_app/navigation_menu.dart';
 import 'package:flutter_app/utils/device/scroll_behavior.dart';
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
         theme: AbAppTheme.lightTheme,
         darkTheme: AbAppTheme.darkTheme,
         home: OnBoardingScreen(),
+        initialBinding: GeneralBinding(),
       );
     }
 }

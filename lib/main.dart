@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_app/features/shop/controllers/home_controller/home_controller.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -20,9 +21,8 @@ Future<void> main() async{
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   /// Initialize Firebase and Authentication History
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  // .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+    .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
   runApp(const App());
 }
