@@ -26,14 +26,6 @@ class SignupController extends GetxController {
 
   void signup() async {
     try {
-      /// Start Loading
-      AbFullScreenLoader.openLoadingDialog('We are processing your information', AbImages.clothIcon);
-
-      /// Check internet connectivity
-      final iConnected = await NetworkManager.instance.isConnected();
-      if(!iConnected) {
-        return;
-      }
 
       /// Form Validation
       if(!signupFormKey.currentState!.validate()) return;
@@ -47,12 +39,21 @@ class SignupController extends GetxController {
         return;
       }
 
+      /// Start Loading
+      AbFullScreenLoader.openLoadingDialog('We are processing your information', AbImages.clothIcon);
+
+      /// Check internet connectivity
+      final iConnected = await NetworkManager.instance.isConnected();
+      if(!iConnected) {
+        return;
+      }
+
       /// Register user in the Firebase Authentication and save user data in the Firebase
-      final UserCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       /// Save the Authenticated user data in the Firebase Firestore
       final newUser = UserModel(
-        id: UserCredential.user!.uid, 
+        id: userCredential.user!.uid, 
         firstName: firstName.text.trim(), 
         lastName: lastName.text.trim(), 
         username: username.text.trim(), 
@@ -60,15 +61,17 @@ class SignupController extends GetxController {
         phoneNumber: phoneNumber.text.trim(), 
         profilePicture: ''
       );
-
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
 
+      /// Remove Loader
+      AbFullScreenLoader.stopLoading();
+      
       /// Success Message
       AbLoaders.successSnackBar(title: 'Congratulations', message: 'Your account has been created successfully!, Verify your email to continue');
 
       /// Move to Verify Email screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch(e) {
       /// Remove Loader
       AbFullScreenLoader.stopLoading();

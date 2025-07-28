@@ -3,7 +3,6 @@ import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 
 class AbFullScreenLoader {
