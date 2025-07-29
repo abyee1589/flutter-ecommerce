@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/common/widgets/loaders/animation_loader.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 
 
@@ -16,10 +16,10 @@ class AbFullScreenLoader {
           color: AbHelperFunctions.isDarkMode(Get.context!) ? AbColors.dark : AbColors.white,
           width: double.infinity,
           height: double.infinity,
-          child: const Column(
+          child: Column(
             children: [
-              SizedBox(height: 250),
-              // AbLoaders(text: text, animation: animation, showAction: true,)
+              const SizedBox(height: 250),
+               AbAnimationLoaderWidget(text: text, animation: animation, showAction: true)
             ],
           ),
         )

@@ -22,7 +22,7 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Send Email Verification link
-  sendEmailVerification() async{
+  Future<void> sendEmailVerification() async{
     try{
       await AuthenticationRepository.instance.sendEmailVerification();
       AbLoaders.successSnackBar(title: 'Verification Email Sent!', message: 'PLease check your inbox and verify your email!');
@@ -44,7 +44,8 @@ class VerifyEmailController extends GetxController {
             image: AbImages.deliveredEmailIllustration, 
             title: AbTexts.yourAccountCreatedTitle, 
             subTitle: AbTexts.yourAccountCreatedSubTitle, 
-            onPressed: () => AuthenticationRepository.instance.screenRedirect()
+            onPressed: () {}
+            // => AuthenticationRepository.instance.screenRedirect()
           ));
         }
       }
@@ -58,7 +59,8 @@ class VerifyEmailController extends GetxController {
         image: AbImages.deliveredEmailIllustration, 
         title: AbTexts.yourAccountCreatedTitle, 
         subTitle: AbTexts.yourAccountCreatedSubTitle, 
-        onPressed: () => AuthenticationRepository.instance.screenRedirect()
+        onPressed: () {}
+        //  => AuthenticationRepository.instance.screenRedirect()
       ));
     }
   }

@@ -21,6 +21,7 @@ class AbImages {
     // Category Icons
     static const String sportIcon = 'images/icons/categpries/productsIllustration.jpg';
     static const String clothIcon = 'icons/cloth-icon.png';
+    static const String lottieAnimation = 'images/animations/lottie_animation.json';
     static const String paypal = 'icons/paypal.png';
     static const String success = 'icons/SuccessPaymentIcon.png';
     static const String shoeIcon = 'images/icons/categpries/sammyline_delivery.gif';

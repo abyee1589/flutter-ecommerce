@@ -45,7 +45,7 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity, 
                 child: ElevatedButton(
-                  onPressed: (() => controller.checkEmailVerificationStatus()),
+                  onPressed: (()  => controller.checkEmailVerificationStatus()),
                   child: const Text(AbTexts.abContinue))
               ),
               const SizedBox(height: AbSizes.spaceBtwItems),
