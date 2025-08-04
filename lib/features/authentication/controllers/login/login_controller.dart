@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/repositories/authentication/authentication_repository.dart';
+import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/http/network_manager.dart';
 import 'package:flutter_app/utils/popups/full_screen_loader.dart';
@@ -9,6 +10,7 @@ import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
+  final controller = Get.put(UserController());
 
   /// Variables
   final Rx<bool> rememberMe = false.obs;
@@ -62,6 +64,37 @@ class LoginController extends GetxController {
 
     /// Login user using email and password
     final userCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+     
+    /// Remove loader
+    AbFullScreenLoader.stopLoading();
+
+
+    /// Screen Redirect 
+    AuthenticationRepository.instance.screenRedirect();
+   } catch(e) {
+    AbFullScreenLoader.stopLoading();
+    AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+   }
+  }
+
+
+Future<void> googleSignIn() async{
+
+   try {
+     /// Open loading
+    AbFullScreenLoader.openLoadingDialog('Logging you in...', AbImages.lottieAnimation);
+
+    /// Check internet connection
+    final isConnected = await NetworkManager.instance.isConnected();
+    if(!isConnected){
+      AbFullScreenLoader.stopLoading();
+      return;
+    }
+
+
+    /// Save User Record
+    final userCredential = await AuthenticationRepository.instance.signInWithGoogle();
+    await controller.saveUserRcord(userCredential);
      
     /// Remove loader
     AbFullScreenLoader.stopLoading();
