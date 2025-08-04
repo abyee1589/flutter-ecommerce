@@ -31,13 +31,23 @@ dependencies:
   carousel_slider: ^5.1.1
   readmore: ^3.0.0
   flutter_rating_bar: ^4.0.1
-  firebase_core: ^3.15.2
+ 
   lottie: ^3.3.1
   connectivity_plus: ^6.1.4
+ 
+  # Firebase
+  firebase_core: ^3.15.2
   firebase_auth: ^5.7.0
   cloud_firestore: ^5.6.12
   google_sign_in: ^7.1.1
+<<<<<<< HEAD
   shimmer: ^3.0.0
+=======
+  image_picker: ^1.1.2
+  cloudinary: ^1.2.0
+  cloudinary_sdk: ^5.0.0+1
+  cached_network_image: ^3.4.1
+>>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
 
 dev_dependencies:
   flutter_test:

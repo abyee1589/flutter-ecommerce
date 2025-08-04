@@ -156,4 +156,65 @@ Future<void> sendPasswordResetEmail(String email) async {
        throw 'Nothing went wrong!, Please try again!';
     }
   }
+
+
+  /// Federated identity and social sign in
+  /// Email Verification 
+Future<UserCredential?> signInWithGoogle() async {
+  try {
+    // 1. Await the Google Sign-In process itself
+    // ignore: unnecessary_nullable_for_final_variable_declarations
+    final GoogleSignInAccount? userAccount = await GoogleSignIn.instance.authenticate();
+
+    // Handle user cancellation gracefully
+    if (userAccount == null) {
+      return null;
+    }
+
+    // 2. CRITICAL: Await the authentication details from the userAccount.
+    // Without this 'await', 'googleAuth' will be a Future<GoogleSignInAuthentication>
+    // instead of the actual GoogleSignInAuthentication object.
+    // ignore: await_only_futures
+    final GoogleSignInAuthentication googleAuth = await userAccount.authentication;
+
+    /// Create Credentials for Firebase
+    final credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,       // These getters now exist because googleAuth
+      accessToken: googleAuth.accessToken, // is the correct type!
+    );
+
+    /// Once the user signed in, return the credential via Firebase Authentication
+    // Assuming _auth is an instance of FirebaseAuth (e.g., FirebaseAuth.instance)
+
+    // final GoogleSignInAccount? userAccount = GoogleSignIn().signIn();
+    // final GoogleSignInAuthentication googleAuth = await userAccount?.authentication;
+    // final credential = GoogleAuthProvider.credential(
+    //   idToken: googleAuth.idToken,       // These getters now exist because googleAuth
+    //   accessToken: googleAuth.accessToken, // is the correct type!
+    // );
+
+    return await _auth.signInWithCredential(credential);
+
+  } on FirebaseAuthException catch (e) {
+    throw AbFirebaseAuthException(e.code).message;
+  } on FirebaseException catch (e) {
+    throw AbFirebaseException(e.code).message;
+  } on FormatException catch (_) {
+    throw AbFormatException();
+  } on PlatformException catch (e) {
+    throw AbPlatformException(e.code).message;
+  } catch (e) {
+    throw('Something went wrong! $e');
+  }
+}
+
+
+}
+
+// extension on GoogleSignIn {
+//   GoogleSignInAccount? signIn() {}
+// }
+
+extension on GoogleSignInAuthentication {
+  get accessToken => null;
 }

@@ -27,7 +27,7 @@ class UserModel {
     List<String> nameParts = fullName.split(' ');
     String first = nameParts[0].toLowerCase();
     String last = nameParts.length > 1 ? nameParts[1].toLowerCase() : '';
-    return 'cwab_$first$last';
+    return 'cwt_${first}${last}';
   }
 
   // String get formattedPhoneNumber => AbFormatter.formatPhoneNumber(phoneNumber);
