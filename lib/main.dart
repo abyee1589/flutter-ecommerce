@@ -11,10 +11,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async{
-  Get.put(HomeController());
-  Get.put(SignupController());
-  Get.put(UserRepository());
-  Get.put(UserController());
   /// Widgets Binding
   final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   
@@ -26,7 +22,13 @@ Future<void> main() async{
 
   /// Initialize Firebase and Authentication History
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-    .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+    .then((FirebaseApp value){
+      Get.put(AuthenticationRepository());
+      Get.put(HomeController());
+      Get.put(SignupController());
+      Get.put(UserRepository());   // ✅ REGISTER IT FIRST
+      Get.put(UserController()); 
+    });
 
   runApp(const App());
 }

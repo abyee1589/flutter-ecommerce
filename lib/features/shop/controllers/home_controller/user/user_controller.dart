@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
-  final userRepository = Get.put(UserRepository());
+  final userRepository = UserRepository.instance;
   Rx<UserModel> user = UserModel.empty().obs;
   final profileLoading = false.obs;
 

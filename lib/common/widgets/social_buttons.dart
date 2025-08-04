@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/authentication/controllers/login/login_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
@@ -14,11 +12,7 @@ class AbSocialButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final controller = Get.put(LoginController());
-=======
-    final Controller = Get.put(LoginController());
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

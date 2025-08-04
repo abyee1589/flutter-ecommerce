@@ -10,7 +10,7 @@ import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
-  final controller = Get.put(UserController());
+  final controller = UserController.instance;
 
   /// Variables
   final Rx<bool> rememberMe = false.obs;
@@ -77,13 +77,8 @@ class LoginController extends GetxController {
    }
   }
 
-<<<<<<< HEAD
   
   Future<void> googleSignIn() async{
-=======
-
-Future<void> googleSignIn() async{
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
 
    try {
      /// Open loading
@@ -91,31 +86,19 @@ Future<void> googleSignIn() async{
 
     /// Check internet connection
     final isConnected = await NetworkManager.instance.isConnected();
-<<<<<<< HEAD
     if (!isConnected) {
       AbFullScreenLoader.stopLoading();
       AbLoaders.errorSnackBar(title: 'No Internet', message: 'Please check your connection and try again.');
-=======
-    if(!isConnected){
-      AbFullScreenLoader.stopLoading();
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
       return;
     }
 
 
-<<<<<<< HEAD
     /// Login user using email and password
     final userCredential = await AuthenticationRepository.instance.loginInWithGoogle();
-=======
-    /// Save User Record
-    final userCredential = await AuthenticationRepository.instance.signInWithGoogle();
-    await controller.saveUserRcord(userCredential);
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
      
     /// Remove loader
     AbFullScreenLoader.stopLoading();
 
-<<<<<<< HEAD
     /// Screen Redirect 
     AuthenticationRepository.instance.screenRedirect();
    } catch (e, stackTrace) {
@@ -124,14 +107,5 @@ Future<void> googleSignIn() async{
   debugPrintStack(stackTrace: stackTrace);
 }
 
-=======
-
-    /// Screen Redirect 
-    AuthenticationRepository.instance.screenRedirect();
-   } catch(e) {
-    AbFullScreenLoader.stopLoading();
-    AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-   }
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
   }
 }

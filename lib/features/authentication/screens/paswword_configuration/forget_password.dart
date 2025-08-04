@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/authentication/controllers/forget_password/forget_password_controller.dart';
-import 'package:flutter_app/features/authentication/screens/paswword_configuration/reset_password.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
 import 'package:flutter_app/utils/validators/validation.dart';

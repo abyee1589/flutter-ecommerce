@@ -30,8 +30,6 @@ class UserRepository extends GetxController {
       throw 'Nothing went wrong!, Please try again!';
     }
   }
-
-<<<<<<< HEAD
   /// Function to fetch user details based on user ID
   Future<UserModel> fetchUserDetails() async {
     try{
@@ -57,16 +55,6 @@ class UserRepository extends GetxController {
   Future<void> updateUserDetails(UserModel userToUpdate) async {
     try{
       await _db.collection('Users').doc(userToUpdate.id).update(userToUpdate.toJson()); 
-=======
-
-  Future<void> saveUserProfileImageUrl(String imageUrl) async {
-    try{
-    if (user == null) return;
-    final userDoc = _db.collection('Users').doc(user!.uid);    
-    await userDoc.update({
-      'profilePicture': imageUrl,
-    });
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
     } on FirebaseException catch(e) {
       throw AbFirebaseException(e.code).message;
     } on FormatException catch(_) {
@@ -77,8 +65,6 @@ class UserRepository extends GetxController {
       throw 'Nothing went wrong!, Please try again!';
     }
   }
-<<<<<<< HEAD
-
   /// Function to update user single field 
   Future<void> updateSingleFIeld(Map<String, dynamic> json) async {
     try{
@@ -108,7 +94,20 @@ class UserRepository extends GetxController {
       throw 'Nothing went wrong!, Please try again!';
     }
   }
-  
-=======
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
+
+  Future<void> saveUserProfileImageUrl(String imageUrl) async {
+    try{
+      if (user == null) return;
+      final userDoc = _db.collection('Users').doc(user!.uid);    
+      await userDoc.update({'profilePicture': imageUrl});
+    } on FirebaseException catch(e) {
+      throw AbFirebaseException(e.code).message;
+    } on FormatException catch(_) {
+      throw AbFormatException();
+    } on PlatformException catch(e) {
+      throw AbPlatformException(e.code).message;
+    } catch(e) {
+      throw 'Nothing went wrong!, Please try again!';
+    }
+  }
 }

@@ -5,7 +5,7 @@ import 'package:flutter_app/common/widgets/lis_tiles/settings_menu_tile.dart';
 import 'package:flutter_app/common/widgets/lis_tiles/user_profile_tile.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/personalization/screens/address/address.dart';
-import 'package:flutter_app/features/personalization/screens/profile/widgets/profile.dart';
+import 'package:flutter_app/features/personalization/screens/profile/profile.dart';
 import 'package:flutter_app/features/shop/screens/cart/cart.dart';
 import 'package:flutter_app/features/shop/screens/order/order.dart';
 import 'package:flutter_app/utils/constants/colors.dart';

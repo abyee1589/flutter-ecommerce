@@ -1,20 +1,13 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_app/features/personalization/screens/profile/widgets/profile_menu.dart';
-import 'package:flutter_app/features/shop/controllers/home_controller/user/user_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
-<<<<<<< HEAD
-import 'package:get_storage/get_storage.dart';
-=======
 import 'package:get/get.dart';
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
 import 'package:iconsax/iconsax.dart';
 
 class Profilescreen extends StatelessWidget {
@@ -22,11 +15,7 @@ class Profilescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final controller = UserController.instance;
-=======
-    final controller = Get.put(UserController());
->>>>>>> 4d9ffbbc9c17fd6ba605274173703c24dcad8fd7
     return Scaffold(
       appBar: const AbAppBar(
         showBackArrow: true,
@@ -41,8 +30,6 @@ class Profilescreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-
-
                     /// Profile picture
                     Obx(() {
                       final networkImage = controller.user.value.profilePicture;
