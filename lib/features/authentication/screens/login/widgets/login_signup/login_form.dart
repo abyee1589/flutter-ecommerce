@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_app/features/authentication/controllers/login/login_controller.dart';
 import 'package:flutter_app/features/authentication/screens/paswword_configuration/forget_password.dart';
 import 'package:flutter_app/features/authentication/screens/signup/signup.dart';
-import 'package:flutter_app/navigation_menu.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
@@ -85,7 +83,7 @@ class AbLoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: (() => controller.emailAndPasswordSignIn()), 
+                  onPressed: () => controller.emailAndPasswordSignIn(), 
                   child: const Text(AbTexts.signIn)
                   ),
                 ),

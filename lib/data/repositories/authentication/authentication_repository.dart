@@ -7,13 +7,14 @@ import 'package:flutter_app/features/authentication/screens/signup/signup.dart';
 import 'package:flutter_app/navigation_menu.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   /// Variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+  User? get authUser => _auth.currentUser;
 
   /// called from main.dart on app launch
   @override
@@ -25,7 +26,7 @@ class AuthenticationRepository extends GetxController {
   /// Function to Show Relevant Screen 
   screenRedirect() async {
     final user = _auth.currentUser;
-    if(user != null){
+    if(user!= null){
       if(!user.emailVerified){
         Get.offAll(() => const NavigationMenu());
       }
@@ -75,6 +76,35 @@ class AuthenticationRepository extends GetxController {
   }
 }
 
+
+/// ============== Federated Identity =============
+/// Signin with Google
+Future<UserCredential> loginInWithGoogle() async {
+  try {
+    // Trigger the authentication flow
+    final GoogleSignInAccount googleUser = await GoogleSignIn.instance.authenticate();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(idToken: googleAuth.idToken);
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  } on FirebaseAuthException catch(e) {
+      throw AbFirebaseAuthException(e.code).message;
+  } on FirebaseException catch(e) {
+       throw AbFirebaseException(e.code).message;
+  } on FormatException catch(_) {
+       throw AbFormatException();
+  } on PlatformException catch(e) {
+       throw AbPlatformException(e.code).message;
+  } catch(e) {
+      throw 'Nothing went wrong!, Please try again!';
+  }
+}
+
 /// Email Verification 
 Future<void> sendEmailVerification() async {
   try {
@@ -92,6 +122,23 @@ Future<void> sendEmailVerification() async {
   }
 }
 
+
+/// Forget PAssword
+Future<void> sendPasswordResetEmail(String email) async {
+  try {
+    await _auth.sendPasswordResetEmail(email: email);
+  } on FirebaseAuthException catch (e) {
+    throw AbFirebaseAuthException(e.code).message;
+  } on FirebaseException catch (e) {
+    throw AbFirebaseException(e.code).message;
+  } on FormatException catch (_) {
+    throw AbFormatException();
+  } on PlatformException catch (e) {
+    throw AbPlatformException(e.code).message;
+  } catch (e) {
+    throw('Something went wrong! $e');
+  }
+}
  /// Logout the User 
   Future<void> logout() async {
     try {

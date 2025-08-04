@@ -1,11 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/personalization/screens/profile/widgets/profile_menu.dart';
+import 'package:flutter_app/features/shop/controllers/home_controller/user/user_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 
 class Profilescreen extends StatelessWidget {
@@ -13,6 +17,7 @@ class Profilescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: const AbAppBar(
         showBackArrow: true,
@@ -47,20 +52,20 @@ class Profilescreen extends StatelessWidget {
               const AbSectionHeading(title: 'Profile Information'),
               const SizedBox(height: AbSizes.spaceBtwItems),
 
-              AbProfileMenu(title: 'Name', value: 'coding with Ab', onPressed: (){}),
-              AbProfileMenu(title: 'username', value: 'coding with Ab', onPressed: (){}),
+              AbProfileMenu(title: 'Name', value: controller.user.value.fullName, onPressed: (){}),
+              AbProfileMenu(title: 'username', value: controller.user.value.username, onPressed: (){}),
 
               const SizedBox(height: AbSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: AbSizes.spaceBtwItems),
 
               /// Heading Personal Info
-              const AbSectionHeading(title: 'Profile Information'),
+              const AbSectionHeading(title: 'Personal Information'),
               const SizedBox(height: AbSizes.spaceBtwItems),
 
-              AbProfileMenu(title: 'User 10', value: '45629', icon: Iconsax.copy,onPressed: (){}),
-              AbProfileMenu(title: 'Email', value: 'coding with Ab', onPressed: (){}),
-              AbProfileMenu(title: 'Phone Number', value: '+251-915-948189', onPressed: (){}),
+              AbProfileMenu(title: 'User 10', value: controller.user.value.id, icon: Iconsax.copy,onPressed: (){}),
+              AbProfileMenu(title: 'Email', value: controller.user.value.email, onPressed: (){}),
+              AbProfileMenu(title: 'Phone Number', value: controller.user.value.phoneNumber, onPressed: (){}),
               AbProfileMenu(title: 'Gender', value: 'Male', onPressed: (){}),
               AbProfileMenu(title: 'Date of Birth', value: '15 May, 1991', onPressed: (){}),
 

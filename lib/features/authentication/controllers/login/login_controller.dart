@@ -74,4 +74,36 @@ class LoginController extends GetxController {
     AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
    }
   }
+
+  
+  Future<void> googleSignIn() async{
+
+   try {
+     /// Open loading
+    AbFullScreenLoader.openLoadingDialog('Logging you in...', AbImages.lottieAnimation);
+
+    /// Check internet connection
+    final isConnected = await NetworkManager.instance.isConnected();
+    if (!isConnected) {
+      AbFullScreenLoader.stopLoading();
+      AbLoaders.errorSnackBar(title: 'No Internet', message: 'Please check your connection and try again.');
+      return;
+    }
+
+
+    /// Login user using email and password
+    final userCredential = await AuthenticationRepository.instance.loginInWithGoogle();
+     
+    /// Remove loader
+    AbFullScreenLoader.stopLoading();
+
+    /// Screen Redirect 
+    AuthenticationRepository.instance.screenRedirect();
+   } catch (e, stackTrace) {
+  AbFullScreenLoader.stopLoading();
+  AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+  debugPrintStack(stackTrace: stackTrace);
+}
+
+  }
 }
