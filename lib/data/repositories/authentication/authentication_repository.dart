@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/data/repositories/user/user_repository.dart';
 import 'package:flutter_app/exceptions/user_exceptions.dart';
 import 'package:flutter_app/features/authentication/screens/login/login.dart';
 import 'package:flutter_app/features/authentication/screens/onboarding.dart';
@@ -142,8 +143,41 @@ Future<void> sendPasswordResetEmail(String email) async {
  /// Logout the User 
   Future<void> logout() async {
     try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    }on FirebaseAuthException catch(e) {
+      throw AbFirebaseAuthException(e.code).message;
+    } on FirebaseException catch(e) {
+       throw AbFirebaseException(e.code).message;
+    } on FormatException catch(_) {
+       throw AbFormatException();
+    } on PlatformException catch(e) {
+       throw AbPlatformException(e.code).message;
+    } catch(e) {
+       throw 'Nothing went wrong!, Please try again!';
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());
+    }on FirebaseAuthException catch(e) {
+      throw AbFirebaseAuthException(e.code).message;
+    } on FirebaseException catch(e) {
+       throw AbFirebaseException(e.code).message;
+    } on FormatException catch(_) {
+       throw AbFormatException();
+    } on PlatformException catch(e) {
+       throw AbPlatformException(e.code).message;
+    } catch(e) {
+       throw 'Nothing went wrong!, Please try again!';
+    }
+  }
+  Future<void> reAuthenticateEmailAndPasswordUser(String email, String password) async {
+    try {
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
     }on FirebaseAuthException catch(e) {
       throw AbFirebaseAuthException(e.code).message;
     } on FirebaseException catch(e) {

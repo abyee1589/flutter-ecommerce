@@ -45,6 +45,9 @@ dependencies:
   cloudinary_sdk: ^5.0.0+1
   cached_network_image: ^3.4.1
   get: ^4.7.2
+  cloudinary_public: ^0.23.1
+  mime: ^2.0.0
+  http_parser: ^4.1.2
 
 
 dev_dependencies:

@@ -13,7 +13,7 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
+    final controller = NavigationController.instace;
     final darkMode = AbHelperFunctions.isDarkMode(context);
 
     return Scaffold(
@@ -39,6 +39,7 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class NavigationController extends GetxController {
+  static NavigationController get instace => Get.find();
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [const HomeScreen(), const StoreScreen(), const FavouriteScreen(), const SettingScreen()];

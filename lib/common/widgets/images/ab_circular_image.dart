@@ -39,7 +39,7 @@ class AbCircularImage extends StatelessWidget {
       child: Center(
         child: isNetworkImage 
         ? CachedNetworkImage(
-          fit: fit,
+          fit: fit ?? BoxFit.contain,
           color: overlayColor,
           imageUrl: image,
           // progressIndicatorBuilder: (context, url, downloadProgress) => AbShimmerEffect(width: 55, height: 55, radius: 55),
@@ -48,6 +48,7 @@ class AbCircularImage extends StatelessWidget {
         : Image(
           image: AssetImage(image),
           color: overlayColor ,
+          fit: fit ?? BoxFit.contain,
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
+import 'package:flutter_app/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:flutter_app/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
@@ -52,7 +53,7 @@ class Profilescreen extends StatelessWidget {
               const AbSectionHeading(title: 'Profile Information'),
               const SizedBox(height: AbSizes.spaceBtwItems),
 
-              AbProfileMenu(title: 'Name', value: controller.user.value.fullName, onPressed: (){}),
+              AbProfileMenu(title: 'Name', value: controller.user.value.fullName, onPressed: (() => Get.to(() => const ChangeName()))),
               AbProfileMenu(title: 'username', value: controller.user.value.username, onPressed: (){}),
 
               const SizedBox(height: AbSizes.spaceBtwItems),
@@ -74,7 +75,7 @@ class Profilescreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: (){}, 
+                  onPressed: () => controller.deleteAccountWarningPopup(), 
                   child: const Text('Close Account', style: TextStyle(color: Colors.red))),
               )
 
