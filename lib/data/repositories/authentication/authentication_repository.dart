@@ -160,6 +160,16 @@ Future<void> sendPasswordResetEmail(String email) async {
 
   Future<void> deleteAccount() async {
     try {
+      final user = FirebaseAuth.instance.currentUser;
+      if(user == null) throw 'No user is signed in. Please login again';
+      
+      /// Delete the user from Firestore Database
+      await UserRepository.instance.removeUserRecord(user.uid);
+      
+      /// Delete the user's auth account
+      await user.delete();
+
+      /// Signout and navigate
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => const LoginScreen());
     }on FirebaseAuthException catch(e) {
@@ -171,13 +181,16 @@ Future<void> sendPasswordResetEmail(String email) async {
     } on PlatformException catch(e) {
        throw AbPlatformException(e.code).message;
     } catch(e) {
-       throw 'Nothing went wrong!, Please try again!';
+       throw 'Deleting Account Error: ${e.toString()}';
     }
   }
   Future<void> reAuthenticateEmailAndPasswordUser(String email, String password) async {
     try {
       AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
-      await _auth.currentUser!.reauthenticateWithCredential(credential);
+      final user = _auth.currentUser;
+      if(user == null) throw 'User not signed in!';
+
+      await user.reauthenticateWithCredential(credential);
     }on FirebaseAuthException catch(e) {
       throw AbFirebaseAuthException(e.code).message;
     } on FirebaseException catch(e) {
@@ -187,7 +200,7 @@ Future<void> sendPasswordResetEmail(String email) async {
     } on PlatformException catch(e) {
        throw AbPlatformException(e.code).message;
     } catch(e) {
-       throw 'Nothing went wrong!, Please try again!';
+       throw 'User Reauthentication Error: ${e.toString()}';
     }
   }
 

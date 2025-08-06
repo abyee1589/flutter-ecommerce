@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/repositories/authentication/authentication_repository.dart';
+import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/http/network_manager.dart';
 import 'package:flutter_app/utils/popups/full_screen_loader.dart';
@@ -62,6 +63,9 @@ class LoginController extends GetxController {
 
     /// Login user using email and password
     final userCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+
+    /// Fetch the user's detail
+    await UserController.instance.fetchUserRecord();
      
     /// Remove loader
     AbFullScreenLoader.stopLoading();

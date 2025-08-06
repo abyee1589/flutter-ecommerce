@@ -36,19 +36,22 @@ class AbCircularImage extends StatelessWidget {
         color: backgroundColor ?? ( dark ? AbColors.black : AbColors.white),
         borderRadius: BorderRadius.circular(100)
       ),
-      child: Center(
-        child: isNetworkImage 
-        ? CachedNetworkImage(
-          fit: fit ?? BoxFit.contain,
-          color: overlayColor,
-          imageUrl: image,
-          // progressIndicatorBuilder: (context, url, downloadProgress) => AbShimmerEffect(width: 55, height: 55, radius: 55),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-          )
-        : Image(
-          image: AssetImage(image),
-          color: overlayColor ,
-          fit: fit ?? BoxFit.contain,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage 
+          ? CachedNetworkImage(
+            fit: fit ?? BoxFit.contain,
+            color: overlayColor,
+            imageUrl: image,
+            // progressIndicatorBuilder: (context, url, downloadProgress) => AbShimmerEffect(width: 55, height: 55, radius: 55),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+            )
+          : Image(
+            image: AssetImage(image),
+            color: overlayColor ,
+            fit: fit ?? BoxFit.contain,
+          ),
         ),
       ),
     );

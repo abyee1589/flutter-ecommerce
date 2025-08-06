@@ -8,6 +8,7 @@ import 'package:flutter_app/features/personalization/screens/profile/widgets/pro
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
+import 'package:flutter_app/utils/popups/shimmer_loader.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -35,7 +36,9 @@ class Profilescreen extends StatelessWidget {
                     Obx(() {
                       final networkImage = controller.user.value.profilePicture;
                       final image = networkImage.isNotEmpty ? networkImage : AbImages.user;
-                      return AbCircularImage(image: image, width: 80, height: 80, backgroundColor: AbColors.grey, isNetworkImage: networkImage.isNotEmpty);
+                      return controller.imageUploading.value == true 
+                        ? const AbShimmerEffect(width: 80, height: 80, radius: 80,)
+                        : AbCircularImage(image: image, width: 80, height: 80, backgroundColor: AbColors.grey, isNetworkImage: networkImage.isNotEmpty);
                     }),
                     const SizedBox(height: AbSizes.spaceBtwItems / 2),
                     TextButton(onPressed: () => controller.uploadProfilePicture(), child: const Text('Change Your Profile Picture')), 

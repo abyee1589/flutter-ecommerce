@@ -21,6 +21,7 @@ class UserController extends GetxController {
 
   final profileLoading = false.obs;
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
 
   Rx<UserModel> user = UserModel.empty().obs;
 
@@ -85,6 +86,7 @@ class UserController extends GetxController {
     }
   }
 
+/// Upload user profile picture
   Future<void> uploadProfilePicture() async {
   try {
     final pickedImage = await ImagePicker().pickImage(
@@ -96,12 +98,13 @@ class UserController extends GetxController {
 
     if (pickedImage == null) return;
 
-    AbFullScreenLoader.openLoadingDialog('Uploading...', AbImages.lottieAnimation); // Show loader
+    imageUploading.value = true;
+    // AbFullScreenLoader.openLoadingDialog('Uploading...', AbImages.lottieAnimation); // Show loader
 
     final cloudinaryUploader = CloudinaryUpload();
     final imageUrl = await cloudinaryUploader.uploadFile(pickedImage).timeout(const Duration(seconds: 60));
 
-    Get.back(); // Remove loader
+    // Get.back(); // Remove loader
 
     if (imageUrl == null || imageUrl.isEmpty) {
       AbLoaders.errorSnackBar(title: 'Upload Failed', message: 'Please try again.');
@@ -116,13 +119,16 @@ class UserController extends GetxController {
       if (val != null) val.profilePicture = imageUrl;
     });
 
-    AbLoaders.successSnackBar(title: 'Success', message: 'Profile picture updated.');
+    AbLoaders.successSnackBar(title: 'Congratualtions!', message: 'Profile picture updated successfully!');
   } catch (e) {
     if (Get.isDialogOpen ?? false) Get.back(); // Close loader if error
     AbLoaders.errorSnackBar(title: 'Error', message: e.toString());
+  } finally {
+    imageUploading.value = false;
   }
 }
 
+/// Delete account warning popup
 void deleteAccountWarningPopup() {
   Get.defaultDialog(
     contentPadding: const EdgeInsets.all(AbSizes.md),
@@ -138,6 +144,7 @@ void deleteAccountWarningPopup() {
   );
 }
 
+/// Delete user account
 void deleteUserAccount() async {
   try{
     AbFullScreenLoader.openLoadingDialog('Processing', AbImages.lottieAnimation);
@@ -160,6 +167,8 @@ void deleteUserAccount() async {
     AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
   }
 }
+
+/// Re-authenticate the user to delete his/her account
  Future<void> reAuthenticateEmailAndPasswordUser() async{
   try {
     AbFullScreenLoader.openLoadingDialog('Processing', AbImages.lottieAnimation);
