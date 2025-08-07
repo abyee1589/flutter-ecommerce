@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
@@ -11,11 +12,13 @@ class AbVerticalImageText extends StatelessWidget {
     this.textColor = AbColors.white, 
     this.backgroundColor,
     this.onTap,
+    this.isNetworkImage = true,
   });
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
   final void Function()? onTap;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +31,13 @@ class AbVerticalImageText extends StatelessWidget {
           children: [
             
             /// Circular icon
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(AbSizes.sm),
-              decoration: BoxDecoration(
-                color: backgroundColor ?? (dark ? AbColors.black : AbColors.white),
-                borderRadius: BorderRadius.circular(100)
-              ),
-              child: Center(
-                child: Image(image: AssetImage(image), fit: BoxFit.cover, color: AbColors.dark,),
-              ),
+            AbCircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: AbSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backgroundColor,
+              overlayColor: dark ? AbColors.light : AbColors.dark,
             ),
             const SizedBox(height: AbSizes.spaceBtwItems / 2),
 

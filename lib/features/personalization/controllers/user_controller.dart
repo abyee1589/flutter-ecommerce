@@ -57,8 +57,8 @@ class UserController extends GetxController {
             phoneNumber: userCredential.user!.phoneNumber ?? '',
             profilePicture: userCredential.user!.photoURL ?? '',
           );
-
-          /// Save User Data
+          
+        /// Save User Data
           await userRepository.saveUserRecord(user);
         }
       }

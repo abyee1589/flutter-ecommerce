@@ -42,21 +42,24 @@ class SignupController extends GetxController {
     final iConnected = await NetworkManager.instance.isConnected();
     if (!iConnected) return;
 
+    /// Authenticate the user on the Authentication tab of Firebase
     final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(
       email.text.trim(),
       password.text.trim(),
     );
-
+    
+    final username = UserModel.generateUsername('${firstName.text.trim()} ${lastName.text.trim()}');
     final newUser = UserModel(
       id: userCredential.user!.uid,
       firstName: firstName.text.trim(),
       lastName: lastName.text.trim(),
-      username: username.text.trim(),
+      username: username,
       email: email.text.trim(),
       phoneNumber: phoneNumber.text.trim(),
       profilePicture: '',
     );
-
+    
+    /// Add the user's detail on the Firebase Firestore Database
     final userRepository = UserRepository.instance;
     await userRepository.saveUserRecord(newUser);
 

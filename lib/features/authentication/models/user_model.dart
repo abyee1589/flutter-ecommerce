@@ -24,10 +24,10 @@ class UserModel {
   static List<String> nameParts(String fullName) => fullName.split(' ');
 
   static String generateUsername(String fullName) {
-    List<String> nameParts = fullName.split(' ');
+    List<String> nameParts = fullName.split('');
     String first = nameParts[0].toLowerCase();
     String last = nameParts.length > 1 ? nameParts[1].toLowerCase() : '';
-    return 'cwt_$first$last';
+    return 'cwab_$first$last';
   }
 
   // String get formattedPhoneNumber => AbFormatter.formatPhoneNumber(phoneNumber);

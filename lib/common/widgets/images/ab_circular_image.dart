@@ -14,7 +14,7 @@ class AbCircularImage extends StatelessWidget {
     required this.image, 
     this.backgroundColor,
     this.overlayColor, 
-    this.fit, 
+    this.fit = BoxFit.cover, 
     this.isNetworkImage = false,
   });
    final double width, height, padding;
