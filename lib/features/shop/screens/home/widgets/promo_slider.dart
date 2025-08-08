@@ -15,7 +15,7 @@ class AbPromoSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<HomeController>();
+    final controller = HomeController.instance;
     return Column(
       children: [
         CarouselSlider(

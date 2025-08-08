@@ -17,7 +17,7 @@ class LoginController extends GetxController {
   final localStorage = GetStorage();
   final email = TextEditingController();
   final password = TextEditingController();
-  GlobalKey<FormState> loginKey = GlobalKey<FormState>();
+  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   
 
   @override
@@ -50,7 +50,7 @@ class LoginController extends GetxController {
     }
 
     /// Validate the form
-    if(!loginKey.currentState!.validate()){
+    if(!loginFormKey.currentState!.validate()){
       AbFullScreenLoader.stopLoading();
       return;
     }

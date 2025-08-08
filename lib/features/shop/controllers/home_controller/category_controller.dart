@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 class CategoryController extends GetxController {
   static CategoryController get instance => Get.find();
 
-  final categoryRepository = CategoryRepository.instance;
   final isLoading = false.obs;
   RxList<CategoryModel> allCategories = <CategoryModel>[].obs;
   RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;

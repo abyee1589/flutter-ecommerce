@@ -5,13 +5,18 @@ import 'package:flutter_app/common/widgets/products/brand_card/brand_card.dart';
 import 'package:flutter_app/common/widgets/products/brand_card/brand_show_case.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/models/category_model.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 
 
 class AbCategoryTab extends StatefulWidget {
-  const AbCategoryTab({super.key});
+  const AbCategoryTab({
+    super.key, 
+    required this.category
+  });
+  final CategoryModel category;
 
   @override
   State<AbCategoryTab> createState() => _AbCategoryTabState();

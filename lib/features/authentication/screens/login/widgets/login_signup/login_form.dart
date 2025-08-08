@@ -16,9 +16,9 @@ class AbLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginController());
+    final controller = LoginController.instance;
     return Form(
-      key: controller.loginKey,
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: AbSizes.spaceBtwSections),
           child: Column(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/appbar/tabbar.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/controllers/home_controller/category_controller.dart';
 import 'package:flutter_app/features/shop/screens/brand/all_brands.dart';
 import 'package:flutter_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
@@ -46,8 +49,9 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: AbAppBar(
           title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
@@ -125,26 +129,13 @@ class StoreScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              bottom: const AbTabBar(
-                tabs: [
-                  Tab(child: Text('Sports')),
-                  Tab(child: Text('Furniture')),
-                  Tab(child: Text('Electronics')),
-                  Tab(child: Text('Clothes')),
-                  Tab(child: Text('Cosmetics')),
-                ],
+              bottom: AbTabBar(
+                tabs: categories.map((category) => Tab(child: Text(category.name))).toList()
               ),
             ),
           ];
         },
-        body: const TabBarView(children: [
-          /// Brands
-          AbCategoryTab(),
-          AbCategoryTab(),
-          AbCategoryTab(),
-          AbCategoryTab(),
-          AbCategoryTab(),
-        ]),
+          body: TabBarView(children: categories.map((category) => AbCategoryTab(category: category)).toList()),
         ),
       ),
     );

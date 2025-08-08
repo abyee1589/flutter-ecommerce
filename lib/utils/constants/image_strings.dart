@@ -29,7 +29,7 @@ class AbImages {
     static const String animalIcon = 'images/icons/categpries/sammyline_delivery.gif';
     static const String toyIcon = 'images/icons/categpries/sammyline_delivery.gif';
     static const String furnitureIcon = 'images/icons/categpries/sammyline_delivery.gif';
-    static const String jewlltureIcon = 'images/icons/categpries/sammyline_delivery.gif';
+    static const String jewlleryIcon = 'images/icons/categpries/sammyline_delivery.gif';
     static const String electronicsIcon = 'images/icons/categpries/sammyline_delivery.gif';
 
   /// Banners

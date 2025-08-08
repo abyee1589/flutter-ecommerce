@@ -3,7 +3,7 @@ import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbUserProfileTile extends StatelessWidget {
