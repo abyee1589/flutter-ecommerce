@@ -12,8 +12,8 @@ import 'package:flutter_app/utils/popups/shimmer_loader.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class Profilescreen extends StatelessWidget {
-  const Profilescreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

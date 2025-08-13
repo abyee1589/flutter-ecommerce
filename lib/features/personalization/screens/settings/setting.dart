@@ -8,6 +8,7 @@ import 'package:flutter_app/features/personalization/screens/address/address.dar
 import 'package:flutter_app/features/personalization/screens/profile/profile.dart';
 import 'package:flutter_app/features/shop/screens/cart/cart.dart';
 import 'package:flutter_app/features/shop/screens/order/order.dart';
+import 'package:flutter_app/features/shop/screens/upload/upload.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,7 @@ class SettingScreen extends StatelessWidget {
                 const SizedBox(height: AbSizes.spaceBtwSections),
             
                 /// User profile card
-                AbUserProfileTile(onPressed: () => Get.to(() => const Profilescreen())),
+                AbUserProfileTile(onPressed: () => Get.to(() => const ProfileScreen())),
                 const SizedBox(height: AbSizes.spaceBtwSections),
               ],
             ),
@@ -49,7 +50,7 @@ class SettingScreen extends StatelessWidget {
                   icon: Iconsax.safe_home, 
                   title : 'My Address', 
                   subTitle: 'Set shopping delivery address', 
-                  onTap: () => Get.to(() => const UseraddressScreen()),
+                  onTap: () => Get.to(() => const UserAddressScreen()),
                 ),
                 AbSettingsMenuTile(
                   icon: Iconsax.shopping_cart, 
@@ -97,7 +98,7 @@ class SettingScreen extends StatelessWidget {
                   icon: Iconsax.document_upload, 
                   title : 'Load Data', 
                   subTitle: 'Upload Data to Your Cloud Firebase', 
-                  onTap: (){},
+                  onTap: () => Get.to(() => const UploadScreen()),
                 ),
                 AbSettingsMenuTile(
                   icon: Iconsax.location, 

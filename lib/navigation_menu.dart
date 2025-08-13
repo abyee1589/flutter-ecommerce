@@ -11,6 +11,13 @@ import 'package:iconsax/iconsax.dart';
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
+  // @override
+  // void onInit(){
+  //   initState(
+  //     fetchCategories()
+  //   )
+  // }
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());

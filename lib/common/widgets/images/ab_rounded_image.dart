@@ -15,12 +15,14 @@ class AbRoundedImage extends StatelessWidget {
     this.padding, 
     this.iNetworkImage = false,
     this.onPressed, 
-    this.borderRadius = AbSizes.md,
+    this.borderRadius = AbSizes.md, 
+    this.isNetworkImage = false,
   });
 
   final double? width, height;
   final String imageUrl;
   final bool applyImageRadius;
+  final bool isNetworkImage;
   final BoxBorder? border;
   final Color? backgroundColor;
   final BoxFit fit;

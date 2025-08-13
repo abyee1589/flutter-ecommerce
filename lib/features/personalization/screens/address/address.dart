@@ -7,8 +7,8 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class UseraddressScreen extends StatelessWidget {
-  const UseraddressScreen({super.key});
+class UserAddressScreen extends StatelessWidget {
+  const UserAddressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

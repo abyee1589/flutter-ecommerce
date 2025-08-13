@@ -24,7 +24,7 @@ class AbImages {
     static const String lottieAnimation = 'images/animations/lottie_animation.json';
     static const String paypal = 'icons/paypal.png';
     static const String success = 'icons/SuccessPaymentIcon.png';
-    static const String shoeIcon = 'images/icons/categpries/sammyline_delivery.gif';
+    static const String shoeIcon = 'images/categories/sport-shoes.jpg';
     static const String cosmeticsIcon = 'images/icons/categpries/sammyline_delivery.gif';
     static const String animalIcon = 'images/icons/categpries/sammyline_delivery.gif';
     static const String toyIcon = 'images/icons/categpries/sammyline_delivery.gif';

@@ -1,53 +1,50 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CategoryModel {
-   String id;
-   String name;
-   String image;
-   String parentId;
-   bool isFeatured;
-  
+  String id;
+  String name;
+  String image;
+  String parentId;
+  bool isFeatured;
+
   CategoryModel({
     required this.id,
     required this.name,
     required this.image,
-    required this.isFeatured,
     this.parentId = '',
+    required this.isFeatured,
   });
-  
-   /// Empty Category Model
-  static CategoryModel empty() => CategoryModel(id: '', name: '', image: '', isFeatured: false);
 
-  /// Convert Model to Json structure so that we can store the data in Firebase
-  Map<String, dynamic> toJson() {
+  /// Convert Category model to JSON structure for storing data in Firestore
+  toJson() {
     return {
       'Name': name,
       'Image': image,
       'ParentId': parentId,
-      'IsFeatured': isFeatured
+      'IsFeatured': isFeatured,
     };
   }
 
-  /// Map Json oriented document snapshot from Firebase to UserModel
+  /// Factory constructor to create a CategoryModel from a Firestore document snapshot.
   factory CategoryModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
-    final data = document.data();
-    if(data!= null){
-      
-      /// Map Json Record to the Model
-      return CategoryModel(
-        id: document.id,
-        name: data['Name'] ?? '',
-        image: data['Image'] ?? '',
-        parentId: data['ParentId'] ?? '',
-        isFeatured: data['IsFeatured'] ?? false,
-      );
+    // Check if the document data is null
+    if (document.data() == null) {
+      return CategoryModel(id: '', name: '', image: '', isFeatured: false);
     }
-    else {
-      return CategoryModel.empty();
 
-    }
+    final data = document.data()!;
+
+    return CategoryModel(
+      id: document.id,
+      // FIX: Added null-aware operators to handle potential null values from Firestore.
+      // If a field is null in the database, it will now default to a safe value.
+      name: data['Name'] ?? '',
+      image: data['Image'] ?? '',
+      parentId: data['ParentId'] ?? '',
+      isFeatured: data['IsFeatured'] ?? false,
+    );
   }
-  @override
+   @override
   String toString() {
     return 'CategoryModel(id: $id, name: $name, image: $image, parentId: $parentId, isFeatured: $isFeatured)';
   }

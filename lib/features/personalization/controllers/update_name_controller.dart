@@ -74,7 +74,7 @@ class UpdateNameController extends GetxController {
       message: 'Your name has been updated successfully!',
     );
 
-    Get.off(() => const Profilescreen());
+    Get.off(() => const ProfileScreen());
   } catch (e) {
     AbFullScreenLoader.stopLoading();
     AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

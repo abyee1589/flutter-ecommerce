@@ -8,8 +8,12 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({super.key, required this.image, required this.title, required this.subTitle});
-  final String title, subTitle, image;
+  const ForgetPassword({
+    super.key, 
+    this.image, 
+    this.title, 
+    this.subTitle});
+  final String? title, subTitle, image;
 
   @override
   Widget build(BuildContext context) {

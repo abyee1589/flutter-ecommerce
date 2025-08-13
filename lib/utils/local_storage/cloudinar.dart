@@ -8,7 +8,7 @@ class CloudinaryUpload {
   static const String cloudName = 'dxkvofpde';
   static const String uploadPreset = 'flutter_unsigned';
 
-  Future<String?> uploadFile(XFile file) async {
+  Future<String?> uploadFile(XFile file, ) async {
     try {
       final mimeTypeData = lookupMimeType(file.path)?.split('/');
       final bytes = await file.readAsBytes();

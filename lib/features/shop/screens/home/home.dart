@@ -5,7 +5,7 @@ import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/shop/screens/all_products/all_products.dart';
-import 'package:flutter_app/features/shop/screens/home/widgets/homee_categories.dart';
+import 'package:flutter_app/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:flutter_app/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:flutter_app/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(AbSizes.defaultSpace),
             child: Column(
               children: [
-                const AbPromoSlider(banners: [AbImages.clothIcon, AbImages.promoBanner1]),
+                const AbPromoSlider(),
                 const SizedBox(height: AbSizes.spaceBtwSections),
                 AbSectionHeading(title: 'Popular products',showActionButton: true , onPressed: () => Get.to(() => const AllProducts())),
                 AbGridLayout(itemCount: 4, itemBuilder: (_, index) => const AbProductCardVertical()),

@@ -23,6 +23,7 @@ class AbVerticalImageText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
+
     return GestureDetector(
       onTap: onTap,
       child: Padding(

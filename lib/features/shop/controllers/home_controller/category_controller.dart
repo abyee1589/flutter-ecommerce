@@ -1,17 +1,18 @@
-
-
+import 'package:flutter_app/data/dummy_data.dart';
 import 'package:flutter_app/data/repositories/category/category_repository.dart';
-import 'package:flutter_app/features/shop/models/category_model.dart';
-import 'package:flutter_app/utils/popups/full_screen_loader.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
+import 'package:flutter_app/features/shop/models/category_model.dart';
+import 'package:flutter_app/utils/popups/loaders.dart';
 
+/// Controller to manage categories state and fetching
 class CategoryController extends GetxController {
   static CategoryController get instance => Get.find();
-
+  
+  // Use an RxList to automatically update the UI when the list changes
   final isLoading = false.obs;
+  final _categoryRepository = Get.put(CategoryRepository());
   RxList<CategoryModel> allCategories = <CategoryModel>[].obs;
-  RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
+  RxList<CategoryModel> featuredCategories= <CategoryModel>[].obs;
 
   @override
   void onInit() {
@@ -19,27 +20,42 @@ class CategoryController extends GetxController {
     super.onInit();
   }
 
-  /// Load Category data
+  /// Function to fetch categories from the database
   Future<void> fetchCategories() async {
     try {
-      /// Show leader while loading categories
+      // Show loading spinner
       isLoading.value = true;
-
-      /// Fetch categories from data source Firestore
-      final categories = await CategoryRepository.instance.getAllCategories();
-
-      /// Update category list 
+      
+      // Fetch categories from the repository
+      final categories = await _categoryRepository.getAllCategories();
+      
+      // Update the categories list
       allCategories.assignAll(categories);
-
-      /// Fiter Featured Categories
-      featuredCategories.assignAll(allCategories.where((category) => category.isFeatured && category.parentId.isEmpty).take(8).toList());
-
-    } catch(e) {
-      AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      featuredCategories.assignAll(categories.where((category) => category.isFeatured && category.parentId.isEmpty));
+    } catch (e) {
+        AbLoaders.errorSnackBar(
+          title: 'Oh Snap!',
+          message: e.toString(),
+        );
     } finally {
+      // This is another critical fix. The loader must be closed, whether or not there was an error.
+      // This prevents the "Unexpected null value" error from the loader.
       isLoading.value = false;
-      AbFullScreenLoader.stopLoading();
     }
   }
 
+  Future<void> uploadCategory() async{
+    try {
+      final catagoriesToUpload = AbDummyData.categories;
+      // Fetch categories from the repository
+      await _categoryRepository.uploadDummyData(catagoriesToUpload);
+      fetchCategories();
+      
+    } catch (e) {
+        AbLoaders.errorSnackBar(
+          title: 'Oh Snap!',
+          message: e.toString(),
+        );
+    }
+  }
 }
