@@ -49,6 +49,7 @@ class CategoryController extends GetxController {
       final catagoriesToUpload = AbDummyData.categories;
       // Fetch categories from the repository
       await _categoryRepository.uploadDummyData(catagoriesToUpload);
+      AbLoaders.successSnackBar(title: 'Success!', message: 'Your category data is uploaded successfully!');
       fetchCategories();
       
     } catch (e) {

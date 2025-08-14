@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
+import 'package:flutter_app/features/shop/controllers/home_controller/banner_controller.dart';
 import 'package:flutter_app/features/shop/controllers/home_controller/category_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
@@ -10,7 +11,8 @@ class UploadScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = CategoryController.instance;
+    final categoryController = CategoryController.instance;
+    final bannerController = BannerController.instance;
     return Scaffold(
       appBar: AbAppBar(title: Text('Upload Data', style: Theme.of(context).textTheme.headlineSmall), showBackArrow: true),
       body: SingleChildScrollView(
@@ -36,7 +38,7 @@ class UploadScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      IconButton(icon: const Icon(Iconsax.document_upload), color: AbColors.primary, onPressed: () => controller.uploadCategory()),
+                      IconButton(icon: const Icon(Iconsax.document_upload), color: AbColors.primary, onPressed: () => categoryController.uploadCategory()),
                     ]),
                   const SizedBox(height: AbSizes.spaceBtwItems * 2),
                   Row(
@@ -78,7 +80,7 @@ class UploadScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      IconButton(icon: const Icon(Iconsax.document_upload), color: AbColors.primary, onPressed: (){}),
+                      IconButton(icon: const Icon(Iconsax.document_upload), color: AbColors.primary, onPressed: () => bannerController.uploadBanners()),
                     ]),
                 ],
                 ),

@@ -10,7 +10,7 @@ import 'package:flutter_app/features/personalization/screens/profile/widgets/re_
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/http/network_manager.dart';
-import 'package:flutter_app/utils/local_storage/cloudinar.dart';
+import 'package:flutter_app/utils/local_storage/cloudinary.dart';
 import 'package:flutter_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
@@ -102,7 +102,7 @@ class UserController extends GetxController {
     // AbFullScreenLoader.openLoadingDialog('Uploading...', AbImages.lottieAnimation); // Show loader
 
     final cloudinaryUploader = CloudinaryUpload();
-    final imageUrl = await cloudinaryUploader.uploadFile(pickedImage).timeout(const Duration(seconds: 60));
+    final imageUrl = await cloudinaryUploader.uploadFile(pickedImage, folderType:'Users').timeout(const Duration(seconds: 60));
 
     // Get.back(); // Remove loader
 

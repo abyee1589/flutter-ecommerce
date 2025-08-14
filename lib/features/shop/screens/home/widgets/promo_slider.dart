@@ -26,7 +26,7 @@ class AbPromoSlider extends StatelessWidget {
           options: CarouselOptions(
             viewportFraction: 1,
             onPageChanged: (index, _) => controller.updatePageIndicater(index)),
-          items: controller.banners.map((banner) => AbRoundedImage(imageUrl: AbImages.clothIcon, isNetworkImage: true, onPressed: () => Get.toNamed(banner.targetScreen),)).toList(),
+          items: controller.banners.map((banner) => AbRoundedImage(imageUrl: banner.image, isNetworkImage: true, onPressed: () => Get.toNamed(banner.targetScreen))).toList(),
         ),
         const SizedBox(height: AbSizes.spaceBtwItems),
         Center(

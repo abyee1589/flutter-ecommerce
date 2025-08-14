@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/exceptions/user_exceptions.dart';
 import 'package:flutter_app/features/shop/models/category_model.dart';
-import 'package:flutter_app/utils/local_storage/cloudinar.dart';
+import 'package:flutter_app/utils/local_storage/cloudinary.dart';
 import 'package:get/get.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
@@ -54,13 +54,14 @@ class CategoryRepository extends GetxController {
           final fileBytes = byteData.buffer.asUint8List();
           url = await cloudinary.uploadFile(
             XFile.fromData(fileBytes, name: fileName, mimeType: 'image/png'),
+            folderType:'Categories'
           );
         } else {
           // Mobile/Desktop: Use temp directory
           final tempDir = await getTemporaryDirectory();
           final tempFile = File('${tempDir.path}/$fileName');
           await tempFile.writeAsBytes(byteData.buffer.asUint8List());
-          url = await cloudinary.uploadFile(XFile(tempFile.path));
+          url = await cloudinary.uploadFile(XFile(tempFile.path), folderType:'Categories');
         }
 
         if (url == null) {

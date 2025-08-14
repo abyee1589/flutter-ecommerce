@@ -1,6 +1,8 @@
 
 
+import 'package:flutter_app/features/shop/models/banner_model.dart';
 import 'package:flutter_app/features/shop/models/category_model.dart';
+import 'package:flutter_app/routes/routes.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 
 class AbDummyData {
@@ -42,5 +44,14 @@ class AbDummyData {
     CategoryModel(id: '22', image: AbImages.clothIcon, name: 'Jewellery subcategories', parentId: '6', isFeatured: false),
     CategoryModel(id: '23', image: AbImages.shoeIcon, name: 'Jewellery subcategories', parentId: '6', isFeatured: false),
     CategoryModel(id: '24', image: AbImages.clothIcon, name: 'Jewellery subcategories', parentId: '6', isFeatured: false),
+  ];
+
+  static List<BannerModel> banners = [
+    BannerModel(id: '1', image: AbImages.promoBanner1, targetScreen: AbRoutes.cart, active: true),
+    BannerModel(id: '2', image: AbImages.promoBanner1, targetScreen: AbRoutes.cart, active: true),
+    BannerModel(id: '3', image: AbImages.clothIcon, targetScreen: AbRoutes.favourites, active: true),
+    BannerModel(id: '4', image: AbImages.clothIcon, targetScreen: AbRoutes.favourites, active: true),
+    BannerModel(id: '5', image: AbImages.clothIcon, targetScreen: AbRoutes.order, active: true),
+    BannerModel(id: '6', image: AbImages.clothIcon, targetScreen: AbRoutes.order, active: true),
   ];
 }
