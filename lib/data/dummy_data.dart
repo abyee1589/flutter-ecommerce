@@ -7,7 +7,7 @@ import 'package:flutter_app/utils/constants/image_strings.dart';
 
 class AbDummyData {
   static List<CategoryModel> categories = [
-    CategoryModel(id: '1', image: AbImages.shoeIcon, name: 'Sports', isFeatured: true),
+    CategoryModel(id: '1', image: AbImages.productImage2, name: 'Sports', isFeatured: true),
     CategoryModel(id: '2', image: AbImages.shoeIcon, name: 'Furniture', isFeatured: true),
     CategoryModel(id: '3', image: AbImages.clothIcon, name: 'Electronics', isFeatured: true),
     CategoryModel(id: '4', image: AbImages.clothIcon, name: 'Clothes', isFeatured: true),
@@ -47,11 +47,11 @@ class AbDummyData {
   ];
 
   static List<BannerModel> banners = [
-    BannerModel(id: '1', image: AbImages.promoBanner1, targetScreen: AbRoutes.cart, active: true),
-    BannerModel(id: '2', image: AbImages.promoBanner1, targetScreen: AbRoutes.cart, active: true),
-    BannerModel(id: '3', image: AbImages.clothIcon, targetScreen: AbRoutes.favourites, active: true),
-    BannerModel(id: '4', image: AbImages.clothIcon, targetScreen: AbRoutes.favourites, active: true),
-    BannerModel(id: '5', image: AbImages.clothIcon, targetScreen: AbRoutes.order, active: true),
-    BannerModel(id: '6', image: AbImages.clothIcon, targetScreen: AbRoutes.order, active: true),
+    BannerModel(image: AbImages.promoBanner1, targetScreen: AbRoutes.cart, active: true),
+    BannerModel(image: AbImages.promoBanner1, targetScreen: AbRoutes.cart, active: true),
+    BannerModel(image: AbImages.clothIcon, targetScreen: AbRoutes.favourites, active: true),
+    BannerModel(image: AbImages.clothIcon, targetScreen: AbRoutes.favourites, active: true),
+    BannerModel(image: AbImages.clothIcon, targetScreen: AbRoutes.order, active: true),
+    BannerModel(image: AbImages.clothIcon, targetScreen: AbRoutes.order, active: true),
   ];
 }

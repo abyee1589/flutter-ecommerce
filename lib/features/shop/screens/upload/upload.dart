@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
-import 'package:flutter_app/features/shop/controllers/home_controller/banner_controller.dart';
-import 'package:flutter_app/features/shop/controllers/home_controller/category_controller.dart';
+import 'package:flutter_app/features/shop/controllers/banner_controller.dart';
+import 'package:flutter_app/features/shop/controllers/category_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';

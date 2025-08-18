@@ -10,7 +10,7 @@ import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
-import 'package:flutter_app/features/shop/controllers/home_controller/category_controller.dart';
+import 'package:flutter_app/features/shop/controllers/category_controller.dart';
 import 'package:flutter_app/features/shop/screens/brand/all_brands.dart';
 import 'package:flutter_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_app/utils/constants/colors.dart';

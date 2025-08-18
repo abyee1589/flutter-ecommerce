@@ -13,7 +13,6 @@ class AbRoundedImage extends StatelessWidget {
     this.backgroundColor,
     this.fit = BoxFit.contain, 
     this.padding, 
-    this.iNetworkImage = false,
     this.onPressed, 
     this.borderRadius = AbSizes.md, 
     this.isNetworkImage = false,
@@ -27,7 +26,6 @@ class AbRoundedImage extends StatelessWidget {
   final Color? backgroundColor;
   final BoxFit fit;
   final EdgeInsetsGeometry? padding;
-  final bool iNetworkImage;
   final VoidCallback? onPressed;
   final double borderRadius;
 
@@ -47,7 +45,7 @@ class AbRoundedImage extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: applyImageRadius? BorderRadius.circular(borderRadius) : BorderRadius.zero, 
-          child: Image(fit: fit, image: iNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl) as ImageProvider),
+          child: Image(fit: fit, image: isNetworkImage ? NetworkImage(imageUrl) : AssetImage(imageUrl) as ImageProvider),
         ), 
       ),
     );
