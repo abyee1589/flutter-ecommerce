@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/features/shop/controllers/banner_controller.dart';
 import 'package:flutter_app/features/shop/controllers/category_controller.dart';
+import 'package:flutter_app/features/shop/controllers/product_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
@@ -13,6 +14,7 @@ class UploadScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final categoryController = CategoryController.instance;
     final bannerController = BannerController.instance;
+    final productController = ProductController.instance;
     return Scaffold(
       appBar: AbAppBar(title: Text('Upload Data', style: Theme.of(context).textTheme.headlineSmall), showBackArrow: true),
       body: SingleChildScrollView(
@@ -66,7 +68,7 @@ class UploadScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      IconButton(icon: const Icon(Iconsax.document_upload), color: AbColors.primary, onPressed: (){}),
+                      IconButton(icon: const Icon(Iconsax.document_upload), color: AbColors.primary, onPressed: () => productController.uploadAllProducts()),
                     ]),
                   const SizedBox(height: AbSizes.spaceBtwItems * 2),
                   Row(

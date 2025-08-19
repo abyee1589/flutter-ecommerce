@@ -6,6 +6,7 @@ import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/features/shop/screens/product_detail/product_detail.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
@@ -15,7 +16,11 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbProductCardVertical extends StatelessWidget {
-  const AbProductCardVertical({super.key});
+  const AbProductCardVertical({
+    super.key, 
+    required this.products
+  });
+  final ProductModel products;
 
   @override
   Widget build(BuildContext context) {

@@ -55,7 +55,7 @@ class ProductModel {
       'SalsPrice': salePrice,
       'IsFeatured': isFeatured,
       'CategoryId': categoryId,
-      'Brand': brand,
+      'Brand': brand!.toJson(),
       'Description': description,
       'ProductType': productType,
       'ProductAttributes': productAttributes != null ? productAttributes!.map((attribute) => attribute.toJson()).toList() : [],
@@ -64,6 +64,7 @@ class ProductModel {
   }
 
   factory ProductModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+    if(document.data() == null) return ProductModel.empty();
     final data = document.data()!;
     return ProductModel(
     id: document.id, 

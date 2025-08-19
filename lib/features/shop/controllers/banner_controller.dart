@@ -1,7 +1,7 @@
 
 
 import 'package:flutter_app/data/dummy_data.dart';
-import 'package:flutter_app/data/repositories/banners/banner_repository.dart';
+import 'package:flutter_app/data/repositories/banner/banner_repository.dart';
 import 'package:flutter_app/features/shop/models/banner_model.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
