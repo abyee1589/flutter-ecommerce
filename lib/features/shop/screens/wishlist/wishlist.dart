@@ -3,6 +3,7 @@ import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/icon/ab_circular_icon.dart';
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/features/shop/screens/home/home.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -28,7 +29,7 @@ class FavouriteScreen extends StatelessWidget {
           padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             children: [
-              AbGridLayout(itemCount: 6, itemBuilder: (_, index) => const AbProductCardVertical())
+              AbGridLayout(itemCount: 6, itemBuilder: (_, index) => AbProductCardVertical(product: ProductModel.empty(),))
             
           ],),
           ),

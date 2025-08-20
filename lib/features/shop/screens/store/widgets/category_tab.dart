@@ -6,6 +6,7 @@ import 'package:flutter_app/common/widgets/products/brand_card/brand_show_case.d
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/shop/models/category_model.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
@@ -71,7 +72,7 @@ class _AbCategoryTabState extends State<AbCategoryTab> {
                         AbSectionHeading( title: 'You may also like', showActionButton: true, onPressed: (){}),
                         const SizedBox(height: AbSizes.spaceBtwItems),
                       
-                        AbGridLayout(itemCount: 4, itemBuilder: (_, index) => const AbProductCardVertical()),
+                        AbGridLayout(itemCount: 4, itemBuilder: (_, index) => AbProductCardVertical(product: ProductModel.empty(),)),
                         const SizedBox(height: AbSizes.spaceBtwSections),
                       ]),
                     ),

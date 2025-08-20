@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                 Obx(() {
                   if(controller.isLoading.value) return const AbShimmerEffect(width: 70, height: 55);
                   if(controller.featuredProducts.isEmpty) return Center(child: Text('No Data Found', style: Theme.of(context).textTheme.bodyMedium));
-                  return AbGridLayout(itemCount: controller.featuredProducts.length, itemBuilder: (_, index) =>  AbProductCardVertical(products: controller.featuredProducts[index]));
+                  return AbGridLayout(itemCount: controller.featuredProducts.length, itemBuilder: (_, index) =>  AbProductCardVertical(product: controller.featuredProducts[index]));
                 })
               ],
             ),

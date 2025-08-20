@@ -7,6 +7,7 @@ import 'package:flutter_app/features/shop/models/product_attributes_model.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/features/shop/models/product_variation_model.dart';
 import 'package:flutter_app/routes/routes.dart';
+import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 
 class AbDummyData {
@@ -66,14 +67,14 @@ class AbDummyData {
       stock: 15, 
       price: 135, 
       isFeatured: true,
-      thubnail: AbImages.productImage2,
+      thumbnail: AbImages.productImage2,
       description: 'It is the best shoes you will enjoy', 
       brand: BrandModel(id: '1', image: AbImages.nikeLogo, name: 'Nike', productsCount: 265, isFeatured: true),
       images: [AbImages.productImage1, AbImages.productImage1, AbImages.shoeIcon],
       salePrice: 30,
       sku: 'ABR4568',
       categoryId: '1',
-      productType: 'Varied',
+      productType: ProductType.variable.toString(),
       productAttributes: [
         ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
         ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
@@ -108,101 +109,101 @@ class AbDummyData {
         )
       ],
     ),
-    ProductModel(
-      id: '002', 
-      title: 'Gold nike sport shoes', 
-      stock: 15, 
-      price: 135, 
-      isFeatured: true,
-      thubnail: AbImages.promoBanner1,
-      description: 'It is the best shoes you will enjoy', 
-      brand: BrandModel(id: '1', image: AbImages.nikeLogo, name: 'Nike', productsCount: 265, isFeatured: true),
-      images: [AbImages.productImage1, AbImages.productImage1, AbImages.shoeIcon],
-      salePrice: 30,
-      sku: 'ABR4568',
-      categoryId: '1',
-      productType: 'Varied',
-      productAttributes: [
-        ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
-        ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
-      ],
-      productVariations: [
-        ProductVariationModel(
-          id: '1',
-          stock: 34,
-          price: 134,
-          salePrice: 122.6,
-          image: AbImages.productImage1,
-          description: 'This is product description for gold nike sport shoes',
-          attributeValues: {'Color': 'Gold', 'Size': 'EU 34'}
-        ),
-        ProductVariationModel(
-          id: '2',
-          stock: 32,
-          price: 130,
-          salePrice: 120.6,
-          image: AbImages.productImage2,
-          description: 'This is product description for brown nike sport shoes',
-          attributeValues: {'Color': 'Brown', 'Size': 'EU 32'}
-        ),
-        ProductVariationModel(
-          id: '1',
-          stock: 30,
-          price: 135,
-          salePrice: 112.6,
-          image: AbImages.shoeIcon,
-          description: 'This is product description for red nike sport shoes',
-          attributeValues: {'Color': 'Red', 'Size': 'EU 30'}
-        )
-      ],
-    ),
-    ProductModel(
-      id: '003', 
-      title: 'Gold nike sport shoes', 
-      stock: 15, 
-      price: 135, 
-      isFeatured: true,
-      thubnail: AbImages.clothIcon,
-      description: 'It is the best shoes you will enjoy', 
-      brand: BrandModel(id: '1', image: AbImages.nikeLogo, name: 'Nike', productsCount: 265, isFeatured: true),
-      images: [AbImages.productImage1, AbImages.productImage1, AbImages.shoeIcon],
-      salePrice: 30,
-      sku: 'ABR4568',
-      categoryId: '1',
-      productType: 'Varied',
-      productAttributes: [
-        ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
-        ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
-      ],
-      productVariations: [
-        ProductVariationModel(
-          id: '1',
-          stock: 34,
-          price: 134,
-          salePrice: 122.6,
-          image: AbImages.productImage1,
-          description: 'This is product description for gold nike sport shoes',
-          attributeValues: {'Color': 'Gold', 'Size': 'EU 34'}
-        ),
-        ProductVariationModel(
-          id: '2',
-          stock: 32,
-          price: 130,
-          salePrice: 120.6,
-          image: AbImages.productImage2,
-          description: 'This is product description for brown nike sport shoes',
-          attributeValues: {'Color': 'Brown', 'Size': 'EU 32'}
-        ),
-        ProductVariationModel(
-          id: '1',
-          stock: 30,
-          price: 135,
-          salePrice: 112.6,
-          image: AbImages.shoeIcon,
-          description: 'This is product description for red nike sport shoes',
-          attributeValues: {'Color': 'Red', 'Size': 'EU 30'}
-        )
-      ],
-    )
+    // ProductModel(
+    //   id: '002', 
+    //   title: 'Gold nike sport shoes', 
+    //   stock: 15, 
+    //   price: 135, 
+    //   isFeatured: true,
+    //   thubnail: AbImages.promoBanner1,
+    //   description: 'It is the best shoes you will enjoy', 
+    //   brand: BrandModel(id: '1', image: AbImages.nikeLogo, name: 'Nike', productsCount: 265, isFeatured: true),
+    //   images: [AbImages.productImage1, AbImages.productImage1, AbImages.shoeIcon],
+    //   salePrice: 30,
+    //   sku: 'ABR4568',
+    //   categoryId: '1',
+    //   productType: ProductType.variable.toString(),
+    //   productAttributes: [
+    //     ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
+    //     ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+    //   ],
+    //   productVariations: [
+    //     ProductVariationModel(
+    //       id: '1',
+    //       stock: 34,
+    //       price: 134,
+    //       salePrice: 122.6,
+    //       image: AbImages.productImage1,
+    //       description: 'This is product description for gold nike sport shoes',
+    //       attributeValues: {'Color': 'Gold', 'Size': 'EU 34'}
+    //     ),
+    //     ProductVariationModel(
+    //       id: '2',
+    //       stock: 32,
+    //       price: 130,
+    //       salePrice: 120.6,
+    //       image: AbImages.productImage2,
+    //       description: 'This is product description for brown nike sport shoes',
+    //       attributeValues: {'Color': 'Brown', 'Size': 'EU 32'}
+    //     ),
+    //     ProductVariationModel(
+    //       id: '1',
+    //       stock: 30,
+    //       price: 135,
+    //       salePrice: 112.6,
+    //       image: AbImages.shoeIcon,
+    //       description: 'This is product description for red nike sport shoes',
+    //       attributeValues: {'Color': 'Red', 'Size': 'EU 30'}
+    //     )
+    //   ],
+    // ),
+    // ProductModel(
+    //   id: '003', 
+    //   title: 'Gold nike sport shoes', 
+    //   stock: 15, 
+    //   price: 135, 
+    //   isFeatured: true,
+    //   thubnail: AbImages.clothIcon,
+    //   description: 'It is the best shoes you will enjoy', 
+    //   brand: BrandModel(id: '1', image: AbImages.nikeLogo, name: 'Nike', productsCount: 265, isFeatured: true),
+    //   images: [AbImages.productImage1, AbImages.productImage1, AbImages.shoeIcon],
+    //   salePrice: 30,
+    //   sku: 'ABR4568',
+    //   categoryId: '1',
+    //   productType: ProductType.variable.toString(),
+    //   productAttributes: [
+    //     ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
+    //     ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+    //   ],
+    //   productVariations: [
+    //     ProductVariationModel(
+    //       id: '1',
+    //       stock: 34,
+    //       price: 134,
+    //       salePrice: 122.6,
+    //       image: AbImages.productImage1,
+    //       description: 'This is product description for gold nike sport shoes',
+    //       attributeValues: {'Color': 'Gold', 'Size': 'EU 34'}
+    //     ),
+    //     ProductVariationModel(
+    //       id: '2',
+    //       stock: 32,
+    //       price: 130,
+    //       salePrice: 120.6,
+    //       image: AbImages.productImage2,
+    //       description: 'This is product description for brown nike sport shoes',
+    //       attributeValues: {'Color': 'Brown', 'Size': 'EU 32'}
+    //     ),
+    //     ProductVariationModel(
+    //       id: '1',
+    //       stock: 30,
+    //       price: 135,
+    //       salePrice: 112.6,
+    //       image: AbImages.shoeIcon,
+    //       description: 'This is product description for red nike sport shoes',
+    //       attributeValues: {'Color': 'Red', 'Size': 'EU 30'}
+    //     )
+    //   ],
+    // )
   ];
 }

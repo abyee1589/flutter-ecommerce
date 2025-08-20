@@ -20,6 +20,7 @@ class ProductRepository extends GetxController{
     try {
       final snapshot = await _db.collection('Products').where('IsFeatured', isEqualTo: true).limit(4).get();
       final list = snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+      //  print(snapshot.docs.map((e) => e.data()).toList());
       return list;
     
     } on FirebaseException catch (e) {
@@ -32,7 +33,7 @@ class ProductRepository extends GetxController{
       throw AbPlatformException(e.code);
     } catch (e) {
       // FIX: Throw a proper Exception object instead of a string to prevent a crash.
-      throw Exception('Something went wrong: ${e.toString()}');
+      throw Exception('Something went wrong while fetching products: ${e.toString()}');
     }
   }
 
@@ -44,8 +45,8 @@ class ProductRepository extends GetxController{
         print('started uploading the tubnails');
         // 1️⃣ Upload thumbnail
         {
-          final byteData = await rootBundle.load(product.thubnail);
-          final fileName = path.basename(product.thubnail);
+          final byteData = await rootBundle.load(product.thumbnail);
+          final fileName = path.basename(product.thumbnail);
           String? url;
 
           if (kIsWeb) {
@@ -62,7 +63,7 @@ class ProductRepository extends GetxController{
           }
 
           if (url == null) throw Exception('Failed to upload thumbnail for ${product.title}');
-          product.thubnail = url;
+          product.thumbnail = url;
         }
          print("🚀 Starting upload for product: ${product.title} (${product.id})");
         // 1️⃣ Upload brand
@@ -138,13 +139,7 @@ class ProductRepository extends GetxController{
         print("✅ Images uploaded for ${product.id}");
 
         // 4️⃣ Upload product to Firestore
-        try {
           await _db.collection('Products').doc(product.id).set(product.toJson());
-          print("📦 Firestore saved product: ${product.title} (${product.id})");
-        } catch (e, st) {
-          print("❌ Failed to save ${product.title}: $e");
-          print(st);
-        }
       }
     } on FirebaseException catch (e) {
       throw AbFirebaseException(e.code);

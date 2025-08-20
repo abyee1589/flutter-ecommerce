@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/features/shop/screens/product_detail/product_detail_image_slider.dart';
 import 'package:flutter_app/features/shop/screens/product_detail/widgets/bottom_add_to_cart_widget.dart';
 import 'package:flutter_app/features/shop/screens/product_detail/widgets/product_attributes.dart';
@@ -12,8 +13,12 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductdetailScreen extends StatelessWidget {
-  const ProductdetailScreen({super.key});
+  const ProductdetailScreen({
+    super.key,
+    required this.product,
+    });
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +62,7 @@ class ProductdetailScreen extends StatelessWidget {
                   const AbSectionHeading(title: 'Description'),
                   const SizedBox(height: AbSizes.spaceBtwItems,),
                   const ReadMoreText(
-                    'Ive made the descriptions as detailed as possible, while also withholding as many details as possible. This may sound odd, but I ve done it by mostly describing how a character looks, rather than his or her personality. I have tried to make the character\'s looks and some vague personality traits dictate what kind of person he or she could be.',
+                    'I\'ve made the descriptions as detailed as possible, while also withholding as many details as possible. This may sound odd, but I ve done it by mostly describing how a character looks, rather than his or her personality. I have tried to make the character\'s looks and some vague personality traits dictate what kind of person he or she could be.',
                     trimLength: 2,
                     trimMode: TrimMode.Line,
                     trimExpandedText: 'Show Less',
