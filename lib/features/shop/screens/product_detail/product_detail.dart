@@ -7,6 +7,7 @@ import 'package:flutter_app/features/shop/screens/product_detail/widgets/product
 import 'package:flutter_app/features/shop/screens/product_detail/widgets/product_meta_data.dart';
 import 'package:flutter_app/features/shop/screens/product_detail/widgets/rating_share_widget.dart';
 import 'package:flutter_app/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -30,7 +31,7 @@ class ProductdetailScreen extends StatelessWidget {
           children: [
 
             /// Product image slider
-            const AbProductImageSlider(),
+            AbProductImageSlider(product: product),
 
             /// product details
             Padding(
@@ -46,12 +47,13 @@ class ProductdetailScreen extends StatelessWidget {
                   const AbRatingAndShare(),
 
                   /// Price, Title, Stock and Brand
-                  const AbProductMetaData(),
+                  AbProductMetaData(product: product),
 
                   /// Attributes
-                  const AbProductAttiributes(),
-                  const SizedBox(height: AbSizes.spaceBtwSections),
-                  
+                  if(product.productType == ProductType.variable.toString())  AbProductAttiributes(product: product),
+                    
+                  if(product.productType == ProductType.variable.toString()) const SizedBox(height: AbSizes.spaceBtwSections),
+                      
                   /// Checkout button
                   SizedBox(
                     width: double.infinity,
@@ -61,14 +63,14 @@ class ProductdetailScreen extends StatelessWidget {
                   /// Description
                   const AbSectionHeading(title: 'Description'),
                   const SizedBox(height: AbSizes.spaceBtwItems,),
-                  const ReadMoreText(
-                    'I\'ve made the descriptions as detailed as possible, while also withholding as many details as possible. This may sound odd, but I ve done it by mostly describing how a character looks, rather than his or her personality. I have tried to make the character\'s looks and some vague personality traits dictate what kind of person he or she could be.',
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLength: 2,
                     trimMode: TrimMode.Line,
                     trimExpandedText: 'Show Less',
                     trimCollapsedText: 'Show More',
-                    moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-                    lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                    moreStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                    lessStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                   ),
 
                   /// Reviews

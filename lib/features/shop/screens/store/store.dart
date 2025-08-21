@@ -99,7 +99,7 @@ class StoreScreen extends StatelessWidget {
                               Flexible(
                                 child: AbCircularImage(
                                   isNetworkImage: false,
-                                  image: AbImages.clothIcon,
+                                  imageUrl: AbImages.clothIcon,
                                   backgroundColor: Colors.transparent,
                                   overlayColor: dark ? AbColors.white : AbColors.black,
                                 ),

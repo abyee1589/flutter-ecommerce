@@ -21,7 +21,7 @@ class AbUserProfileTile extends StatelessWidget {
       leading: Obx(() {
                 final networkImage = controller.user.value.profilePicture;
                 final image = networkImage.isNotEmpty ? networkImage : AbImages.user;
-                return AbCircularImage(image: image, width: 50, height: 50, padding: 0, fit: BoxFit.contain, backgroundColor: AbColors.grey, isNetworkImage: networkImage.isNotEmpty);
+                return AbCircularImage(imageUrl: image, width: 50, height: 50, padding: 0, fit: BoxFit.contain, backgroundColor: AbColors.grey, isNetworkImage: networkImage.isNotEmpty);
               }),
     title: Text(controller.user.value.fullName, style: Theme.of(context).textTheme.headlineSmall!.apply(color: AbColors.white)),
     subtitle: Text(controller.user.value.email, style: Theme.of(context).textTheme.bodyMedium!.apply(color: AbColors.white)),

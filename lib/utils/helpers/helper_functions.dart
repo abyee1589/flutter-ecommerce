@@ -25,7 +25,7 @@ class AbHelperFunctions {
         else if (value == 'Yellow') {
             return Colors.yellow;
         }
-        else if (value == 'Blacke') {
+        else if (value == 'Black') {
             return Colors.black;
         }
         else if (value == 'White') {

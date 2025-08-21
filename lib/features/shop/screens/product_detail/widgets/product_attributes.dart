@@ -5,12 +5,17 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_cont
 import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbProductAttiributes extends StatelessWidget {
-  const AbProductAttiributes({super.key});
+  const AbProductAttiributes({
+    super.key, 
+    required this.product
+  });
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -77,37 +82,20 @@ class AbProductAttiributes extends StatelessWidget {
         /// Attributes
          Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const AbSectionHeading(title: 'Colors'),
-            const SizedBox(height: AbSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                AbChoiChip(text: 'Green', selected: true, onSelected: (value){}),
-                AbChoiChip(text: 'Blue', selected: false, onSelected: (value){}),
-                AbChoiChip(text: 'Yellow', selected: false, onSelected: (value){}),
-              ],
-            )
-          ],
-        ),
-        const SizedBox(height: AbSizes.spaceBtwItems),
-         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const AbSectionHeading(title: 'Sizes'),
-            const SizedBox(height: AbSizes.spaceBtwItems / 2),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                AbChoiChip(text: 'EU 34', selected: true, onSelected: (value){}),
-                AbChoiChip(text: 'EU 36', selected: false, onSelected: (value){}),
-                AbChoiChip(text: 'EU 38', selected: false, onSelected: (value){}),
-              ],
-            )
-          ],
-        )
+          children: product.productAttributes!.map((attribute) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AbSectionHeading(title: attribute.name ?? ''),
+              const SizedBox(height: AbSizes.spaceBtwItems / 2),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: attribute.values!.map((value) => AbChoiChip(text: value, selected: false, onSelected: (value){})).toList()
+              )
+            ],
+        )).toList(),
+         ),
+        
       ],
     );
   }

@@ -4,6 +4,8 @@ import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
+import 'package:flutter_app/features/shop/controllers/product/product_controller.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
@@ -11,11 +13,17 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbProductMetaData extends StatelessWidget {
-  const AbProductMetaData({super.key});
+  const AbProductMetaData({
+    super.key,
+    required this.product
+  });
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,20 +35,22 @@ class AbProductMetaData extends StatelessWidget {
               radius: AbSizes.sm,
               backgroundColor: AbColors.secondary.withOpacity(0.8),
               padding: const EdgeInsets.symmetric(horizontal: AbSizes.sm, vertical: AbSizes.xs),
-              child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black),),
+              child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black),),
              ),
              const SizedBox(width: AbSizes.spaceBtwItems),
 
             ///  Price
-            Text('\$250', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
+            if(product.productType == ProductType.single.toString() && product.salePrice > 0)
+              Text('${product.price}', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
+            if(product.productType == ProductType.single.toString() && product.salePrice > 0)
             const SizedBox(width: AbSizes.spaceBtwItems ),
-            const AbProductPriceText(price: '175', isLarge: true),
+            AbProductPriceText(price: controller.getProductPrice(product), isLarge: true), 
           ],
         ),
         const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
 
         /// Title
-        const AbProductTitleText(title: 'Green Nike Sports Shirt'),
+        AbProductTitleText(title: product.title),
         const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
 
         /// Stock status
@@ -48,7 +58,7 @@ class AbProductMetaData extends StatelessWidget {
           children: [
             const AbProductTitleText(title: 'Status'),
             const SizedBox(width: AbSizes.spaceBtwItems),
-            Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
+            Text(controller.getProductStockStatus(product.stock), style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
         const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
@@ -57,12 +67,12 @@ class AbProductMetaData extends StatelessWidget {
         Row(
           children: [
             AbCircularImage(
-              image: AbImages.clothIcon,
+              imageUrl: product.brand != null ? product.brand!.image : '',
               width: 32,
               height: 32,
               overlayColor: dark ? AbColors.white : AbColors.black,
               ),
-            const AbBrandTextWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium,),
+            AbBrandTextWithVerifiedIcon(title: product.brand != null ? product.brand!.name : '', brandTextSize: TextSizes.medium),
           ],
         )
       ],

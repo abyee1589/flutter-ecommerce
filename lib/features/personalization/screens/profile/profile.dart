@@ -38,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                       final image = networkImage.isNotEmpty ? networkImage : AbImages.user;
                       return controller.imageUploading.value == true 
                         ? const AbShimmerEffect(width: 80, height: 80, radius: 80,)
-                        : AbCircularImage(image: image, width: 80, height: 80, backgroundColor: AbColors.grey, isNetworkImage: networkImage.isNotEmpty);
+                        : AbCircularImage(imageUrl: image, width: 80, height: 80, backgroundColor: AbColors.grey, isNetworkImage: networkImage.isNotEmpty);
                     }),
                     const SizedBox(height: AbSizes.spaceBtwItems / 2),
                     TextButton(onPressed: () => controller.uploadProfilePicture(), child: const Text('Change Your Profile Picture')), 

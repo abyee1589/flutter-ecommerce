@@ -33,7 +33,7 @@ class AbVerticalImageText extends StatelessWidget {
             
             /// Circular icon
             AbCircularImage(
-              image: image,
+              imageUrl: image,
               fit: BoxFit.fitWidth,
               padding: AbSizes.sm * 1.4,
               isNetworkImage: isNetworkImage,

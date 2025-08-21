@@ -34,7 +34,7 @@ class AbBrandCard extends StatelessWidget {
             /// Icon
             Flexible(
               child: AbCircularImage(
-                image: AbImages.clothIcon, 
+                imageUrl: AbImages.clothIcon, 
                 isNetworkImage: false,
                 backgroundColor: Colors.transparent,
                 overlayColor: dark ? AbColors.white : AbColors.black,
