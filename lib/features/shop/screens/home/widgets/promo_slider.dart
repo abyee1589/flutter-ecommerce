@@ -15,10 +15,12 @@ class AbPromoSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(BannerController());
     return Obx(() {
-      if (controller.isLoading.value)
+      if (controller.isLoading.value) {
         return const AbShimmerEffect(width: double.infinity, height: 190);
-      if (controller.banners.isEmpty)
+      }
+      if (controller.banners.isEmpty) {
         return const Center(child: Text('No Data Found'));
+      }
       return Column(
         children: [
           CarouselSlider(

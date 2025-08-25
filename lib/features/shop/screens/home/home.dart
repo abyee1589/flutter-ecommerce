@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _db = FirebaseFirestore.instance;
+    final db = FirebaseFirestore.instance;
     final controller = Get.put(ProductController());
     return SingleChildScrollView(
       child: Column(
@@ -73,22 +73,24 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () => Get.to(
                     () => AllProducts(
                       title: 'Popular Products',
-                      query: _db
+                      query: db
                           .collection('Products')
                           .where('IsFeatured', isEqualTo: true),
                     ),
                   ),
                 ),
                 Obx(() {
-                  if (controller.isLoading.value)
+                  if (controller.isLoading.value) {
                     return const AbShimmerEffect(width: 70, height: 55);
-                  if (controller.featuredProducts.isEmpty)
+                  }
+                  if (controller.featuredProducts.isEmpty) {
                     return Center(
                       child: Text(
                         'No Data Found',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     );
+                  }
                   return AbGridLayout(
                     itemCount: controller.featuredProducts.length,
                     itemBuilder: (_, index) => AbProductCardVertical(
