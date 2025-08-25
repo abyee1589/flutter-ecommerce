@@ -4,7 +4,7 @@ import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
 import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
-import 'package:flutter_app/utils/popups/shimmer_loader.dart';
+import 'package:flutter_app/utils/shimmers/shimmer_loader.dart';
 import 'package:get/get.dart';
 
 class AbHomeAppBar extends StatelessWidget {

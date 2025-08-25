@@ -9,7 +9,7 @@ import 'package:flutter_app/features/authentication/screens/login/login.dart';
 import 'package:flutter_app/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
-import 'package:flutter_app/utils/http/network_manager.dart';
+import 'package:flutter_app/utils/helpers/network_manager.dart';
 import 'package:flutter_app/utils/local_storage/cloudinary.dart';
 import 'package:flutter_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';

@@ -19,7 +19,7 @@ class BrandProducts extends StatelessWidget {
             AbBrandCard(showBorder: true),
             SizedBox(height: AbSizes.spaceBtwSections),
 
-            AbSortableProducts(),
+            AbSortableProducts(products: [],),
           ],
         ),
       ),

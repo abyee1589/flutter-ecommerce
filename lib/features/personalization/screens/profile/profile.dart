@@ -8,7 +8,7 @@ import 'package:flutter_app/features/personalization/screens/profile/widgets/pro
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
-import 'package:flutter_app/utils/popups/shimmer_loader.dart';
+import 'package:flutter_app/utils/shimmers/shimmer_loader.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

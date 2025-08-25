@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
-import 'package:flutter_app/utils/popups/shimmer_loader.dart';
+import 'package:flutter_app/utils/shimmers/shimmer_loader.dart';
 
 class AbCircularImage extends StatelessWidget {
   const AbCircularImage({

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
-import 'package:flutter_app/utils/popups/shimmer_loader.dart';
+import 'package:flutter_app/utils/shimmers/shimmer_loader.dart';
 
 class AbCategoryShimmer extends StatelessWidget {
   const AbCategoryShimmer({

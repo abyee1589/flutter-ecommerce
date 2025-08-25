@@ -5,6 +5,8 @@ import 'package:flutter_app/common/widgets/products/sortable/sortable_products.d
 import 'package:flutter_app/features/shop/controllers/product/all_products_controller.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
+import 'package:flutter_app/utils/helpers/cloud_helper_functions.dart';
+import 'package:flutter_app/utils/shimmers/vertical_product_shimmer.dart';
 import 'package:get/get.dart';
 
 class AllProducts extends StatelessWidget {
@@ -29,7 +31,12 @@ class AllProducts extends StatelessWidget {
           child: FutureBuilder(
             future: futureMethod ?? controller.fetchProductsByQuery(query),
             builder: (context, snapshot) {
-              return const AbSortableProducts();
+                final loader = const AbVerticalProductShimmer();
+                final widget = AbCloudHelperFunctions.checkMultipleRecordState(snapshot: snapshot, loader: loader);
+                if(widget != null) return loader;
+
+                final products = snapshot.data!;
+                return AbSortableProducts(products: products);
             },
           ),
         ),
