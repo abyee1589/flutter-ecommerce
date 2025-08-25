@@ -20,9 +20,10 @@ class CategoryRepository extends GetxController {
   Future<List<CategoryModel>> getAllCategories() async {
     try {
       final snapshot = await _db.collection('Categories').get();
-      final list = snapshot.docs.map((doc) => CategoryModel.fromSnapshot(doc)).toList();
+      final list = snapshot.docs
+          .map((doc) => CategoryModel.fromSnapshot(doc))
+          .toList();
       return list;
-    
     } on FirebaseException catch (e) {
       // Throw the exception object, not just the message string, for better error handling.
       throw AbFirebaseException(e.code);
@@ -44,7 +45,7 @@ class CategoryRepository extends GetxController {
 
       for (var category in categories) {
         // 1. Load image from assets
-        final byteData = await rootBundle.load(category.image); 
+        final byteData = await rootBundle.load(category.image);
         final fileName = path.basename(category.image);
 
         String? url;
@@ -54,25 +55,27 @@ class CategoryRepository extends GetxController {
           final fileBytes = byteData.buffer.asUint8List();
           url = await cloudinary.uploadFile(
             XFile.fromData(fileBytes, name: fileName, mimeType: 'image/png'),
-            folderType:'Categories'
+            folderType: 'Categories',
           );
         } else {
           // Mobile/Desktop: Use temp directory
           final tempDir = await getTemporaryDirectory();
           final tempFile = File('${tempDir.path}/$fileName');
           await tempFile.writeAsBytes(byteData.buffer.asUint8List());
-          url = await cloudinary.uploadFile(XFile(tempFile.path), folderType:'Categories');
-        }
-
-        if (url == null) {
-          throw Exception('Failed to upload image for category ${category.name}');
+          url = await cloudinary.uploadFile(
+            XFile(tempFile.path),
+            folderType: 'Categories',
+          );
         }
 
         // Replace asset path with Cloudinary URL
-        category.image = url;
+        category.image = url ?? '';
 
         // Upload to Firestore
-        await _db.collection('Categories').doc(category.id).set(category.toJson());
+        await _db
+            .collection('Categories')
+            .doc(category.id)
+            .set(category.toJson());
       }
     } on FirebaseException catch (e) {
       throw AbFirebaseException(e.code);

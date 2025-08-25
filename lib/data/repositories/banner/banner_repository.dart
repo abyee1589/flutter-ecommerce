@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,31 +14,34 @@ import 'package:path_provider/path_provider.dart';
 class BannerRepository extends GetxController {
   static BannerRepository get instance => Get.find();
 
-  /// Variables 
+  /// Variables
   final _db = FirebaseFirestore.instance;
 
-   Future<List<BannerModel>> fetchBanners() async {
+  Future<List<BannerModel>> fetchBanners() async {
     try {
-      final result = await _db.collection('Banners').where('Active', isEqualTo: true).get();
+      final result = await _db
+          .collection('Banners')
+          .where('Active', isEqualTo: true)
+          .get();
       return result.docs.map((doc) => BannerModel.fromSnapshot(doc)).toList();
-   
-    } on FirebaseException catch(e) {
-       throw AbFirebaseException(e.code).message;
-    } on FormatException catch(_) {
-       throw AbFormatException();
-    } on PlatformException catch(e) {
-       throw AbPlatformException(e.code).message;
-    } catch(e) {
-       throw 'Something went wrong while fetching banners!';
+    } on FirebaseException catch (e) {
+      throw AbFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw AbFormatException();
+    } on PlatformException catch (e) {
+      throw AbPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong while fetching banners!';
     }
   }
-   Future<void> uploadDummyData(List<BannerModel> banners) async {
+
+  Future<void> uploadDummyData(List<BannerModel> banners) async {
     try {
       final cloudinary = CloudinaryUpload();
 
       for (var banner in banners) {
         // 1. Load image from assets
-        final byteData = await rootBundle.load(banner.image); 
+        final byteData = await rootBundle.load(banner.image);
         final fileName = path.basename(banner.image);
 
         String? url;
@@ -50,22 +51,21 @@ class BannerRepository extends GetxController {
           final fileBytes = byteData.buffer.asUint8List();
           url = await cloudinary.uploadFile(
             XFile.fromData(fileBytes, name: fileName, mimeType: 'image/png'),
-            folderType:'Banners'
+            folderType: 'Banners',
           );
         } else {
           // Mobile/Desktop: Use temp directory
           final tempDir = await getTemporaryDirectory();
           final tempFile = File('${tempDir.path}/$fileName');
           await tempFile.writeAsBytes(byteData.buffer.asUint8List());
-          url = await cloudinary.uploadFile(XFile(tempFile.path), folderType:'Banners');
-        }
-
-        if (url == null) {
-          throw Exception('Failed to upload banner image');
+          url = await cloudinary.uploadFile(
+            XFile(tempFile.path),
+            folderType: 'Banners',
+          );
         }
 
         // Replace asset path with Cloudinary URL
-        banner.image = url;
+        banner.image = url ?? '';
 
         // Upload to Firestore
         await _db.collection('Banners').doc(banner.id).set(banner.toJson());

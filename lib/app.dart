@@ -7,18 +7,18 @@ import 'package:flutter_app/utils/theme/theme.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
 class App extends StatelessWidget {
-    const App({super.key});
+  const App({super.key});
 
-    @override 
-    Widget build(BuildContext context) {
-      return GetMaterialApp(
-        scrollBehavior: MyScrollBehavior(),
-        themeMode: ThemeMode.system,
-        theme: AbAppTheme.lightTheme,
-        darkTheme: AbAppTheme.darkTheme,
-        home: const NavigationMenu(),
-        initialBinding: GeneralBinding(),
-        getPages: AppRoutes.pages,
-      );
-    }
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      scrollBehavior: MyScrollBehavior(),
+      themeMode: ThemeMode.system,
+      theme: AbAppTheme.lightTheme,
+      darkTheme: AbAppTheme.darkTheme,
+      home: const NavigationMenu(),
+      initialBinding: GeneralBinding(),
+      getPages: AppRoutes.pages,
+    );
+  }
 }

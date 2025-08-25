@@ -6,9 +6,7 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbSortableProducts extends StatelessWidget {
-  const AbSortableProducts({
-    super.key,
-  });
+  const AbSortableProducts({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +15,29 @@ class AbSortableProducts extends StatelessWidget {
         /// Dropdown
         DropdownButtonFormField(
           decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
-          onChanged: (value){},
-          items: ['Name',' Higher Price', 'Lower price', 'Sale', 'Newest', 'Popularity'].map((option) => DropdownMenuItem(value: option,child: Text(option))).toList(),
+          onChanged: (value) {},
+          items:
+              [
+                    'Name',
+                    ' Higher Price',
+                    'Lower price',
+                    'Sale',
+                    'Newest',
+                    'Popularity',
+                  ]
+                  .map(
+                    (option) =>
+                        DropdownMenuItem(value: option, child: Text(option)),
+                  )
+                  .toList(),
         ),
         const SizedBox(height: AbSizes.spaceBtwSections),
-    
+
         /// Products
         AbGridLayout(
-          itemCount: 8, 
-          itemBuilder: (_, index) => AbProductCardVertical(product: ProductModel.empty(),)
+          itemCount: 8,
+          itemBuilder: (_, index) =>
+              AbProductCardVertical(product: ProductModel.empty()),
         ),
       ],
     );

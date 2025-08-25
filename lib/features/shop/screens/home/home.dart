@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/search_container.dart';
@@ -17,10 +18,10 @@ import 'package:iconsax/iconsax.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
+    final _db = FirebaseFirestore.instance;
     final controller = Get.put(ProductController());
     return SingleChildScrollView(
       child: Column(
@@ -33,7 +34,10 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: AbSizes.spaceBtwSections),
 
                 /// Searchbar
-                AbSearchContainer(text: 'Search in Store', icon: Iconsax.search_normal),
+                AbSearchContainer(
+                  text: 'Search in Store',
+                  icon: Iconsax.search_normal,
+                ),
                 SizedBox(height: AbSizes.spaceBtwSections),
 
                 /// Categories
@@ -41,13 +45,17 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: AbSizes.defaultSpace),
                   child: Column(
                     children: [
-                      AbSectionHeading(title: 'Popular categories', showActionButton: false, textColor: AbColors.white),
+                      AbSectionHeading(
+                        title: 'Popular categories',
+                        showActionButton: false,
+                        textColor: AbColors.white,
+                      ),
                       SizedBox(height: AbSizes.spaceBtwItems),
                       HomeCategories(),
-                      SizedBox(height: AbSizes.spaceBtwSections,)
+                      SizedBox(height: AbSizes.spaceBtwSections),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -59,12 +67,35 @@ class HomeScreen extends StatelessWidget {
               children: [
                 const AbPromoSlider(),
                 const SizedBox(height: AbSizes.spaceBtwSections),
-                AbSectionHeading(title: 'Popular products',showActionButton: true , onPressed: () => Get.to(() => const AllProducts())),
+                AbSectionHeading(
+                  title: 'Popular products',
+                  showActionButton: true,
+                  onPressed: () => Get.to(
+                    () => AllProducts(
+                      title: 'Popular Products',
+                      query: _db
+                          .collection('Products')
+                          .where('IsFeatured', isEqualTo: true),
+                    ),
+                  ),
+                ),
                 Obx(() {
-                  if(controller.isLoading.value) return const AbShimmerEffect(width: 70, height: 55);
-                  if(controller.featuredProducts.isEmpty) return Center(child: Text('No Data Found', style: Theme.of(context).textTheme.bodyMedium));
-                  return AbGridLayout(itemCount: controller.featuredProducts.length, itemBuilder: (_, index) =>  AbProductCardVertical(product: controller.featuredProducts[index]));
-                })
+                  if (controller.isLoading.value)
+                    return const AbShimmerEffect(width: 70, height: 55);
+                  if (controller.featuredProducts.isEmpty)
+                    return Center(
+                      child: Text(
+                        'No Data Found',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    );
+                  return AbGridLayout(
+                    itemCount: controller.featuredProducts.length,
+                    itemBuilder: (_, index) => AbProductCardVertical(
+                      product: controller.featuredProducts[index],
+                    ),
+                  );
+                }),
               ],
             ),
           ),
