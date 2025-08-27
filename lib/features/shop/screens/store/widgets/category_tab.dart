@@ -11,12 +11,8 @@ import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 
-
 class AbCategoryTab extends StatefulWidget {
-  const AbCategoryTab({
-    super.key, 
-    required this.category
-  });
+  const AbCategoryTab({super.key, required this.category});
   final CategoryModel category;
 
   @override
@@ -46,40 +42,55 @@ class _AbCategoryTabState extends State<AbCategoryTab> {
       child: ListView(
         shrinkWrap: true,
         controller: _scrollController,
-        children: [Padding(
-              padding: const EdgeInsets.all(AbSizes.defaultSpace),
-              child: Column(
-                children: [
-                  AbRoundedContainer(
-                    showBorder: true,
-                    borderColor: AbColors.darkGrey,
-                    backgroundColor: Colors.transparent,
-                    margin: const EdgeInsets.only(bottom: AbSizes.spaceBtwItems),
-                    child: Padding(
-                      padding: const EdgeInsets.all(AbSizes.defaultSpace),
-                      child: Column(children: [
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(AbSizes.defaultSpace),
+            child: Column(
+              children: [
+                AbRoundedContainer(
+                  showBorder: true,
+                  borderColor: AbColors.darkGrey,
+                  backgroundColor: Colors.transparent,
+                  margin: const EdgeInsets.only(bottom: AbSizes.spaceBtwItems),
+                  child: Padding(
+                    padding: const EdgeInsets.all(AbSizes.defaultSpace),
+                    child: Column(
+                      children: [
                         /// Brand with prouducts count
-                        const AbBrandCard(showBorder: false),
+                        // const BrandCard(showBoarder: false),
 
                         /// Brands
-                        const AbBrandshowcase(images: [
-                          AbImages.clothIcon, 
-                          AbImages.clothIcon, 
-                          AbImages.clothIcon, 
-                        ]),
-                      
+                        const AbBrandshowcase(
+                          images: [
+                            AbImages.clothIcon,
+                            AbImages.clothIcon,
+                            AbImages.clothIcon,
+                          ],
+                        ),
+
                         /// Products
-                        AbSectionHeading( title: 'You may also like', showActionButton: true, onPressed: (){}),
+                        AbSectionHeading(
+                          title: 'You may also like',
+                          showActionButton: true,
+                          onPressed: () {},
+                        ),
                         const SizedBox(height: AbSizes.spaceBtwItems),
-                      
-                        AbGridLayout(itemCount: 4, itemBuilder: (_, index) => AbProductCardVertical(product: ProductModel.empty(),)),
+
+                        AbGridLayout(
+                          itemCount: 4,
+                          itemBuilder: (_, index) => AbProductCardVertical(
+                            product: ProductModel.empty(),
+                          ),
+                        ),
                         const SizedBox(height: AbSizes.spaceBtwSections),
-                      ]),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),]
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

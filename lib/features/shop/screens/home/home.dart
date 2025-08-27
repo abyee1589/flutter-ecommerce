@@ -12,7 +12,7 @@ import 'package:flutter_app/features/shop/screens/home/widgets/home_appbar.dart'
 import 'package:flutter_app/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
-import 'package:flutter_app/utils/popups/shimmer_loader.dart';
+import 'package:flutter_app/utils/shimmers/shimmer_loader.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

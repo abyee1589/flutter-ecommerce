@@ -5,17 +5,20 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_cont
 import 'package:flutter_app/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
+import 'package:flutter_app/common/widgets/products/brand_card/brand_card.dart';
 import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/controllers/brand_controller.dart';
 import 'package:flutter_app/features/shop/controllers/category_controller.dart';
+import 'package:flutter_app/features/shop/models/brand_model.dart';
 import 'package:flutter_app/features/shop/screens/brand/all_brands.dart';
 import 'package:flutter_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/enums.dart';
-import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
+import 'package:flutter_app/utils/shimmers/brands_shimmer.dart';
 import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -46,6 +49,7 @@ class StoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
     final categories = CategoryController.instance.featuredCategories;
+    final brandController = Get.put(BrandController());
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
@@ -89,60 +93,27 @@ class StoreScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
 
-                      AbGridLayout(
-                        itemCount: 4,
-                        mainAxisExtent: 80,
-                        itemBuilder: (_, index) {
-                          return GestureDetector(
-                            onTap: () {},
-                            child: AbRoundedContainer(
-                              padding: const EdgeInsets.all(AbSizes.sm),
-                              showBorder: true,
-                              backgroundColor: Colors.transparent,
-                              child: Row(
-                                children: [
-                                  /// Icon
-                                  Flexible(
-                                    child: AbCircularImage(
-                                      isNetworkImage: false,
-                                      imageUrl: AbImages.clothIcon,
-                                      backgroundColor: Colors.transparent,
-                                      overlayColor: dark
-                                          ? AbColors.white
-                                          : AbColors.black,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: AbSizes.spaceBtwItems / 2,
-                                  ),
-
-                                  /// Text
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const AbBrandTextWithVerifiedIcon(
-                                          title: 'Nike',
-                                          brandTextSize: TextSizes.large,
-                                        ),
-                                        Text(
-                                          '256 Products',
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(
-                                            context,
-                                          ).textTheme.labelMedium,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      Obx(() {
+                        if (brandController.isLoading.value)
+                          return const AbBrandShimmer();
+                        if (brandController.featuredBrands.isEmpty) {
+                          return Center(
+                            child: Text(
+                              'No Data Found',
+                              style: Theme.of(context).textTheme.bodyMedium!
+                                  .apply(color: Colors.white),
                             ),
                           );
-                        },
-                      ),
+                        }
+                        return AbGridLayout(
+                          itemCount: brandController.featuredBrands.length,
+                          mainAxisExtent: 80,
+                          itemBuilder: (_, index) {
+                            final brand = brandController.featuredBrands[index];
+                            return BrandCard(brand: brand, showBoarder: true);
+                          },
+                        );
+                      }),
                     ],
                   ),
                 ),
