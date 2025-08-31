@@ -4,10 +4,7 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/shimmers/shimmer_loader.dart';
 
 class AbVerticalProductShimmer extends StatelessWidget {
-  const AbVerticalProductShimmer({
-    super.key, 
-    this.itemCount = 4
-  });
+  const AbVerticalProductShimmer({super.key, this.itemCount = 4});
 
   final int itemCount;
 
@@ -27,7 +24,6 @@ class AbVerticalProductShimmer extends StatelessWidget {
             AbShimmerEffect(width: 160, height: 15),
             SizedBox(height: AbSizes.spaceBtwItems / 2),
             AbShimmerEffect(width: 110, height: 15),
-
           ],
         ),
       ),

@@ -3,11 +3,7 @@ import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/device/device_utility.dart';
 
 class AbRatingProgressIndicator extends StatelessWidget {
-  const AbRatingProgressIndicator({
-    super.key, 
-    required this.text,
-    required this.value,
-  });
+  const AbRatingProgressIndicator({super.key, required this.text, required this.value});
 
   final String text;
   final double value;
@@ -29,7 +25,8 @@ class AbRatingProgressIndicator extends StatelessWidget {
               borderRadius: BorderRadius.circular(7),
             ),
           ),
-        )
-      ],);
+        ),
+      ],
+    );
   }
 }

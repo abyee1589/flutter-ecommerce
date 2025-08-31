@@ -3,12 +3,12 @@ import 'package:flutter_app/utils/constants/colors.dart';
 
 class AbSettingsMenuTile extends StatelessWidget {
   const AbSettingsMenuTile({
-    super.key, 
-    required this.icon, 
-    required this.title, 
-    required this.subTitle, 
-    this.trailing, 
-    this.onTap
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+    this.trailing,
+    this.onTap,
   });
 
   final IconData icon;

@@ -20,9 +20,7 @@ class HomeCategories extends StatelessWidget {
         return Center(
           child: Text(
             'No categories found!',
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.apply(color: AbColors.white),
+            style: Theme.of(context).textTheme.bodyMedium!.apply(color: AbColors.white),
           ),
         );
       }

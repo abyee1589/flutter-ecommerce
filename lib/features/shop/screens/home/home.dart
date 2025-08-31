@@ -5,6 +5,7 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/search_conta
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/controllers/product/all_products_controller.dart';
 import 'package:flutter_app/features/shop/controllers/product/product_controller.dart';
 import 'package:flutter_app/features/shop/screens/all_products/all_products.dart';
 import 'package:flutter_app/features/shop/screens/home/widgets/home_categories.dart';
@@ -23,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final db = FirebaseFirestore.instance;
     final controller = Get.put(ProductController());
+    Get.put(AllProductsController());
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -34,10 +36,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: AbSizes.spaceBtwSections),
 
                 /// Searchbar
-                AbSearchContainer(
-                  text: 'Search in Store',
-                  icon: Iconsax.search_normal,
-                ),
+                AbSearchContainer(text: 'Search in Store', icon: Iconsax.search_normal),
                 SizedBox(height: AbSizes.spaceBtwSections),
 
                 /// Categories
@@ -45,11 +44,7 @@ class HomeScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: AbSizes.defaultSpace),
                   child: Column(
                     children: [
-                      AbSectionHeading(
-                        title: 'Popular categories',
-                        showActionButton: false,
-                        textColor: AbColors.white,
-                      ),
+                      AbSectionHeading(title: 'Popular categories', showActionButton: false, textColor: AbColors.white),
                       SizedBox(height: AbSizes.spaceBtwItems),
                       HomeCategories(),
                       SizedBox(height: AbSizes.spaceBtwSections),
@@ -73,10 +68,8 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () => Get.to(
                     () => AllProducts(
                       title: 'Popular Products',
-                      query: db
-                          .collection('Products')
-                          .where('IsFeatured', isEqualTo: true).limit(6),
-                      futureMethod: controller.fetchAllFeaturedProducts()
+                      query: db.collection('Products').where('IsFeatured', isEqualTo: true).limit(6),
+                      futureMethod: controller.fetchAllFeaturedProducts(),
                     ),
                   ),
                 ),
@@ -85,18 +78,11 @@ class HomeScreen extends StatelessWidget {
                     return const AbShimmerEffect(width: 70, height: 55);
                   }
                   if (controller.featuredProducts.isEmpty) {
-                    return Center(
-                      child: Text(
-                        'No Data Found',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    );
+                    return Center(child: Text('No Data Found', style: Theme.of(context).textTheme.bodyMedium));
                   }
                   return AbGridLayout(
                     itemCount: controller.featuredProducts.length,
-                    itemBuilder: (_, index) => AbProductCardVertical(
-                      product: controller.featuredProducts[index],
-                    ),
+                    itemBuilder: (_, index) => AbProductCardVertical(product: controller.featuredProducts[index]),
                   );
                 }),
               ],

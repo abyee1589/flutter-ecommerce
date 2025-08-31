@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 
-
 class AbRoundedImage extends StatelessWidget {
   const AbRoundedImage({
     super.key,
@@ -35,10 +34,7 @@ class AbRoundedImage extends StatelessWidget {
       // If Cloudinary URL, inject `f_auto,q_auto` if not already present
       if (!url.contains("f_auto")) {
         // Example: split after /upload/
-        return url.replaceFirst(
-          "/upload/",
-          "/upload/f_auto,q_auto/",
-        );
+        return url.replaceFirst("/upload/", "/upload/f_auto,q_auto/");
       }
     }
     return url; // return unchanged if not Cloudinary
@@ -60,14 +56,10 @@ class AbRoundedImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         child: ClipRRect(
-          borderRadius: applyImageRadius
-              ? BorderRadius.circular(borderRadius)
-              : BorderRadius.zero,
+          borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
           child: Image(
             fit: fit,
-            image: isNetworkImage
-                ? NetworkImage(finalUrl)
-                : AssetImage(imageUrl) as ImageProvider,
+            image: isNetworkImage ? NetworkImage(finalUrl) : AssetImage(imageUrl) as ImageProvider,
           ),
         ),
       ),

@@ -1,4 +1,3 @@
-
 class AbSizes {
   // Paddin and Margin Sizes
   static const double xs = 4.0;
@@ -64,9 +63,7 @@ class AbSizes {
 
   // Loading indicator size
   static const double loadingIndicatorSize = 36.0;
-   
+
   // Grid view spacing
   static const double gridViewSpacing = 16.0;
-
-
 }

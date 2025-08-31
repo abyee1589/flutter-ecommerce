@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_app/data/dummy_data.dart';
 import 'package:flutter_app/data/repositories/product/product_repository.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
@@ -7,7 +5,7 @@ import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 
-class ProductController extends GetxController{
+class ProductController extends GetxController {
   static ProductController get instance => Get.find();
 
   /// Variables
@@ -21,7 +19,7 @@ class ProductController extends GetxController{
     super.onInit();
   }
 
-   Future<void> fetchFeaturedProducts() async {
+  Future<void> fetchFeaturedProducts() async {
     try {
       isLoading.value = true;
       final fetchedProducts = await _productRepository.getFeaturedProducts();
@@ -33,7 +31,7 @@ class ProductController extends GetxController{
     }
   }
 
-   Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async {
     try {
       final productList = await _productRepository.getAllFeaturedProducts();
       return productList;
@@ -44,21 +42,17 @@ class ProductController extends GetxController{
   }
 
   Future<void> uploadAllProducts() async {
-    try{
+    try {
       isLoading.value = true;
       await _productRepository.uploadDummyProducts(AbDummyData.products);
 
-      AbLoaders.successSnackBar(
-        title: 'Success',
-        message: 'All dummy products uploaded successfully!',
-      );
+      AbLoaders.successSnackBar(title: 'Success', message: 'All dummy products uploaded successfully!');
 
       // Refresh list after upload
-      fetchFeaturedProducts(); 
-
-    }catch(e) {
+      fetchFeaturedProducts();
+    } catch (e) {
       AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    }finally{
+    } finally {
       isLoading.value = false;
     }
   }
@@ -67,8 +61,7 @@ class ProductController extends GetxController{
     // Case 1: Simple product
     if (product.productType == ProductType.single.toString()) {
       return (product.salePrice > 0 ? product.salePrice : product.price).toString();
-    } 
-    
+    }
     // Case 2: Product with variations
     else {
       double smallestPrice = double.infinity;
@@ -94,15 +87,14 @@ class ProductController extends GetxController{
   }
 
   String? calculateSalePercentage(double originalPrice, double? salePrice) {
-    if(salePrice == null || salePrice <= 0.0) return null;
-    if(originalPrice <= 0) return null;
+    if (salePrice == null || salePrice <= 0.0) return null;
+    if (originalPrice <= 0) return null;
 
     double percentage = ((originalPrice - salePrice) / originalPrice) * 100;
     return percentage.toStringAsFixed(0);
-  } 
-
-  String getProductStockStatus(int stock) {
-    return(stock > 0 ? 'In Stock' : 'Out of Stock');
   }
 
+  String getProductStockStatus(int stock) {
+    return (stock > 0 ? 'In Stock' : 'Out of Stock');
+  }
 }

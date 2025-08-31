@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,46 +20,50 @@ class VerifyEmailController extends GetxController {
   }
 
   /// Send Email Verification link
-  Future<void> sendEmailVerification() async{
-    try{
+  Future<void> sendEmailVerification() async {
+    try {
       await AuthenticationRepository.instance.sendEmailVerification();
-      AbLoaders.successSnackBar(title: 'Verification Email Sent!', message: 'PLease check your inbox and verify your email!');
-    } catch(e) {
+      AbLoaders.successSnackBar(
+        title: 'Verification Email Sent!',
+        message: 'PLease check your inbox and verify your email!',
+      );
+    } catch (e) {
       AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
-  /// Set Timer toautomatically redirect to the verify email screen 
+  /// Set Timer toautomatically redirect to the verify email screen
   setTimerForAutoRdirect() {
-    Timer.periodic(
-      const Duration(seconds: 1), 
-      (timer) async{
-        await FirebaseAuth.instance.currentUser?.reload();
-        final user = FirebaseAuth.instance.currentUser;
-        if(user?.emailVerified ?? false){
-          timer.cancel();
-          Get.off(() => SuccessScreen(
-            image: AbImages.deliveredEmailIllustration, 
-            title: AbTexts.yourAccountCreatedTitle, 
-            subTitle: AbTexts.yourAccountCreatedSubTitle, 
-            onPressed: () {}
+    Timer.periodic(const Duration(seconds: 1), (timer) async {
+      await FirebaseAuth.instance.currentUser?.reload();
+      final user = FirebaseAuth.instance.currentUser;
+      if (user?.emailVerified ?? false) {
+        timer.cancel();
+        Get.off(
+          () => SuccessScreen(
+            image: AbImages.deliveredEmailIllustration,
+            title: AbTexts.yourAccountCreatedTitle,
+            subTitle: AbTexts.yourAccountCreatedSubTitle,
+            onPressed: () {},
             // => AuthenticationRepository.instance.screenRedirect()
-          ));
-        }
+          ),
+        );
       }
-    );
+    });
   }
 
   checkEmailVerificationStatus() {
-    final currentUser = FirebaseAuth.instance.currentUser; 
-    if(currentUser != null && currentUser.emailVerified){
-      Get.off(() => SuccessScreen(
-        image: AbImages.deliveredEmailIllustration, 
-        title: AbTexts.yourAccountCreatedTitle, 
-        subTitle: AbTexts.yourAccountCreatedSubTitle, 
-        onPressed: () {}
-        //  => AuthenticationRepository.instance.screenRedirect()
-      ));
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null && currentUser.emailVerified) {
+      Get.off(
+        () => SuccessScreen(
+          image: AbImages.deliveredEmailIllustration,
+          title: AbTexts.yourAccountCreatedTitle,
+          subTitle: AbTexts.yourAccountCreatedSubTitle,
+          onPressed: () {},
+          //  => AuthenticationRepository.instance.screenRedirect()
+        ),
+      );
     }
   }
 }

@@ -4,9 +4,7 @@ import 'package:flutter_app/common/widgets/custom_shapes/curved_edges/curved_edg
 import 'package:flutter_app/utils/constants/colors.dart';
 
 class AbPrimaryHeaderContainer extends StatelessWidget {
-  const AbPrimaryHeaderContainer({
-    super.key, required this.child,
-  });
+  const AbPrimaryHeaderContainer({super.key, required this.child});
   final Widget child;
 
   @override
@@ -17,10 +15,18 @@ class AbPrimaryHeaderContainer extends StatelessWidget {
         padding: const EdgeInsets.all(0),
         child: Stack(
           children: [
-            Positioned(top: -150, right: -250, child: AbCircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1))),
-            Positioned(top: 100, right: -300, child: AbCircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1))),    
-            child,               
-          ],                
+            Positioned(
+              top: -150,
+              right: -250,
+              child: AbCircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1)),
+            ),
+            Positioned(
+              top: 100,
+              right: -300,
+              child: AbCircularContainer(backgroundColor: AbColors.textWhite.withOpacity(0.1)),
+            ),
+            child,
+          ],
         ),
       ),
     );

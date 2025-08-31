@@ -22,6 +22,7 @@ class SignupScreen extends StatelessWidget {
               Text(AbTexts.signupTtle, style: Theme.of(context).textTheme.headlineMedium),
               const SizedBox(height: AbSizes.spaceBtwItems),
               const AbSignupForm(),
+
               /// Divider
               const SizedBox(height: AbSizes.spaceBtwSections),
               AbFormDivider(dividerText: AbTexts.orSignUpWith.capitalize!),
@@ -31,9 +32,8 @@ class SignupScreen extends StatelessWidget {
               const AbSocialButtons(),
             ],
           ),
-        )
+        ),
       ),
     );
   }
 }
-

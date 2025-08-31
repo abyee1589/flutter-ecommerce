@@ -9,9 +9,7 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  const ResetPasswordScreen({
-    super.key, required this.email
-  });
+  const ResetPasswordScreen({super.key, required this.email});
   final String email;
 
   @override
@@ -19,9 +17,7 @@ class ResetPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(onPressed: (() => Get.back()), icon: const Icon(CupertinoIcons.clear)),
-        ],
+        actions: [IconButton(onPressed: (() => Get.back()), icon: const Icon(CupertinoIcons.clear))],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -29,25 +25,47 @@ class ResetPasswordScreen extends StatelessWidget {
           child: Column(
             children: [
               /// Image with 60% of the width
-              Image(image: const AssetImage(AbImages.deliveredEmailIllustration), width: AbHelperFunctions.screenWidth() * 0.6),
+              Image(
+                image: const AssetImage(AbImages.deliveredEmailIllustration),
+                width: AbHelperFunctions.screenWidth() * 0.6,
+              ),
               const SizedBox(height: AbSizes.spaceBtwSections),
 
               /// Title and Subtitle
               Text(email, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
               const SizedBox(height: AbSizes.spaceBtwItems),
-              Text(AbTexts.changeYourPasswordTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
+              Text(
+                AbTexts.changeYourPasswordTitle,
+                style: Theme.of(context).textTheme.labelMedium,
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: AbSizes.spaceBtwItems),
-              Text(AbTexts.changeYourPasswordSubTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
+              Text(
+                AbTexts.changeYourPasswordSubTitle,
+                style: Theme.of(context).textTheme.labelMedium,
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: AbSizes.spaceBtwSections),
 
               /// Buttons
-              SizedBox( width: double.infinity, child: ElevatedButton(onPressed: (() => Get.off(() => const LoginScreen())), child: const Text(AbTexts.done))),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: (() => Get.off(() => const LoginScreen())),
+                  child: const Text(AbTexts.done),
+                ),
+              ),
               const SizedBox(height: AbSizes.spaceBtwItems),
-              SizedBox(width: double.infinity, child: TextButton(onPressed: () => ForgetPasswordController.instance.resendPasswordResetEmail(email), child: const Text(AbTexts.resendEmail))),
-
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () => ForgetPasswordController.instance.resendPasswordResetEmail(email),
+                  child: const Text(AbTexts.resendEmail),
+                ),
+              ),
             ],
           ),
-        )
+        ),
       ),
     );
   }

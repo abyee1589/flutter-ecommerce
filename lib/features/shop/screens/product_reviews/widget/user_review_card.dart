@@ -20,12 +20,12 @@ class UserReviewCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                const CircleAvatar(backgroundImage:  AssetImage(AbImages.user)),
+                const CircleAvatar(backgroundImage: AssetImage(AbImages.user)),
                 const SizedBox(width: AbSizes.spaceBtwItems),
-                Text('John Doe', style: Theme.of(context).textTheme.titleLarge)
+                Text('John Doe', style: Theme.of(context).textTheme.titleLarge),
               ],
             ),
-            IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert))
+            IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
           ],
         ),
         const SizedBox(height: AbSizes.spaceBtwItems),
@@ -34,18 +34,19 @@ class UserReviewCard extends StatelessWidget {
           children: [
             const AbRatingBarIndicator(rating: 4),
             const SizedBox(width: AbSizes.spaceBtwItems),
-            Text('16 Jul, 2025', style: Theme.of(context).textTheme.bodySmall),    
-        ]),
+            Text('16 Jul, 2025', style: Theme.of(context).textTheme.bodySmall),
+          ],
+        ),
 
-        const SizedBox( height: AbSizes.spaceBtwItems),
-         const ReadMoreText(
+        const SizedBox(height: AbSizes.spaceBtwItems),
+        const ReadMoreText(
           'The user interface is  quite intuitives. I was able to nagivaget and make progress seamlessy. great job!',
           trimLines: 1,
           trimMode: TrimMode.Line,
           trimExpandedText: 'Show Less',
           trimCollapsedText: 'Show More',
           lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AbColors.primary),
-          moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AbColors.primary)
+          moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AbColors.primary),
         ),
 
         /// Company review
@@ -61,7 +62,7 @@ class UserReviewCard extends StatelessWidget {
                   Text('16 July, 2025', style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
-              const SizedBox( height: AbSizes.spaceBtwItems),
+              const SizedBox(height: AbSizes.spaceBtwItems),
               const ReadMoreText(
                 'The user interface is  quite intuitives. I was able to nagivaget and make progress seamlessy. great job!',
                 trimLines: 1,
@@ -69,7 +70,7 @@ class UserReviewCard extends StatelessWidget {
                 trimExpandedText: 'Show Less',
                 trimCollapsedText: 'Show More',
                 lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AbColors.primary),
-                moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AbColors.primary)
+                moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AbColors.primary),
               ),
             ],
           ),

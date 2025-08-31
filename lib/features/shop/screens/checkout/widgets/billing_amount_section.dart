@@ -8,7 +8,6 @@ class AbBillingAmountSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         /// SubTotal
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,7 +27,7 @@ class AbBillingAmountSection extends StatelessWidget {
           ],
         ),
         const SizedBox(height: AbSizes.spaceBtwItems / 2),
-        
+
         /// Tax Fee
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/repositories/user/user_repository.dart';
 import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
@@ -31,54 +29,44 @@ class UpdateNameController extends GetxController {
   }
 
   Future<void> updateUserName() async {
-  try {
-    AbFullScreenLoader.openLoadingDialog('We are updating your information', AbImages.lottieAnimation);
+    try {
+      AbFullScreenLoader.openLoadingDialog('We are updating your information', AbImages.lottieAnimation);
 
-    final isConnected = await NetworkManager.instance.isConnected();
-    if (!isConnected) {
-      AbLoaders.warningSnackBar(
-        title: 'Connection Failed',
-        message: 'Please check your connection and try again!',
-      );
-      AbFullScreenLoader.stopLoading();
-      return;
-    }
-
-    if (!updateUserNameFormKey.currentState!.validate()) {
-      AbFullScreenLoader.stopLoading();
-      return;
-    }
-
-    Map<String, dynamic> name = {
-      'firstName': firstName.text.trim(),
-      'lastName': lastName.text.trim()
-    };
-
-    await userRepository.updateSingleFIeld(name);
-
-    // ✅ Option A: Update local observable manually
-    userController.user.update((val) {
-      if (val != null) {
-        val.firstName = name['firstName']!;
-        val.lastName = name['lastName']!;
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        AbLoaders.warningSnackBar(title: 'Connection Failed', message: 'Please check your connection and try again!');
+        AbFullScreenLoader.stopLoading();
+        return;
       }
-    });
 
-    // ✅ Option B: Or re-fetch from Firebase
-    // await userController.fetchUserRecord();
+      if (!updateUserNameFormKey.currentState!.validate()) {
+        AbFullScreenLoader.stopLoading();
+        return;
+      }
 
-    AbFullScreenLoader.stopLoading();
+      Map<String, dynamic> name = {'firstName': firstName.text.trim(), 'lastName': lastName.text.trim()};
 
-    AbLoaders.successSnackBar(
-      title: 'Congratulations!',
-      message: 'Your name has been updated successfully!',
-    );
+      await userRepository.updateSingleFIeld(name);
 
-    Get.off(() => const ProfileScreen());
-  } catch (e) {
-    AbFullScreenLoader.stopLoading();
-    AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      // ✅ Option A: Update local observable manually
+      userController.user.update((val) {
+        if (val != null) {
+          val.firstName = name['firstName']!;
+          val.lastName = name['lastName']!;
+        }
+      });
+
+      // ✅ Option B: Or re-fetch from Firebase
+      // await userController.fetchUserRecord();
+
+      AbFullScreenLoader.stopLoading();
+
+      AbLoaders.successSnackBar(title: 'Congratulations!', message: 'Your name has been updated successfully!');
+
+      Get.off(() => const ProfileScreen());
+    } catch (e) {
+      AbFullScreenLoader.stopLoading();
+      AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
   }
-}
-
 }

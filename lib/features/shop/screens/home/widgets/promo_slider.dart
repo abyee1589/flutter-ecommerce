@@ -26,8 +26,7 @@ class AbPromoSlider extends StatelessWidget {
           CarouselSlider(
             options: CarouselOptions(
               viewportFraction: 1,
-              onPageChanged: (index, _) =>
-                  controller.updatePageIndicater(index),
+              onPageChanged: (index, _) => controller.updatePageIndicater(index),
             ),
             items: controller.banners
                 .map(
@@ -50,10 +49,7 @@ class AbPromoSlider extends StatelessWidget {
                       width: 20,
                       height: 4,
                       margin: const EdgeInsets.only(right: 10),
-                      backgroundColor:
-                          controller.carousalCurrentIndex.value == i
-                          ? AbColors.primary
-                          : AbColors.grey,
+                      backgroundColor: controller.carousalCurrentIndex.value == i ? AbColors.primary : AbColors.grey,
                     ),
                 ],
               ),

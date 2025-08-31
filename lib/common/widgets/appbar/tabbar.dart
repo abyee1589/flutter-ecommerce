@@ -3,7 +3,7 @@ import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/device/device_utility.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
-class AbTabBar extends StatelessWidget implements PreferredSizeWidget{
+class AbTabBar extends StatelessWidget implements PreferredSizeWidget {
   const AbTabBar({super.key, required this.tabs});
 
   final List<Widget> tabs;
@@ -19,10 +19,10 @@ class AbTabBar extends StatelessWidget implements PreferredSizeWidget{
         indicatorColor: AbColors.primary,
         labelColor: dark ? AbColors.white : AbColors.black,
         unselectedLabelColor: AbColors.darkGrey,
-        ),
+      ),
     );
   }
-  
+
   @override
   // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(AbDeviceUtils.getAppBarHeight());

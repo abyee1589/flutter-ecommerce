@@ -27,16 +27,20 @@ class SettingScreen extends StatelessWidget {
             child: Column(
               children: [
                 /// Appbar
-                AbAppBar(title: Text('Account', style: Theme.of(context).textTheme.headlineMedium!.apply(color: AbColors.white))),
+                AbAppBar(
+                  title: Text(
+                    'Account',
+                    style: Theme.of(context).textTheme.headlineMedium!.apply(color: AbColors.white),
+                  ),
+                ),
                 const SizedBox(height: AbSizes.spaceBtwSections),
-            
+
                 /// User profile card
                 AbUserProfileTile(onPressed: () => Get.to(() => const ProfileScreen())),
                 const SizedBox(height: AbSizes.spaceBtwSections),
               ],
             ),
           ),
-
 
           /// Body
           Padding(
@@ -47,90 +51,89 @@ class SettingScreen extends StatelessWidget {
                 const AbSectionHeading(title: 'Account Settings'),
                 const SizedBox(height: AbSizes.spaceBtwItems),
                 AbSettingsMenuTile(
-                  icon: Iconsax.safe_home, 
-                  title : 'My Address', 
-                  subTitle: 'Set shopping delivery address', 
+                  icon: Iconsax.safe_home,
+                  title: 'My Address',
+                  subTitle: 'Set shopping delivery address',
                   onTap: () => Get.to(() => const UserAddressScreen()),
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.shopping_cart, 
-                  title : 'My Cart', 
-                  subTitle: 'Add, remove products and more to checkout', 
+                  icon: Iconsax.shopping_cart,
+                  title: 'My Cart',
+                  subTitle: 'Add, remove products and more to checkout',
                   onTap: () => Get.to(() => const CartScreen()),
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.bag_tick, 
-                  title : 'My Orders', 
-                  subTitle: 'In-progress and completed orders', 
+                  icon: Iconsax.bag_tick,
+                  title: 'My Orders',
+                  subTitle: 'In-progress and completed orders',
                   onTap: () => Get.to(() => const Orderscreen()),
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.bank, 
-                  title : 'Bank Account', 
-                  subTitle: 'Withdraw balance to registered bank account', 
-                  onTap: (){},
+                  icon: Iconsax.bank,
+                  title: 'Bank Account',
+                  subTitle: 'Withdraw balance to registered bank account',
+                  onTap: () {},
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.discount_shape, 
-                  title : 'My Coupons', 
-                  subTitle: 'List of all the discounted cupons', 
-                  onTap: (){},
+                  icon: Iconsax.discount_shape,
+                  title: 'My Coupons',
+                  subTitle: 'List of all the discounted cupons',
+                  onTap: () {},
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.notification, 
-                  title : 'Notifications', 
-                  subTitle: 'Set any kind of notification message', 
-                  onTap: (){},
+                  icon: Iconsax.notification,
+                  title: 'Notifications',
+                  subTitle: 'Set any kind of notification message',
+                  onTap: () {},
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.security_card, 
-                  title : 'Account privacy', 
-                  subTitle: 'Manage data usage and connected accounts', 
-                  onTap: (){},
+                  icon: Iconsax.security_card,
+                  title: 'Account privacy',
+                  subTitle: 'Manage data usage and connected accounts',
+                  onTap: () {},
                 ),
-
 
                 /// App Settings
                 const SizedBox(height: AbSizes.spaceBtwSections),
                 const AbSectionHeading(title: 'App Settings'),
                 const SizedBox(height: AbSizes.spaceBtwSections),
                 AbSettingsMenuTile(
-                  icon: Iconsax.document_upload, 
-                  title : 'Load Data', 
-                  subTitle: 'Upload Data to Your Cloud Firebase', 
+                  icon: Iconsax.document_upload,
+                  title: 'Load Data',
+                  subTitle: 'Upload Data to Your Cloud Firebase',
                   onTap: () => Get.to(() => const UploadScreen()),
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.location, 
-                  title : 'Geolocation', 
-                  subTitle: 'Set recommendation based on location', 
-                  trailing: Switch(value: true, onChanged: (value){}),
+                  icon: Iconsax.location,
+                  title: 'Geolocation',
+                  subTitle: 'Set recommendation based on location',
+                  trailing: Switch(value: true, onChanged: (value) {}),
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.security_user, 
-                  title : 'Safe Mode', 
-                  subTitle: 'Search result is safe for all ages', 
-                  trailing: Switch(value: false, onChanged: (value){}),
+                  icon: Iconsax.security_user,
+                  title: 'Safe Mode',
+                  subTitle: 'Search result is safe for all ages',
+                  trailing: Switch(value: false, onChanged: (value) {}),
                 ),
                 AbSettingsMenuTile(
-                  icon: Iconsax.image, 
-                  title : 'HD Image Quality', 
-                  subTitle: 'Set image quality to be seen', 
-                  trailing: Switch(value: false, onChanged: (value){}),
+                  icon: Iconsax.image,
+                  title: 'HD Image Quality',
+                  subTitle: 'Set image quality to be seen',
+                  trailing: Switch(value: false, onChanged: (value) {}),
                 ),
 
                 /// Logout Button
                 const SizedBox(height: AbSizes.spaceBtwSections),
                 SizedBox(
                   width: double.infinity,
-                  child: OutlinedButton(onPressed: (){}, child: const Text('Logout')),
+                  child: OutlinedButton(onPressed: () {}, child: const Text('Logout')),
                 ),
-                const SizedBox(height: AbSizes.spaceBtwSections * 2.5)
+                const SizedBox(height: AbSizes.spaceBtwSections * 2.5),
               ],
             ),
-          )
-        ],),
+          ),
+        ],
+      ),
     );
   }
 }
-

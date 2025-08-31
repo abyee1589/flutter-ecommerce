@@ -13,16 +13,13 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbProductImageSlider extends StatelessWidget {
-  const AbProductImageSlider({
-    super.key,
-    required this.product,
-  });
+  const AbProductImageSlider({super.key, required this.product});
   final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
-    
+
     final controller = Get.put(ImagesController());
     final images = controller.getAllProductImages(product);
     return AbCurvedEdgeWidget(
@@ -30,7 +27,6 @@ class AbProductImageSlider extends StatelessWidget {
         color: dark ? AbColors.darkGrey : AbColors.light,
         child: Stack(
           children: [
-
             /// main large image
             SizedBox(
               height: 400,
@@ -41,15 +37,15 @@ class AbProductImageSlider extends StatelessWidget {
                   return GestureDetector(
                     onTap: () => controller.showEnlargedImage(image),
                     child: CachedNetworkImage(
-                      imageUrl: image, 
-                      progressIndicatorBuilder: (_, __, downloadProgress) => 
-                        CircularProgressIndicator(value: downloadProgress.progress, color: AbColors.primary,),
+                      imageUrl: image,
+                      progressIndicatorBuilder: (_, __, downloadProgress) =>
+                          CircularProgressIndicator(value: downloadProgress.progress, color: AbColors.primary),
                     ),
                   );
                 }),
               ),
             ),
-    
+
             /// Image slider
             Positioned(
               right: 0,
@@ -57,12 +53,12 @@ class AbProductImageSlider extends StatelessWidget {
               left: AbSizes.defaultSpace,
               child: SizedBox(
                 height: 80,
-                child: ListView.separated( 
+                child: ListView.separated(
                   shrinkWrap: true,
                   physics: const AlwaysScrollableScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemCount: images.length,
-                  separatorBuilder: (_, _) => const SizedBox(width: AbSizes.spaceBtwItems), 
+                  separatorBuilder: (_, _) => const SizedBox(width: AbSizes.spaceBtwItems),
                   itemBuilder: (_, index) => Obx(() {
                     final selectedImage = controller.selectedProductImage.value == images[index];
                     return AbRoundedImage(
@@ -74,18 +70,16 @@ class AbProductImageSlider extends StatelessWidget {
                       imageUrl: images[index],
                       onPressed: () => controller.selectedProductImage.value = images[index],
                     );
-                  })
+                  }),
                 ),
               ),
             ),
-    
+
             /// Appbar icons
             const AbAppBar(
               showBackArrow: true,
-              actions: [
-                AbCircularIcon(icon: Iconsax.heart5, color: Colors.red,)
-              ],
-            )
+              actions: [AbCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+            ),
           ],
         ),
       ),

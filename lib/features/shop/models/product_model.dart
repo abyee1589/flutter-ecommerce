@@ -21,14 +21,7 @@ class ProductModel {
   List<ProductAttributeModel>? productAttributes;
   List<ProductVariationModel>? productVariations;
 
-  static ProductModel empty() => ProductModel(
-    id: '',
-    stock: 0,
-    price: 0,
-    title: '',
-    thumbnail: '',
-    productType: '',
-  );
+  static ProductModel empty() => ProductModel(id: '', stock: 0, price: 0, title: '', thumbnail: '', productType: '');
 
   ProductModel({
     required this.id,
@@ -72,9 +65,7 @@ class ProductModel {
     };
   }
 
-  factory ProductModel.fromSnapshot(
-    DocumentSnapshot<Map<String, dynamic>> document,
-  ) {
+  factory ProductModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() == null) return ProductModel.empty();
     final data = document.data()!;
     return ProductModel(
@@ -100,9 +91,7 @@ class ProductModel {
     );
   }
 
-  factory ProductModel.fromQuerySnapshot(
-    QueryDocumentSnapshot<Object> document,
-  ) {
+  factory ProductModel.fromQuerySnapshot(QueryDocumentSnapshot<Object> document) {
     final data = document.data() as Map<String, dynamic>;
     return ProductModel(
       id: document.id,

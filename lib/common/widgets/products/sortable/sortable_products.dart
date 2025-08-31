@@ -8,10 +8,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbSortableProducts extends StatelessWidget {
-  const AbSortableProducts({
-    super.key, 
-    required this.products
-  });
+  const AbSortableProducts({super.key, required this.products});
 
   final List<ProductModel> products;
 
@@ -28,20 +25,14 @@ class AbSortableProducts extends StatelessWidget {
             value = controller.selectedSortOption.value;
             controller.sortProducts(value);
           },
-          items:
-              [
-                    'Name',
-                    'Higher Price',
-                    'Lower price',
-                    'Sale',
-                    'Newest',
-                    'Popularity',
-                  ]
-                  .map(
-                    (option) =>
-                        DropdownMenuItem(value: option, child: Text(option)),
-                  )
-                  .toList(),
+          items: [
+            'Name',
+            'Higher Price',
+            'Lower price',
+            'Sale',
+            'Newest',
+            'Popularity',
+          ].map((option) => DropdownMenuItem(value: option, child: Text(option))).toList(),
         ),
         const SizedBox(height: AbSizes.spaceBtwSections),
 
@@ -49,8 +40,7 @@ class AbSortableProducts extends StatelessWidget {
         Obx(
           () => AbGridLayout(
             itemCount: controller.products.length,
-            itemBuilder: (_, index) =>
-                AbProductCardVertical(product: controller.products[index]),
+            itemBuilder: (_, index) => AbProductCardVertical(product: controller.products[index]),
           ),
         ),
       ],

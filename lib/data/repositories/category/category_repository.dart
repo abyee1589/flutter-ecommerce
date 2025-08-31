@@ -20,9 +20,7 @@ class CategoryRepository extends GetxController {
   Future<List<CategoryModel>> getAllCategories() async {
     try {
       final snapshot = await _db.collection('Categories').get();
-      final list = snapshot.docs
-          .map((doc) => CategoryModel.fromSnapshot(doc))
-          .toList();
+      final list = snapshot.docs.map((doc) => CategoryModel.fromSnapshot(doc)).toList();
       return list;
     } on FirebaseException catch (e) {
       // Throw the exception object, not just the message string, for better error handling.
@@ -62,20 +60,14 @@ class CategoryRepository extends GetxController {
           final tempDir = await getTemporaryDirectory();
           final tempFile = File('${tempDir.path}/$fileName');
           await tempFile.writeAsBytes(byteData.buffer.asUint8List());
-          url = await cloudinary.uploadFile(
-            XFile(tempFile.path),
-            folderType: 'Categories',
-          );
+          url = await cloudinary.uploadFile(XFile(tempFile.path), folderType: 'Categories');
         }
 
         // Replace asset path with Cloudinary URL
         category.image = url ?? '';
 
         // Upload to Firestore
-        await _db
-            .collection('Categories')
-            .doc(category.id)
-            .set(category.toJson());
+        await _db.collection('Categories').doc(category.id).set(category.toJson());
       }
     } on FirebaseException catch (e) {
       throw AbFirebaseException(e.code);

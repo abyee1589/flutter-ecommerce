@@ -17,12 +17,7 @@ class CategoryModel {
 
   /// Convert Category model to JSON structure for storing data in Firestore
   toJson() {
-    return {
-      'Name': name,
-      'Image': image,
-      'ParentId': parentId,
-      'IsFeatured': isFeatured,
-    };
+    return {'Name': name, 'Image': image, 'ParentId': parentId, 'IsFeatured': isFeatured};
   }
 
   /// Factory constructor to create a CategoryModel from a Firestore document snapshot.
@@ -44,7 +39,7 @@ class CategoryModel {
       isFeatured: data['IsFeatured'] ?? false,
     );
   }
-   @override
+  @override
   String toString() {
     return 'CategoryModel(id: $id, name: $name, image: $image, parentId: $parentId, isFeatured: $isFeatured)';
   }

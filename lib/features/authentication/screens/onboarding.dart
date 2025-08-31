@@ -8,49 +8,49 @@ import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
 import 'widgets/onboarding_page.dart';
 
-
 class OnBoardingScreen extends StatelessWidget {
-      OnBoardingScreen({super.key});
+  OnBoardingScreen({super.key});
 
-      final controller = Get.put(OnBoardingController());
-    
-    @override
-    Widget build(BuildContext context) {
-        return Scaffold(
-            body: Stack(
-              children: [
-                /// Horizontally scrollable pages
-                PageView(
-                  controller: controller.pageController,
-                  onPageChanged: controller.updatePageIndicator,
-                  children: const [
-                    OnBoardingPage(
-                      image: AbImages.onBoardingImage1, 
-                      title: AbTexts.onBoardingTitle1, 
-                      subTitle: AbTexts.onBoardingSubTitle1),
-                    OnBoardingPage(
-                      image: AbImages.onBoardingImage2, 
-                      title: AbTexts.onBoardingTitle1, 
-                      subTitle: AbTexts.onBoardingSubTitle1),
-                    OnBoardingPage(
-                      image: AbImages.onBoardingImage1, 
-                      title: AbTexts.onBoardingTitle1, 
-                      subTitle: AbTexts.onBoardingSubTitle1),
-                    
-                   ],
-                ),
-                const OnBoardingSkip(),                
-                const OnBoardingDotNavigation(),
-                const OnBoardingNextButton(),
-                
+  final controller = Get.put(OnBoardingController());
 
-                    /// Skip button
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          /// Horizontally scrollable pages
+          PageView(
+            controller: controller.pageController,
+            onPageChanged: controller.updatePageIndicator,
+            children: const [
+              OnBoardingPage(
+                image: AbImages.onBoardingImage1,
+                title: AbTexts.onBoardingTitle1,
+                subTitle: AbTexts.onBoardingSubTitle1,
+              ),
+              OnBoardingPage(
+                image: AbImages.onBoardingImage2,
+                title: AbTexts.onBoardingTitle1,
+                subTitle: AbTexts.onBoardingSubTitle1,
+              ),
+              OnBoardingPage(
+                image: AbImages.onBoardingImage1,
+                title: AbTexts.onBoardingTitle1,
+                subTitle: AbTexts.onBoardingSubTitle1,
+              ),
+            ],
+          ),
+          const OnBoardingSkip(),
+          const OnBoardingDotNavigation(),
+          const OnBoardingNextButton(),
 
-                    /// Dot navigation smoothPageIndicator
+          /// Skip button
 
-                    /// Circular button
-                ]
-            )
-        );
-    }
+          /// Dot navigation smoothPageIndicator
+
+          /// Circular button
+        ],
+      ),
+    );
+  }
 }

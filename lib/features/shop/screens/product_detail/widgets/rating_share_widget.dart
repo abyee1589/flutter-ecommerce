@@ -3,9 +3,7 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbRatingAndShare extends StatelessWidget {
-  const AbRatingAndShare({
-    super.key,
-  });
+  const AbRatingAndShare({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +19,18 @@ class AbRatingAndShare extends StatelessWidget {
                 children: [
                   TextSpan(text: '5.0', style: Theme.of(context).textTheme.bodyLarge),
                   const TextSpan(text: '(199)'),
-                  ]
+                ],
               ),
             ),
           ],
         ),
+
         /// Share button
-        IconButton(onPressed: (){}, icon: const Icon(Icons.share, size: AbSizes.iconMd,))
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.share, size: AbSizes.iconMd),
+        ),
       ],
     );
   }
 }
-

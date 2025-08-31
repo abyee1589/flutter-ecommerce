@@ -8,23 +8,15 @@ class VariationController extends GetxController {
 
   RxMap selectedAttributes = {}.obs;
   RxString variationStockStatus = ''.obs;
-  Rx<ProductVariationModel> selectedVariation =
-      ProductVariationModel.empty().obs;
+  Rx<ProductVariationModel> selectedVariation = ProductVariationModel.empty().obs;
 
-  void onAttributesSeleceted(
-    ProductModel product,
-    attributeName,
-    attributeValue,
-  ) {
-    final selectedAttributes = Map<String, dynamic>.from(
-      this.selectedAttributes,
-    );
+  void onAttributesSeleceted(ProductModel product, attributeName, attributeValue) {
+    final selectedAttributes = Map<String, dynamic>.from(this.selectedAttributes);
     selectedAttributes[attributeName] = attributeValue;
     this.selectedAttributes[attributeName] = attributeValue;
 
     final selectedVariation = product.productVariations!.firstWhere(
-      (variation) =>
-          isSameAttributesValues(variation.attributeValues, selectedAttributes),
+      (variation) => isSameAttributesValues(variation.attributeValues, selectedAttributes),
       orElse: () => ProductVariationModel.empty(),
     );
 
@@ -38,10 +30,7 @@ class VariationController extends GetxController {
     getVariationStockStatus();
   }
 
-  bool isSameAttributesValues(
-    Map<String, dynamic> variationAttributes,
-    Map<String, dynamic> selectedAttributes,
-  ) {
+  bool isSameAttributesValues(Map<String, dynamic> variationAttributes, Map<String, dynamic> selectedAttributes) {
     if (variationAttributes.length != selectedAttributes.length) return false;
 
     for (final key in variationAttributes.keys) {
@@ -50,10 +39,7 @@ class VariationController extends GetxController {
     return true;
   }
 
-  Set<String?> getAttributesAvailabilityInVariation(
-    List<ProductVariationModel> variations,
-    String attributeName,
-  ) {
+  Set<String?> getAttributesAvailabilityInVariation(List<ProductVariationModel> variations, String attributeName) {
     final availableVariationAttributeValues = variations
         .where(
           (variation) =>
@@ -68,16 +54,12 @@ class VariationController extends GetxController {
   }
 
   String getVariationPrice() {
-    return (selectedVariation.value.salePrice > 0
-            ? selectedVariation.value.salePrice
-            : selectedVariation.value.price)
+    return (selectedVariation.value.salePrice > 0 ? selectedVariation.value.salePrice : selectedVariation.value.price)
         .toString();
   }
 
   void getVariationStockStatus() {
-    variationStockStatus.value = selectedVariation.value.stock > 0
-        ? 'In Stock'
-        : 'Out of Stock';
+    variationStockStatus.value = selectedVariation.value.stock > 0 ? 'In Stock' : 'Out of Stock';
   }
 
   void resetSelectedAttributes() {

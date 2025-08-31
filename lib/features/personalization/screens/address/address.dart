@@ -16,22 +16,13 @@ class UserAddressScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => const AddNewAddressScreen()),
         backgroundColor: AbColors.primary,
-        child: const Icon(Iconsax.add, color: AbColors.white,),
-        ),
-        appBar: AbAppBar(
-          showBackArrow: true,
-          title: Text('Address', style: Theme.of(context).textTheme.headlineSmall),
-        ),
-        body: const SingleChildScrollView(
-          padding: EdgeInsets.all(AbSizes.defaultSpace),
-          child: Column(
-            children: [
-              AbSingleAddress(selectedAddress: true),
-              AbSingleAddress(selectedAddress: false)
-            ],
-          ),
-        ),
-      
+        child: const Icon(Iconsax.add, color: AbColors.white),
+      ),
+      appBar: AbAppBar(showBackArrow: true, title: Text('Address', style: Theme.of(context).textTheme.headlineSmall)),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(AbSizes.defaultSpace),
+        child: Column(children: [AbSingleAddress(selectedAddress: true), AbSingleAddress(selectedAddress: false)]),
+      ),
     );
   }
 }

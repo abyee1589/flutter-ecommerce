@@ -18,20 +18,15 @@ class SubCategoriesScreen extends StatelessWidget {
           padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             children: [
-
               /// Banner
-              const AbRoundedImage(
-                width: double.infinity,
-                imageUrl: AbImages.promoBanner1,
-                applyImageRadius: true,
-              ),
+              const AbRoundedImage(width: double.infinity, imageUrl: AbImages.promoBanner1, applyImageRadius: true),
               const SizedBox(height: AbSizes.spaceBtwSections),
 
               /// Sub-Categories
               Column(
                 children: [
                   /// Heading
-                  AbSectionHeading(title: 'Sports Shirt', onPressed: (){}, showActionButton: true,),
+                  AbSectionHeading(title: 'Sports Shirt', onPressed: () {}, showActionButton: true),
                   const SizedBox(height: AbSizes.spaceBtwItems / 2),
 
                   SizedBox(
@@ -40,10 +35,11 @@ class SubCategoriesScreen extends StatelessWidget {
                       itemCount: 4,
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, index) => const SizedBox(width: AbSizes.spaceBtwItems),
-                      itemBuilder: (context, index) => const AbProductCardHorizontal()),
-                  )
+                      itemBuilder: (context, index) => const AbProductCardHorizontal(),
+                    ),
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

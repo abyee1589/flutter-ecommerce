@@ -4,13 +4,13 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbCircularIcon extends StatelessWidget {
   const AbCircularIcon({
-    super.key, 
-    this.width, 
-    this.height, 
-    this.size, 
-    required this.icon, 
-    this.color, 
-    this.backgroundColor, 
+    super.key,
+    this.width,
+    this.height,
+    this.size,
+    required this.icon,
+    this.color,
+    this.backgroundColor,
     this.onPressed,
   });
 
@@ -28,14 +28,16 @@ class AbCircularIcon extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         color: backgroundColor != null
-          ? backgroundColor! 
-          : dark 
-            ? AbColors.black.withOpacity(0.9) 
+            ? backgroundColor!
+            : dark
+            ? AbColors.black.withOpacity(0.9)
             : (AbColors.white.withOpacity(0.9)),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: IconButton(onPressed: onPressed, icon: Icon(icon, color: color, size: size) ),
-    
+      child: IconButton(
+        onPressed: onPressed,
+        icon: Icon(icon, color: color, size: size),
+      ),
     );
   }
 }

@@ -16,23 +16,21 @@ class FavouriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AbAppBar(
-        title: Text('Wishlist', style: Theme.of(context).textTheme.headlineMedium,),
-        actions: [
-          AbCircularIcon( 
-            icon: Iconsax.add, 
-            onPressed: () => Get.to(() => const HomeScreen())
-          )
-        ],
+        title: Text('Wishlist', style: Theme.of(context).textTheme.headlineMedium),
+        actions: [AbCircularIcon(icon: Iconsax.add, onPressed: () => Get.to(() => const HomeScreen()))],
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             children: [
-              AbGridLayout(itemCount: 6, itemBuilder: (_, index) => AbProductCardVertical(product: ProductModel.empty(),))
-            
-          ],),
+              AbGridLayout(
+                itemCount: 6,
+                itemBuilder: (_, index) => AbProductCardVertical(product: ProductModel.empty()),
+              ),
+            ],
           ),
+        ),
       ),
     );
   }

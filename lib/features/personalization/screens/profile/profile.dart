@@ -32,15 +32,9 @@ class ProfileScreen extends StatelessWidget {
                     /// Profile picture
                     Obx(() {
                       final networkImage = controller.user.value.profilePicture;
-                      final image = networkImage.isNotEmpty
-                          ? networkImage
-                          : AbImages.user;
+                      final image = networkImage.isNotEmpty ? networkImage : AbImages.user;
                       return controller.imageUploading.value == true
-                          ? const AbShimmerEffect(
-                              width: 80,
-                              height: 80,
-                              radius: 80,
-                            )
+                          ? const AbShimmerEffect(width: 80, height: 80, radius: 80)
                           : AbCircularImage(
                               imageUrl: image,
                               width: 80,
@@ -72,11 +66,7 @@ class ProfileScreen extends StatelessWidget {
                 value: controller.user.value.fullName,
                 onPressed: (() => Get.to(() => const ChangeName())),
               ),
-              AbProfileMenu(
-                title: 'username',
-                value: controller.user.value.username,
-                onPressed: () {},
-              ),
+              AbProfileMenu(title: 'username', value: controller.user.value.username, onPressed: () {}),
 
               const SizedBox(height: AbSizes.spaceBtwItems),
               const Divider(),
@@ -86,28 +76,11 @@ class ProfileScreen extends StatelessWidget {
               const AbSectionHeading(title: 'Personal Information'),
               const SizedBox(height: AbSizes.spaceBtwItems),
 
-              AbProfileMenu(
-                title: 'User 10',
-                value: controller.user.value.id,
-                icon: Iconsax.copy,
-                onPressed: () {},
-              ),
-              AbProfileMenu(
-                title: 'Email',
-                value: controller.user.value.email,
-                onPressed: () {},
-              ),
-              AbProfileMenu(
-                title: 'Phone Number',
-                value: controller.user.value.phoneNumber,
-                onPressed: () {},
-              ),
+              AbProfileMenu(title: 'User 10', value: controller.user.value.id, icon: Iconsax.copy, onPressed: () {}),
+              AbProfileMenu(title: 'Email', value: controller.user.value.email, onPressed: () {}),
+              AbProfileMenu(title: 'Phone Number', value: controller.user.value.phoneNumber, onPressed: () {}),
               AbProfileMenu(title: 'Gender', value: 'Male', onPressed: () {}),
-              AbProfileMenu(
-                title: 'Date of Birth',
-                value: '15 May, 1991',
-                onPressed: () {},
-              ),
+              AbProfileMenu(title: 'Date of Birth', value: '15 May, 1991', onPressed: () {}),
 
               const Divider(),
               const SizedBox(height: AbSizes.spaceBtwItems),
@@ -115,10 +88,7 @@ class ProfileScreen extends StatelessWidget {
               Center(
                 child: TextButton(
                   onPressed: () => controller.deleteAccountWarningPopup(),
-                  child: const Text(
-                    'Close Account',
-                    style: TextStyle(color: Colors.red),
-                  ),
+                  child: const Text('Close Account', style: TextStyle(color: Colors.red)),
                 ),
               ),
             ],

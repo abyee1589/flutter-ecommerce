@@ -9,12 +9,7 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class BrandCard extends StatelessWidget {
-  const BrandCard({
-    super.key,
-    required this.showBoarder,
-    required this.brand,
-    this.onTap,
-  });
+  const BrandCard({super.key, this.showBoarder = false, required this.brand, this.onTap});
 
   final bool showBoarder;
   final void Function()? onTap;
@@ -27,7 +22,7 @@ class BrandCard extends StatelessWidget {
       onTap: onTap,
       child: AbRoundedContainer(
         padding: const EdgeInsets.all(AbSizes.sm),
-        showBorder: true,
+        showBorder: false,
         backgroundColor: Colors.transparent,
         child: Row(
           children: [
@@ -48,10 +43,7 @@ class BrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AbBrandTextWithVerifiedIcon(
-                    title: brand.name,
-                    brandTextSize: TextSizes.large,
-                  ),
+                  AbBrandTextWithVerifiedIcon(title: brand.name, brandTextSize: TextSizes.large),
                   Text(
                     '${brand.productsCount ?? 0} Products',
                     overflow: TextOverflow.ellipsis,

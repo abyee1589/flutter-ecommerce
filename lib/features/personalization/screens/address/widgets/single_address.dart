@@ -6,12 +6,9 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbSingleAddress extends StatelessWidget {
-  const AbSingleAddress({
-    super.key,
-    required this.selectedAddress
-  });
+  const AbSingleAddress({super.key, required this.selectedAddress});
 
-    final bool selectedAddress;
+  final bool selectedAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,11 @@ class AbSingleAddress extends StatelessWidget {
       width: double.infinity,
       showBorder: true,
       backgroundColor: selectedAddress ? AbColors.primary.withOpacity(0.8) : Colors.transparent,
-      borderColor: selectedAddress ? Colors.transparent : dark ? AbColors.darkerGrey : AbColors.grey,
+      borderColor: selectedAddress
+          ? Colors.transparent
+          : dark
+          ? AbColors.darkerGrey
+          : AbColors.grey,
       margin: const EdgeInsets.only(bottom: AbSizes.spaceBtwItems),
       child: Stack(
         children: [
@@ -30,8 +31,12 @@ class AbSingleAddress extends StatelessWidget {
             top: 0,
             child: Icon(
               selectedAddress ? Iconsax.tick_circle : null,
-              color: selectedAddress ? dark ? AbColors.light : AbColors.dark : null,
-              ),
+              color: selectedAddress
+                  ? dark
+                        ? AbColors.light
+                        : AbColors.dark
+                  : null,
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,13 +49,10 @@ class AbSingleAddress extends StatelessWidget {
               ),
               const SizedBox(height: AbSizes.sm / 2),
               const Text('+251-915-948189', maxLines: 1, overflow: TextOverflow.ellipsis),
-              const Text(
-                'Melka Gefersa, Sheggar, Addis Ababa, Ethiopia',
-                softWrap: true,
-              ),
+              const Text('Melka Gefersa, Sheggar, Addis Ababa, Ethiopia', softWrap: true),
               const SizedBox(height: AbSizes.sm / 2),
             ],
-          )
+          ),
         ],
       ),
     );

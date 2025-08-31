@@ -7,10 +7,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 // import 'package:flutter_web_plugins/url_strategy.dart';
 
-Future<void> main() async{
+Future<void> main() async {
   /// Widgets Binding
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   /// GetX Local Storage
   await GetStorage.init();
 
@@ -18,8 +18,7 @@ Future<void> main() async{
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   /// Initialize Firebase and Authentication History
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-  .then((FirebaseApp value) {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((FirebaseApp value) {
     Get.put(AuthenticationRepository());
   });
   //  setUrlStrategy(const PathUrlStrategy());

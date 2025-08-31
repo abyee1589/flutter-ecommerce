@@ -34,10 +34,10 @@ class ReAuthLoginForm extends StatelessWidget {
                     controller: controller.verifyPassword,
                     validator: (value) => AbValidator.validateEmptyText('Password', value),
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Iconsax.password_check), 
+                      prefixIcon: const Icon(Iconsax.password_check),
                       labelText: AbTexts.password,
                       suffixIcon: IconButton(
-                        onPressed: () => controller.hidePassword.value = !controller.hidePassword.value, 
+                        onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
                         icon: const Icon(Iconsax.eye_slash),
                       ),
                     ),
@@ -46,11 +46,13 @@ class ReAuthLoginForm extends StatelessWidget {
                 const SizedBox(height: AbSizes.spaceBtwSections),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: () => controller.reAuthenticateEmailAndPasswordUser(), child: const Text('Verify')),
-                )
-
+                  child: ElevatedButton(
+                    onPressed: () => controller.reAuthenticateEmailAndPasswordUser(),
+                    child: const Text('Verify'),
+                  ),
+                ),
               ],
-            )
+            ),
           ),
         ),
       ),

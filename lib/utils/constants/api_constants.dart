@@ -1,5 +1,3 @@
-
-
 class APIConstants {
-    static const String abSecurityKey = 'dhghhgirgijdkjgihgihigigfiwfdd';
+  static const String abSecurityKey = 'dhghhgirgijdkjgihgihigigfiwfdd';
 }

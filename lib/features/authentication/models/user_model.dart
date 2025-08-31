@@ -33,15 +33,8 @@ class UserModel {
   // String get formattedPhoneNumber => AbFormatter.formatPhoneNumber(phoneNumber);
 
   /// Static function to create empty user model
-  static UserModel empty() => UserModel(
-        id: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-        username: '',
-        profilePicture: '',
-      );
+  static UserModel empty() =>
+      UserModel(id: '', firstName: '', lastName: '', email: '', phoneNumber: '', username: '', profilePicture: '');
 
   /// Convert user model to JSON format to store data in firebase
   Map<String, dynamic> toJson() {
@@ -55,7 +48,7 @@ class UserModel {
       'profilePicture': profilePicture,
     };
   }
-  
+
   /// Factory method to create user model from firebase document snapshot
   factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data();

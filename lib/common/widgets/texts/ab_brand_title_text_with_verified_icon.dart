@@ -7,15 +7,15 @@ import 'package:iconsax/iconsax.dart';
 
 class AbBrandTextWithVerifiedIcon extends StatelessWidget {
   const AbBrandTextWithVerifiedIcon({
-    super.key, 
-    required this.title, 
-    this.maxLines = 1, 
-    this.textColor, 
-    this.iconColor = AbColors.primary, 
-    this.textAlign = TextAlign.center, 
+    super.key,
+    required this.title,
+    this.maxLines = 1,
+    this.textColor,
+    this.iconColor = AbColors.primary,
+    this.textAlign = TextAlign.center,
     this.brandTextSize = TextSizes.small,
   });
-  
+
   final String title;
   final int maxLines;
   final Color? textColor, iconColor;
@@ -29,16 +29,16 @@ class AbBrandTextWithVerifiedIcon extends StatelessWidget {
       children: [
         Flexible(
           child: AbBrandTitleText(
-            title: title, 
+            title: title,
             textAlign: textAlign,
-            color: textColor, 
-            maxLines: maxLines, 
+            color: textColor,
+            maxLines: maxLines,
             brandTextSize: brandTextSize,
           ),
         ),
         const SizedBox(width: AbSizes.xs),
-        const Icon(Iconsax.verify5, color: AbColors.primary, size: AbSizes.iconXs,)
+        const Icon(Iconsax.verify5, color: AbColors.primary, size: AbSizes.iconXs),
       ],
     );
-  } 
+  }
 }

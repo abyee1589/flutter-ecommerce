@@ -1,7 +1,5 @@
 class AbTexts {
-
   // GLOBAL texts
-
 
   // OnBoarding texts
   static const String onBoardingTitle1 = 'Choose your product';
@@ -9,7 +7,8 @@ class AbTexts {
   static const String onBoardingTitle3 = 'Deliver at your door step';
 
   static const String onBoardingSubTitle1 = 'Welcome a to world of limitless choises - Your perfect product awaits';
-  static const String onBoardingSubTitle2 = 'For seamless transactions, choose your payment path - Your convenience, our priority!';
+  static const String onBoardingSubTitle2 =
+      'For seamless transactions, choose your payment path - Your convenience, our priority!';
   static const String onBoardingSubTitle3 = 'From our doorstep to yours - swift, secure and contactless delivery!';
 
   // Authentication form texts
@@ -30,17 +29,19 @@ class AbTexts {
   static const String resendEmail = 'Resend Email';
   static const String resendEmailIn = 'Resend Email In';
 
-
   // Authentication Heading texts
   static const String loginTitle = 'Welcome Back,';
   static const String loginSubTile = 'Discover litiless choices and onmatches convinience.';
   static const String signupTtle = 'Let\'s createe your account';
   static const String forgetPasswordTitle = 'Forgot Password';
-  static const String forgetPasswordSubTitle = 'Don\'t worry sometimes google can forget too, enter your emaila and we will send you a password reset link.';
+  static const String forgetPasswordSubTitle =
+      'Don\'t worry sometimes google can forget too, enter your emaila and we will send you a password reset link.';
   static const String changeYourPasswordTitle = 'Password Reset Email Sent.';
-  static const String changeYourPasswordSubTitle = 'Your account security is our priority, We have sent you a secure link to safely change your password and keep your account protected.';
+  static const String changeYourPasswordSubTitle =
+      'Your account security is our priority, We have sent you a secure link to safely change your password and keep your account protected.';
   static const String confirmEmail = 'Verify Your Email Address';
-  static const String confirmEmailSubTItle = 'Congratulations! Your Account Awaits: Verify your email to start shopping and experience a world of unreviled basis and perosonalized offer!';
+  static const String confirmEmailSubTItle =
+      'Congratulations! Your Account Awaits: Verify your email to start shopping and experience a world of unreviled basis and perosonalized offer!';
   static const String and = 'and';
   static const String submit = 'Submit';
   static const String abContinue = 'continue';

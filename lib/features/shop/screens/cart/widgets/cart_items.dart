@@ -5,10 +5,7 @@ import 'package:flutter_app/features/shop/screens/cart/add_remove_button.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 
 class AbCartItems extends StatelessWidget {
-  const AbCartItems({
-    super.key, 
-    this.showActionButtons = true,
-  });
+  const AbCartItems({super.key, this.showActionButtons = true});
   final bool showActionButtons;
 
   @override
@@ -19,34 +16,31 @@ class AbCartItems extends StatelessWidget {
       separatorBuilder: (_, _) => const SizedBox(height: AbSizes.spaceBtwSections),
       itemBuilder: (_, index) => Column(
         children: [
-    
           /// Cart Item
           const AbCartItem(),
-          if(showActionButtons) const SizedBox(height: AbSizes.spaceBtwItems),
-    
+          if (showActionButtons) const SizedBox(height: AbSizes.spaceBtwItems),
+
           /// Add Remove Button Row with Item Price
-          if(showActionButtons)
+          if (showActionButtons)
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
-      
                     /// Extra space
                     SizedBox(width: 70),
-      
+
                     /// Add Remove Buttons
                     AbProductQuantityWithAddRemoveButton(),
                   ],
                 ),
-      
+
                 /// Product total price
-                AbProductPriceText(price: '256')
+                AbProductPriceText(price: '256'),
               ],
             ),
         ],
-      ), 
+      ),
     );
   }
 }
-

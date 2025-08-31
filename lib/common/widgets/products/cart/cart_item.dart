@@ -8,15 +8,14 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbCartItem extends StatelessWidget {
-  const AbCartItem({
-    super.key});
+  const AbCartItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
     return Row(
       children: [
-        /// Image 
+        /// Image
         AbRoundedImage(
           imageUrl: AbImages.productImage1,
           width: 60,
@@ -25,7 +24,7 @@ class AbCartItem extends StatelessWidget {
           backgroundColor: dark ? AbColors.darkerGrey : AbColors.light,
         ),
         const SizedBox(width: AbSizes.spaceBtwItems),
-    
+
         /// Title, Price & Size
         Expanded(
           child: Column(
@@ -42,11 +41,11 @@ class AbCartItem extends StatelessWidget {
                     TextSpan(text: 'Size', style: Theme.of(context).textTheme.bodySmall),
                     TextSpan(text: 'UK 08', style: Theme.of(context).textTheme.bodyLarge),
                   ],
-                )
+                ),
               ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

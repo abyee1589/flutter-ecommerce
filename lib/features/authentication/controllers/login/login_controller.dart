@@ -38,10 +38,7 @@ class LoginController extends GetxController {
   Future<void> emailAndPasswordSignIn() async {
     try {
       /// Open loading
-      AbFullScreenLoader.openLoadingDialog(
-        'Logging you in...',
-        AbImages.lottieAnimation,
-      );
+      AbFullScreenLoader.openLoadingDialog('Logging you in...', AbImages.lottieAnimation);
 
       /// Check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
@@ -63,8 +60,10 @@ class LoginController extends GetxController {
       }
 
       /// Login user using email and password
-      final userCredential = await AuthenticationRepository.instance
-          .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(
+        email.text.trim(),
+        password.text.trim(),
+      );
 
       /// Fetch the user's detail
       await UserController.instance.fetchUserRecord();
@@ -84,25 +83,18 @@ class LoginController extends GetxController {
   Future<void> googleSignIn() async {
     try {
       /// Open loading
-      AbFullScreenLoader.openLoadingDialog(
-        'Logging you in...',
-        AbImages.lottieAnimation,
-      );
+      AbFullScreenLoader.openLoadingDialog('Logging you in...', AbImages.lottieAnimation);
 
       /// Check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         AbFullScreenLoader.stopLoading();
-        AbLoaders.errorSnackBar(
-          title: 'No Internet',
-          message: 'Please check your connection and try again.',
-        );
+        AbLoaders.errorSnackBar(title: 'No Internet', message: 'Please check your connection and try again.');
         return;
       }
 
       /// Login user using email and password
-      final userCredential = await AuthenticationRepository.instance
-          .loginInWithGoogle();
+      final userCredential = await AuthenticationRepository.instance.loginInWithGoogle();
 
       /// Remove loader
       AbFullScreenLoader.stopLoading();

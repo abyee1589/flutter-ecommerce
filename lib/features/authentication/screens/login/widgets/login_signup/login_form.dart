@@ -10,9 +10,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbLoginForm extends StatelessWidget {
-  const AbLoginForm({
-    super.key,
-  });
+  const AbLoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,86 +19,89 @@ class AbLoginForm extends StatelessWidget {
       key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: AbSizes.spaceBtwSections),
-          child: Column(
-            children: [
+        child: Column(
+          children: [
+            /// Email
+            TextFormField(
+              controller: controller.email,
+              validator: (value) => AbValidator.validateEmail(value),
+              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.direct_right), labelText: AbTexts.email),
+            ),
+            const SizedBox(height: AbSizes.spaceBtwInputFields),
 
-              /// Email
-              TextFormField(
-                controller: controller.email,
-                validator: (value) => AbValidator.validateEmail(value),
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Iconsax.direct_right,), 
-                  labelText: AbTexts.email,
-                ),
-              ),
-              const SizedBox(height: AbSizes.spaceBtwInputFields),
+            /// Password
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) => AbValidator.validatePassword(value),
+                obscureText: controller.hidePassword.value,
 
-              /// Password
-              Obx(
-                () => TextFormField(
-                  controller: controller.password,
-                  validator: (value) => AbValidator.validatePassword(value),
-                  obscureText: controller.hidePassword.value,  /// Observes the password to show or hide it
-                  decoration: InputDecoration(
-                    labelText: AbTexts.password,
-                    prefixIcon: const Icon(Iconsax.password_check),
-                    suffixIcon: IconButton(
-                      onPressed: () => controller.hidePassword.value = !controller.hidePassword.value, 
-                      icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye))
+                /// Observes the password to show or hide it
+                decoration: InputDecoration(
+                  labelText: AbTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                    icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye),
                   ),
                 ),
               ),
-              const SizedBox(height: AbSizes.spaceBtwInputFields / 2),
+            ),
+            const SizedBox(height: AbSizes.spaceBtwInputFields / 2),
 
-              /// Remeber me and Forget Password Button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    children: [
-
-                      /// Remember me
-                      Obx(
-                        () =>  Checkbox(
-                          value: controller.rememberMe.value, 
-                          onChanged: ((value) => controller.rememberMe.value = !controller.rememberMe.value)
-                        ),
+            /// Remeber me and Forget Password Button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  children: [
+                    /// Remember me
+                    Obx(
+                      () => Checkbox(
+                        value: controller.rememberMe.value,
+                        onChanged: ((value) => controller.rememberMe.value = !controller.rememberMe.value),
                       ),
-                      const Text(AbTexts.rememberMe),
-                    ],
-                  ),
-
-                  /// Forget Password Button
-                  TextButton(
-                    onPressed: () => Get.to(() => const ForgetPassword(image: AbImages.onBoardingImage1, title: AbTexts.forgetPassword, subTitle: AbTexts.abContinue)), 
-                    child: const Text(AbTexts.forgetPassword)
-                  )
-                ],
-              ),
-              const SizedBox(height: AbSizes.spaceBtwSections),
-
-              /// Signin Button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => controller.emailAndPasswordSignIn(), 
-                  child: const Text(AbTexts.signIn)
-                  ),
+                    ),
+                    const Text(AbTexts.rememberMe),
+                  ],
                 ),
-              const SizedBox(height: AbSizes.spaceBtwItems),
 
-              /// Signup Button
-              SizedBox(
-                width: double.infinity,
-                child: OutlinedButton(
-                  onPressed: () => Get.to(() => const SignupScreen()), 
-                  child: const Text(AbTexts.createAccount)
+                /// Forget Password Button
+                TextButton(
+                  onPressed: () => Get.to(
+                    () => const ForgetPassword(
+                      image: AbImages.onBoardingImage1,
+                      title: AbTexts.forgetPassword,
+                      subTitle: AbTexts.abContinue,
+                    ),
+                  ),
+                  child: const Text(AbTexts.forgetPassword),
                 ),
+              ],
+            ),
+            const SizedBox(height: AbSizes.spaceBtwSections),
+
+            /// Signin Button
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => controller.emailAndPasswordSignIn(),
+                child: const Text(AbTexts.signIn),
               ),
-            ],
-          )
-        )
+            ),
+            const SizedBox(height: AbSizes.spaceBtwItems),
+
+            /// Signup Button
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () => Get.to(() => const SignupScreen()),
+                child: const Text(AbTexts.createAccount),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-

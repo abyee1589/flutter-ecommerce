@@ -13,8 +13,7 @@ class AbCategoryShimmer extends StatelessWidget {
         shrinkWrap: true,
         itemCount: itemCount,
         scrollDirection: Axis.horizontal,
-        separatorBuilder: (_, _) =>
-            const SizedBox(width: AbSizes.spaceBtwItems),
+        separatorBuilder: (_, _) => const SizedBox(width: AbSizes.spaceBtwItems),
         itemBuilder: (_, _) {
           return const Column(
             children: [

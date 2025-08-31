@@ -4,11 +4,10 @@ import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
-
 class AbFullScreenLoader {
   static openLoadingDialog(String text, String animation) {
     showDialog(
-      context: Get.overlayContext!, 
+      context: Get.overlayContext!,
       barrierDismissible: false,
       builder: (_) => PopScope(
         canPop: false,
@@ -19,18 +18,15 @@ class AbFullScreenLoader {
           child: Column(
             children: [
               const SizedBox(height: 250),
-               AbAnimationLoaderWidget(text: text, animation: animation, showAction: true)
+              AbAnimationLoaderWidget(text: text, animation: animation, showAction: true),
             ],
           ),
-        )
-      )
+        ),
+      ),
     );
   }
 
-  static stopLoading(){
+  static stopLoading() {
     Navigator.of(Get.overlayContext!).pop();
   }
-
-  
 }
-

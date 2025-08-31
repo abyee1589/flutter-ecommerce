@@ -4,7 +4,7 @@ class AbBottomSheetTheme {
   const AbBottomSheetTheme._();
 
   static BottomSheetThemeData lightBottomSheetTheme = BottomSheetThemeData(
-    showDragHandle: true, 
+    showDragHandle: true,
     backgroundColor: Colors.white,
     modalBackgroundColor: Colors.white,
     constraints: const BoxConstraints(minWidth: double.infinity),
@@ -12,7 +12,7 @@ class AbBottomSheetTheme {
   );
 
   static BottomSheetThemeData darkBottomSheetTheme = BottomSheetThemeData(
-    showDragHandle: true, 
+    showDragHandle: true,
     backgroundColor: Colors.black,
     modalBackgroundColor: Colors.black,
     constraints: const BoxConstraints(minWidth: double.infinity),

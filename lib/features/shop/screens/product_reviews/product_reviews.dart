@@ -11,37 +11,33 @@ class ProductReviewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AbAppBar(
-        title: Text('Reviews & Ratings'),
-        showBackArrow: true,
-      ),
+      appBar: const AbAppBar(title: Text('Reviews & Ratings'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Reviews and ratings are verified and they are from the people who use the same product that you use!'),
+              const Text(
+                'Reviews and ratings are verified and they are from the people who use the same product that you use!',
+              ),
               const SizedBox(height: AbSizes.spaceBtwItems),
 
               /// Overall Product Ratings
               const AbOverallProductRating(),
-              const AbRatingBarIndicator(rating: 3.5,),
+              const AbRatingBarIndicator(rating: 3.5),
               Text('12, 611', style: Theme.of(context).textTheme.bodySmall),
               const SizedBox(height: AbSizes.spaceBtwSections),
 
-              /// User review list 
+              /// User review list
               const UserReviewCard(),
               const UserReviewCard(),
               const UserReviewCard(),
               const UserReviewCard(),
             ],
           ),
-          ),
+        ),
       ),
     );
   }
 }
-
-
-

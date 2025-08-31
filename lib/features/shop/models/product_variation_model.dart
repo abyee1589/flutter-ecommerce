@@ -1,5 +1,3 @@
-
-
 class ProductVariationModel {
   final String id;
   int stock;
@@ -23,7 +21,7 @@ class ProductVariationModel {
 
   static ProductVariationModel empty() => ProductVariationModel(id: '', attributeValues: {});
 
-    Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'Id': id,
       'Image': image,
@@ -38,14 +36,14 @@ class ProductVariationModel {
 
   factory ProductVariationModel.fromJson(Map<String, dynamic> document) {
     final data = document;
-    if(data.isEmpty) return ProductVariationModel.empty();
+    if (data.isEmpty) return ProductVariationModel.empty();
     return ProductVariationModel(
-      id: data['Id'] ?? '', 
+      id: data['Id'] ?? '',
       price: double.parse((data['Price'] ?? 0.0).toString()),
-      sku: data['SKU'] ?? '', 
+      sku: data['SKU'] ?? '',
       stock: data['Stock'] ?? 0,
       salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
-      image: data['Image'] ?? '', 
+      image: data['Image'] ?? '',
       attributeValues: Map<String, String>.from(data['AttriuteValues']),
     );
   }

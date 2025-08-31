@@ -4,7 +4,7 @@ class AbAppBarTheme {
   AbAppBarTheme._();
 
   static const lightAppBarTheme = AppBarTheme(
-    elevation: 0, 
+    elevation: 0,
     centerTitle: false,
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
@@ -15,7 +15,7 @@ class AbAppBarTheme {
   );
 
   static const darkAppBarTheme = AppBarTheme(
-    elevation: 0, 
+    elevation: 0,
     centerTitle: false,
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,

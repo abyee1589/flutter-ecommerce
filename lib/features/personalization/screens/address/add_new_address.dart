@@ -17,35 +17,53 @@ class AddNewAddressScreen extends StatelessWidget {
             child: Column(
               children: [
                 TextFormField(
-                  decoration: const InputDecoration(prefixIcon: Icon(Iconsax.user,), label: Text('Name')),
+                  decoration: const InputDecoration(prefixIcon: Icon(Iconsax.user), label: Text('Name')),
                 ),
                 const SizedBox(height: AbSizes.spaceBtwInputFields),
                 TextFormField(
-                  decoration: const InputDecoration(prefixIcon: Icon(Iconsax.mobile,), label: Text('Phone Number')),
+                  decoration: const InputDecoration(prefixIcon: Icon(Iconsax.mobile), label: Text('Phone Number')),
                 ),
                 const SizedBox(height: AbSizes.spaceBtwInputFields),
                 Row(
                   children: [
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_31,), label: Text('Street')))),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_31), label: Text('Street')),
+                      ),
+                    ),
                     const SizedBox(width: AbSizes.spaceBtwInputFields),
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.code,), label: Text('Postal Code')))),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: const InputDecoration(prefixIcon: Icon(Iconsax.code), label: Text('Postal Code')),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: AbSizes.spaceBtwInputFields),
                 Row(
                   children: [
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building,), label: Text('City')))),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building), label: Text('City')),
+                      ),
+                    ),
                     const SizedBox(width: AbSizes.spaceBtwInputFields),
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.activity,), label: Text('State')))),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: const InputDecoration(prefixIcon: Icon(Iconsax.activity), label: Text('State')),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: AbSizes.spaceBtwInputFields),
-                TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building,), label: Text('Country'))),
+                TextFormField(
+                  decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building), label: Text('Country')),
+                ),
                 const SizedBox(height: AbSizes.spaceBtwInputFields * 2),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: (){}, child: const Text('Save')),
-                )
+                  child: ElevatedButton(onPressed: () {}, child: const Text('Save')),
+                ),
               ],
             ),
           ),

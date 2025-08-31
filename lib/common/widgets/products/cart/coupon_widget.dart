@@ -5,10 +5,7 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbCouponCode extends StatelessWidget {
-  const AbCouponCode({
-    super.key,
-});
-
+  const AbCouponCode({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +24,16 @@ class AbCouponCode extends StatelessWidget {
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 disabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none
+                errorBorder: InputBorder.none,
               ),
             ),
           ),
-    
+
           /// Button
           SizedBox(
-            width: 80, 
+            width: 80,
             child: ElevatedButton(
-              onPressed: (){},
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                 foregroundColor: dark ? AbColors.white.withOpacity(0.5) : AbColors.dark.withOpacity(0.5),
                 backgroundColor: Colors.grey.withOpacity(0.1),
@@ -44,7 +41,7 @@ class AbCouponCode extends StatelessWidget {
               ),
               child: const Text('Apply'),
             ),
-          )
+          ),
         ],
       ),
     );

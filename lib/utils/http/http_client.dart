@@ -32,9 +32,7 @@ class AbHttpHelper {
 
   // DELETE request
   static Future<Map<String, dynamic>> delete(String endpoint) async {
-    final response = await http.delete(
-      Uri.parse('$_baseUrl/$endpoint'),
-    );
+    final response = await http.delete(Uri.parse('$_baseUrl/$endpoint'));
     return _handleResponse(response);
   }
 

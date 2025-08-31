@@ -6,7 +6,6 @@ import 'package:flutter_app/utils/device/device_utility.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-
 class OnBoardingDotNavigation extends StatelessWidget {
   const OnBoardingDotNavigation({super.key});
 
@@ -15,16 +14,14 @@ class OnBoardingDotNavigation extends StatelessWidget {
     final controller = OnBoardingController.instance;
     final dark = AbHelperFunctions.isDarkMode(context);
     return Positioned(
-            bottom: AbDeviceUtils.getBottomNavigationBarHeight() + 25,
-            left: AbSizes.defaultSpace,
-            child: SmoothPageIndicator(
-              count: 3, 
-              controller: controller.pageController,
-              onDotClicked: controller.dotNavigationClick, 
-              effect: ExpandingDotsEffect(
-                  activeDotColor: dark ? AbColors.light : AbColors.dark, 
-                  dotHeight: 6)),
-            
-          );
+      bottom: AbDeviceUtils.getBottomNavigationBarHeight() + 25,
+      left: AbSizes.defaultSpace,
+      child: SmoothPageIndicator(
+        count: 3,
+        controller: controller.pageController,
+        onDotClicked: controller.dotNavigationClick,
+        effect: ExpandingDotsEffect(activeDotColor: dark ? AbColors.light : AbColors.dark, dotHeight: 6),
+      ),
+    );
   }
 }

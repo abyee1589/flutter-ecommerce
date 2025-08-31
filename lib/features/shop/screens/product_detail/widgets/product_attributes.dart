@@ -41,54 +41,38 @@ class AbProductAttiributes extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              const AbProductTitleText(
-                                title: 'Price',
-                                smallSize: true,
-                              ),
+                              const AbProductTitleText(title: 'Price', smallSize: true),
                               const SizedBox(width: AbSizes.spaceBtwItems),
 
                               /// Actual Price
                               Text(
                                 '\$${controller.getVariationPrice()}',
-                                style: Theme.of(context).textTheme.titleSmall!
-                                    .apply(
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),
                               ),
                               const SizedBox(width: AbSizes.spaceBtwItems),
 
                               /// Sale Price
-                              AbProductPriceText(
-                                price: '\$${controller.getVariationPrice()}',
-                              ),
+                              AbProductPriceText(price: '\$${controller.getVariationPrice()}'),
                             ],
                           ),
 
                           /// Stock
                           Row(
                             children: [
-                              const AbProductTitleText(
-                                title: 'Stock',
-                                smallSize: true,
-                              ),
+                              const AbProductTitleText(title: 'Stock', smallSize: true),
                               const SizedBox(width: AbSizes.spaceBtwItems),
                               Text(
                                 controller.variationStockStatus.value,
-                                style: Theme.of(
-                                  context,
-                                ).textTheme.headlineMedium,
+                                style: Theme.of(context).textTheme.headlineMedium,
                               ),
                             ],
                           ),
 
                           /// Variation Description
                           AbProductTitleText(
-                            title:
-                                controller
-                                    .selectedVariation
-                                    .value
-                                    .description ??
-                                '',
+                            title: controller.selectedVariation.value.description ?? '',
                             smallSize: true,
                             maxLines: 4,
                           ),
@@ -116,15 +100,9 @@ class AbProductAttiributes extends StatelessWidget {
                           spacing: 8,
                           runSpacing: 8,
                           children: attribute.values!.map((attributeValue) {
-                            final isSelected =
-                                controller.selectedAttributes[attribute
-                                    .name!] ==
-                                attributeValue;
+                            final isSelected = controller.selectedAttributes[attribute.name!] == attributeValue;
                             final available = controller
-                                .getAttributesAvailabilityInVariation(
-                                  product.productVariations!,
-                                  attribute.name!,
-                                )
+                                .getAttributesAvailabilityInVariation(product.productVariations!, attribute.name!)
                                 .contains(attributeValue);
                             return AbChoiChip(
                               text: attributeValue,
@@ -132,11 +110,7 @@ class AbProductAttiributes extends StatelessWidget {
                               onSelected: available
                                   ? (isSelected) {
                                       if (isSelected && available) {
-                                        controller.onAttributesSeleceted(
-                                          product,
-                                          attribute.name ?? '',
-                                          attributeValue,
-                                        );
+                                        controller.onAttributesSeleceted(product, attribute.name ?? '', attributeValue);
                                       }
                                     }
                                   : null,

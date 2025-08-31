@@ -24,7 +24,8 @@ class ChangeName extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ///Headings
-            Text('User real name for easy verification. This name will appear on several pages',
+            Text(
+              'User real name for easy verification. This name will appear on several pages',
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: AbSizes.spaceBtwSections),
@@ -52,7 +53,7 @@ class ChangeName extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(onPressed: () => controller.updateUserName(), child: const Text('Save')),
-            )
+            ),
           ],
         ),
       ),

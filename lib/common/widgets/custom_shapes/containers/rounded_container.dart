@@ -5,16 +5,15 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 class AbRoundedContainer extends StatelessWidget {
   const AbRoundedContainer({
     super.key,
-    this.child, 
-    this.width, 
-    this.height, 
-    this.radius = AbSizes.borderRadiusLg, 
+    this.child,
+    this.width,
+    this.height,
+    this.radius = AbSizes.borderRadiusLg,
     this.showBorder = false,
     this.padding,
-    this.margin,  
-    this.backgroundColor = AbColors.white, 
-    this.borderColor = AbColors.borderPrimary, 
-    
+    this.margin,
+    this.backgroundColor = AbColors.white,
+    this.borderColor = AbColors.borderPrimary,
   });
 
   final double? width;
@@ -25,8 +24,7 @@ class AbRoundedContainer extends StatelessWidget {
   final Color borderColor;
   final Color backgroundColor;
   final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry?  margin;
-  
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +39,6 @@ class AbRoundedContainer extends StatelessWidget {
         border: showBorder ? Border.all(color: borderColor) : null,
       ),
       child: child,
-      
     );
   }
 }

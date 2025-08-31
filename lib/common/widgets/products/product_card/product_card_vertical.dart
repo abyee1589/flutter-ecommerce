@@ -17,10 +17,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbProductCardVertical extends StatelessWidget {
-  const AbProductCardVertical({
-    super.key, 
-    required this.product
-  });
+  const AbProductCardVertical({super.key, required this.product});
   final ProductModel product;
 
   @override
@@ -50,7 +47,6 @@ class AbProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? AbColors.dark : AbColors.light,
               child: Stack(
                 children: [
-
                   /// Thubnail image
                   Center(
                     child: AbRoundedImage(
@@ -64,21 +60,25 @@ class AbProductCardVertical extends StatelessWidget {
                   ),
 
                   /// Sale tag
-                  Positioned(
-                    top: 7,
-                    child: AbRoundedContainer(
-                      radius: AbSizes.sm,
-                      backgroundColor: AbColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(horizontal: AbSizes.sm, vertical: AbSizes.xs),
-                      child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black),),
+                  if(salePercentage != null)
+                    Positioned(
+                      top: 7,
+                      child: AbRoundedContainer(
+                        radius: AbSizes.sm,
+                        backgroundColor: AbColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(horizontal: AbSizes.sm, vertical: AbSizes.xs),
+                        child: Text(
+                          '$salePercentage%',
+                          style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black),
+                        ),
+                      ),
                     ),
-                  ),
-      
+
                   /// Favourite Icoon Button
                   const Positioned(
                     top: 0,
                     right: 0,
-                    child: AbCircularIcon(icon: Iconsax.heart5, color: Colors.red)
+                    child: AbCircularIcon(icon: Iconsax.heart5, color: Colors.red),
                   ),
                 ],
               ),
@@ -93,7 +93,7 @@ class AbProductCardVertical extends StatelessWidget {
                 children: [
                   AbProductTitleText(title: product.title, smallSize: true),
                   const SizedBox(height: AbSizes.spaceBtwItems / 2),
-                  AbBrandTextWithVerifiedIcon(title: product.brand!.name,),
+                  AbBrandTextWithVerifiedIcon(title: product.brand!.name),
                 ],
               ),
             ),
@@ -104,19 +104,20 @@ class AbProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                
-                /// Price 
+                /// Price
                 Flexible(
                   child: Column(
                     children: [
-                      if(product.productType == ProductType.single.toString() && product.salePrice > 0)  
-                      Padding(
-                        padding: const EdgeInsets.only(left: AbSizes.sm),
-                        child: Text(
-                          product.price.toString(), 
-                          style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough)
-                        )
-                      ),
+                      if (product.productType == ProductType.single.toString() && product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: AbSizes.sm),
+                          child: Text(
+                            product.price.toString(),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
+                          ),
+                        ),
                       Padding(
                         padding: const EdgeInsets.only(left: AbSizes.sm),
                         child: AbProductPriceText(price: controller.getProductPrice(product)),
@@ -131,13 +132,14 @@ class AbProductCardVertical extends StatelessWidget {
                     color: AbColors.dark,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(AbSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(AbSizes.productImageRadius)
-                      )
+                      bottomRight: Radius.circular(AbSizes.productImageRadius),
+                    ),
                   ),
                   child: const SizedBox(
                     width: AbSizes.iconLg * 1.2,
                     height: AbSizes.iconLg * 1.2,
-                    child: Icon(Iconsax.add, color: AbColors.white,)),
+                    child: Icon(Iconsax.add, color: AbColors.white),
+                  ),
                 ),
               ],
             ),
@@ -147,7 +149,3 @@ class AbProductCardVertical extends StatelessWidget {
     );
   }
 }
-
-
-
-

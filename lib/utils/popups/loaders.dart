@@ -20,18 +20,18 @@ class AbLoaders {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: AbHelperFunctions.isDarkMode(Get.context!)
-              ? AbColors.darkerGrey.withOpacity(0.9) 
-              : AbColors.grey.withOpacity(0.9),
+                ? AbColors.darkerGrey.withOpacity(0.9)
+                : AbColors.grey.withOpacity(0.9),
           ),
           child: Center(child: Text(message, style: Theme.of(Get.context!).textTheme.labelLarge)),
-        )
-      )
+        ),
+      ),
     );
   }
 
   static successSnackBar({required title, message = '', duration = 3}) {
     Get.snackbar(
-      title, 
+      title,
       message,
       isDismissible: true,
       shouldIconPulse: true,
@@ -40,12 +40,13 @@ class AbLoaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10),
-      icon: const Icon(Iconsax.check, color: AbColors.white,)
+      icon: const Icon(Iconsax.check, color: AbColors.white),
     );
   }
+
   static warningSnackBar({required title, message = ''}) {
     Get.snackbar(
-      title, 
+      title,
       message,
       isDismissible: true,
       shouldIconPulse: true,
@@ -54,12 +55,13 @@ class AbLoaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: const Duration(seconds: 3),
       margin: const EdgeInsets.all(20),
-      icon: const Icon(Iconsax.warning_2, color: AbColors.white,)
+      icon: const Icon(Iconsax.warning_2, color: AbColors.white),
     );
   }
+
   static errorSnackBar({required title, message = ''}) {
     Get.snackbar(
-      title, 
+      title,
       message,
       isDismissible: true,
       shouldIconPulse: true,
@@ -68,7 +70,7 @@ class AbLoaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: const Duration(seconds: 3),
       margin: const EdgeInsets.all(20),
-      icon: const Icon(Iconsax.warning_2, color: AbColors.white,)
+      icon: const Icon(Iconsax.warning_2, color: AbColors.white),
     );
   }
 }

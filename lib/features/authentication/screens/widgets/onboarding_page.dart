@@ -10,27 +10,19 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-                body: Column(
-                        children: [
-                          Image(
-                            width: AbHelperFunctions.screenWidth() * 0.8,
-                            height: AbHelperFunctions.screenHeight() * 0.6,
-                            image: AssetImage(image),
-                          ),
-                          const SizedBox(height: AbSizes.md),
-                          Text(
-                            title,
-                            style: Theme.of(context).textTheme.headlineMedium,
-                            textAlign: TextAlign.center
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            subTitle,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                            textAlign: TextAlign.center
-                          ),
-                        ],
-                ),
-          );
-      }
+      body: Column(
+        children: [
+          Image(
+            width: AbHelperFunctions.screenWidth() * 0.8,
+            height: AbHelperFunctions.screenHeight() * 0.6,
+            image: AssetImage(image),
+          ),
+          const SizedBox(height: AbSizes.md),
+          Text(title, style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
+          const SizedBox(height: 10),
+          Text(subTitle, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
+        ],
+      ),
+    );
+  }
 }

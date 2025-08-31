@@ -6,10 +6,10 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 
 class AbVerticalImageText extends StatelessWidget {
   const AbVerticalImageText({
-    super.key, 
-    required this.image, 
-    required this.title, 
-    this.textColor = AbColors.white, 
+    super.key,
+    required this.image,
+    required this.title,
+    this.textColor = AbColors.white,
     this.backgroundColor,
     this.onTap,
     this.isNetworkImage = true,
@@ -30,7 +30,6 @@ class AbVerticalImageText extends StatelessWidget {
         padding: const EdgeInsetsGeometry.only(right: AbSizes.spaceBtwItems),
         child: Column(
           children: [
-            
             /// Circular icon
             AbCircularImage(
               imageUrl: image,
@@ -45,7 +44,8 @@ class AbVerticalImageText extends StatelessWidget {
             /// Text
             SizedBox(
               width: 55,
-              child: Text(title, 
+              child: Text(
+                title,
                 style: Theme.of(context).textTheme.labelMedium!.apply(color: AbColors.white),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -57,5 +57,3 @@ class AbVerticalImageText extends StatelessWidget {
     );
   }
 }
-
-

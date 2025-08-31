@@ -4,10 +4,7 @@ import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
 
 class AbLoginHeader extends StatelessWidget {
-  const AbLoginHeader({
-    super.key,
-    required this.dark,
-  });
+  const AbLoginHeader({super.key, required this.dark});
 
   final bool dark;
 
@@ -16,10 +13,7 @@ class AbLoginHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image(
-          height: 150,
-          image: AssetImage(dark ? AbImages.lightAppLogo : AbImages.darkAppLogo),
-        ),
+        Image(height: 150, image: AssetImage(dark ? AbImages.lightAppLogo : AbImages.darkAppLogo)),
         Text(AbTexts.loginTitle, style: Theme.of(context).textTheme.headlineMedium),
         const SizedBox(height: AbSizes.sm),
         Text(AbTexts.loginSubTile, style: Theme.of(context).textTheme.bodyMedium),

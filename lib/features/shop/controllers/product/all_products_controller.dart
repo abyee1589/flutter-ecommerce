@@ -25,32 +25,32 @@ class AllProductsController extends GetxController {
 
   void sortProducts(String sortOption) {
     selectedSortOption.value = sortOption;
-    switch(sortOption) {
+    switch (sortOption) {
       case 'Name':
-      products.sort((a, b) => a.title.compareTo(b.title));
-      break;
+        products.sort((a, b) => a.title.compareTo(b.title));
+        break;
       case 'Higher Price':
-      products.sort((a, b) => b.price.compareTo(a.price));
-      break;
+        products.sort((a, b) => b.price.compareTo(a.price));
+        break;
       case 'Lower Price':
-      products.sort((a, b) => a.price.compareTo(b.price));
-      break;
+        products.sort((a, b) => a.price.compareTo(b.price));
+        break;
       case 'Newest':
-      products.sort((a, b) => a.date!.compareTo(b.date!));
-      break;
+        products.sort((a, b) => a.date!.compareTo(b.date!));
+        break;
       case 'Sale':
-      products.sort((a, b) {
-        if(b.salePrice > 0){
-          return b.salePrice.compareTo(a.salePrice);
-        } else if(a.salePrice > 0){
-          return -1;
-        } else {
-          return 1;
-        }
-      });
-      break;
+        products.sort((a, b) {
+          if (b.salePrice > 0) {
+            return b.salePrice.compareTo(a.salePrice);
+          } else if (a.salePrice > 0) {
+            return -1;
+          } else {
+            return 1;
+          }
+        });
+        break;
       default:
-      return products.sort((a, b) => a.title.compareTo(b.title));
+        return products.sort((a, b) => a.title.compareTo(b.title));
     }
   }
 

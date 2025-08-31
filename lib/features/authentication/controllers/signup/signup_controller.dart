@@ -10,7 +10,6 @@ import 'package:flutter_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 
-
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
@@ -26,57 +25,57 @@ class SignupController extends GetxController {
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   void signup() async {
-  try {
-    if (!signupFormKey.currentState!.validate()) return;
+    try {
+      if (!signupFormKey.currentState!.validate()) return;
 
-    if (!privacyPolicy.value) {
-      AbLoaders.warningSnackBar(
-        title: 'Accept Privacy Policy',
-        message: 'In order to create account, you must accept the Privacy Policy and Terms of Use'
+      if (!privacyPolicy.value) {
+        AbLoaders.warningSnackBar(
+          title: 'Accept Privacy Policy',
+          message: 'In order to create account, you must accept the Privacy Policy and Terms of Use',
+        );
+        return;
+      }
+
+      AbFullScreenLoader.openLoadingDialog('We are processing your information', AbImages.clothIcon);
+
+      final iConnected = await NetworkManager.instance.isConnected();
+      if (!iConnected) return;
+
+      /// Authenticate the user on the Authentication tab of Firebase
+      final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(
+        email.text.trim(),
+        password.text.trim(),
       );
-      return;
+
+      final username = UserModel.generateUsername('${firstName.text.trim()} ${lastName.text.trim()}');
+      final newUser = UserModel(
+        id: userCredential.user!.uid,
+        firstName: firstName.text.trim(),
+        lastName: lastName.text.trim(),
+        username: username,
+        email: email.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        profilePicture: '',
+      );
+
+      /// Add the user's detail on the Firebase Firestore Database
+      final userRepository = UserRepository.instance;
+      await userRepository.saveUserRecord(newUser);
+
+      /// Fetch the user's detail
+      await UserController.instance.fetchUserRecord();
+
+      AbFullScreenLoader.stopLoading();
+
+      AbLoaders.successSnackBar(
+        title: 'Congratulations',
+        message: 'Your account has been created successfully! Verify your email to continue',
+      );
+
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
+    } catch (e) {
+      AbFullScreenLoader.stopLoading();
+      AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
-
-    AbFullScreenLoader.openLoadingDialog('We are processing your information', AbImages.clothIcon);
-
-    final iConnected = await NetworkManager.instance.isConnected();
-    if (!iConnected) return;
-
-    /// Authenticate the user on the Authentication tab of Firebase
-    final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(
-      email.text.trim(),
-      password.text.trim(),
-    );
-    
-    final username = UserModel.generateUsername('${firstName.text.trim()} ${lastName.text.trim()}');
-    final newUser = UserModel(
-      id: userCredential.user!.uid,
-      firstName: firstName.text.trim(),
-      lastName: lastName.text.trim(),
-      username: username,
-      email: email.text.trim(),
-      phoneNumber: phoneNumber.text.trim(),
-      profilePicture: '',
-    );
-    
-    /// Add the user's detail on the Firebase Firestore Database
-    final userRepository = UserRepository.instance;
-    await userRepository.saveUserRecord(newUser);
-
-    /// Fetch the user's detail
-    await UserController.instance.fetchUserRecord();
-
-    AbFullScreenLoader.stopLoading();
-
-    AbLoaders.successSnackBar(
-      title: 'Congratulations',
-      message: 'Your account has been created successfully! Verify your email to continue',
-    );
-
-    Get.to(() => VerifyEmailScreen(email: email.text.trim()));
-  } catch (e) {
-    AbFullScreenLoader.stopLoading();
-    AbLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
   }
-}
 }

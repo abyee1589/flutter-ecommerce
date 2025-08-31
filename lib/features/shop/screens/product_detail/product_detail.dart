@@ -14,10 +14,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductdetailScreen extends StatelessWidget {
-  const ProductdetailScreen({
-    super.key,
-    required this.product,
-    });
+  const ProductdetailScreen({super.key, required this.product});
 
   final ProductModel product;
   @override
@@ -26,10 +23,8 @@ class ProductdetailScreen extends StatelessWidget {
       bottomNavigationBar: const BottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
-
           /// Product Details
           children: [
-
             /// Product image slider
             AbProductImageSlider(product: product),
 
@@ -38,11 +33,10 @@ class ProductdetailScreen extends StatelessWidget {
               padding: const EdgeInsetsGeometry.only(
                 left: AbSizes.defaultSpace,
                 bottom: AbSizes.defaultSpace,
-                top: AbSizes.defaultSpace
+                top: AbSizes.defaultSpace,
               ),
               child: Column(
                 children: [
-
                   /// Ratings and Share button
                   const AbRatingAndShare(),
 
@@ -50,19 +44,21 @@ class ProductdetailScreen extends StatelessWidget {
                   AbProductMetaData(product: product),
 
                   /// Attributes
-                  if(product.productType == ProductType.variable.toString())  AbProductAttiributes(product: product),
-                    
-                  if(product.productType == ProductType.variable.toString()) const SizedBox(height: AbSizes.spaceBtwSections),
-                      
+                  if (product.productType == ProductType.variable.toString()) AbProductAttiributes(product: product),
+
+                  if (product.productType == ProductType.variable.toString())
+                    const SizedBox(height: AbSizes.spaceBtwSections),
+
                   /// Checkout button
                   SizedBox(
                     width: double.infinity,
-                    child:  ElevatedButton(onPressed: (){}, child: const Text('Checkout'))),
-                    const SizedBox(height: AbSizes.spaceBtwSections),
+                    child: ElevatedButton(onPressed: () {}, child: const Text('Checkout')),
+                  ),
+                  const SizedBox(height: AbSizes.spaceBtwSections),
 
                   /// Description
                   const AbSectionHeading(title: 'Description'),
-                  const SizedBox(height: AbSizes.spaceBtwItems,),
+                  const SizedBox(height: AbSizes.spaceBtwItems),
                   ReadMoreText(
                     product.description ?? '',
                     trimLength: 2,
@@ -89,11 +85,10 @@ class ProductdetailScreen extends StatelessWidget {
                   const SizedBox(height: AbSizes.spaceBtwSections),
                 ],
               ),
-            )   
+            ),
           ],
         ),
       ),
     );
   }
 }
-

@@ -17,29 +17,20 @@ class AbHomeAppBar extends StatelessWidget {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            AbTexts.homeAppbarTitle,
-            style: Theme.of(
-              context,
-            ).textTheme.labelMedium!.apply(color: AbColors.grey),
-          ),
+          Text(AbTexts.homeAppbarTitle, style: Theme.of(context).textTheme.labelMedium!.apply(color: AbColors.grey)),
           Obx(() {
             if (controller.profileLoading.value) {
               return const AbShimmerEffect(width: 80, height: 15);
             } else {
               return Text(
                 controller.user.value.fullName,
-                style: Theme.of(
-                  context,
-                ).textTheme.headlineMedium!.apply(color: AbColors.grey),
+                style: Theme.of(context).textTheme.headlineMedium!.apply(color: AbColors.grey),
               );
             }
           }),
         ],
       ),
-      actions: [
-        AbCartCounterIcon(onPressed: (() {}), iconColor: AbColors.white),
-      ],
+      actions: [AbCartCounterIcon(onPressed: (() {}), iconColor: AbColors.white)],
     );
   }
 }

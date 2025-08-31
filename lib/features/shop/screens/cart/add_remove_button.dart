@@ -21,7 +21,7 @@ class AbProductQuantityWithAddRemoveButton extends StatelessWidget {
           size: AbSizes.md,
           color: dark ? AbColors.white : AbColors.black,
           backgroundColor: dark ? AbColors.darkerGrey : AbColors.light,
-          onPressed: (){}
+          onPressed: () {},
         ),
         const SizedBox(width: AbSizes.spaceBtwItems),
         Text('2', style: Theme.of(context).textTheme.titleSmall),
@@ -33,10 +33,9 @@ class AbProductQuantityWithAddRemoveButton extends StatelessWidget {
           size: AbSizes.md,
           color: AbColors.white,
           backgroundColor: AbColors.primary,
-          onPressed: (){}
+          onPressed: () {},
         ),
       ],
     );
   }
 }
-

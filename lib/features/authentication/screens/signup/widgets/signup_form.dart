@@ -8,9 +8,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbSignupForm extends StatelessWidget {
-  const AbSignupForm({
-    super.key,
-  });
+  const AbSignupForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +24,7 @@ class AbSignupForm extends StatelessWidget {
                   controller: controller.firstName,
                   validator: (value) => AbValidator.validateEmptyText('First Name', value),
                   expands: false,
-                  decoration: const InputDecoration(
-                    labelText: AbTexts.firstName,
-                    prefixIcon: Icon(Iconsax.user),
-                  ),
+                  decoration: const InputDecoration(labelText: AbTexts.firstName, prefixIcon: Icon(Iconsax.user)),
                 ),
               ),
               const SizedBox(width: AbSizes.spaceBtwInputFields),
@@ -38,10 +33,7 @@ class AbSignupForm extends StatelessWidget {
                   controller: controller.lastName,
                   validator: (value) => AbValidator.validateEmptyText('Last Name', value),
                   expands: false,
-                  decoration: const InputDecoration(
-                    labelText: AbTexts.lastName,
-                    prefixIcon: Icon(Iconsax.user),
-                  ),
+                  decoration: const InputDecoration(labelText: AbTexts.lastName, prefixIcon: Icon(Iconsax.user)),
                 ),
               ),
             ],
@@ -50,44 +42,43 @@ class AbSignupForm extends StatelessWidget {
           TextFormField(
             controller: controller.email,
             validator: (value) => AbValidator.validateEmail(value),
-            decoration: const InputDecoration(
-              labelText: AbTexts.email,
-              prefixIcon: Icon(Iconsax.direct),
-            ),
+            decoration: const InputDecoration(labelText: AbTexts.email, prefixIcon: Icon(Iconsax.direct)),
           ),
           const SizedBox(height: AbSizes.spaceBtwInputFields),
           TextFormField(
             controller: controller.phoneNumber,
             validator: (value) => AbValidator.validatePhoneNumber(value),
-            decoration: const InputDecoration(
-              labelText: AbTexts.phoneNumber,
-              prefixIcon: Icon(Iconsax.call),
-            ),
+            decoration: const InputDecoration(labelText: AbTexts.phoneNumber, prefixIcon: Icon(Iconsax.call)),
           ),
           const SizedBox(height: AbSizes.spaceBtwInputFields),
           Obx(
             () => TextFormField(
               controller: controller.password,
               validator: (value) => AbValidator.validatePassword(value),
-              obscureText: controller.hidePassword.value,  /// Observes the password to show or hide it
+              obscureText: controller.hidePassword.value,
+
+              /// Observes the password to show or hide it
               decoration: InputDecoration(
                 labelText: AbTexts.password,
                 prefixIcon: const Icon(Iconsax.password_check),
                 suffixIcon: IconButton(
-                  onPressed: () => controller.hidePassword.value = !controller.hidePassword.value, 
-                  icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye))
+                  onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye),
+                ),
               ),
             ),
           ),
           const SizedBox(height: AbSizes.spaceBtwSections),
           const AbTermsAndConditionsCheckbox(),
           const SizedBox(height: AbSizes.spaceBtwSections),
-    
+
           /// Signup Button
-          SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (() => controller.signup()), child: const Text(AbTexts.createAccount)),)
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(onPressed: (() => controller.signup()), child: const Text(AbTexts.createAccount)),
+          ),
         ],
       ),
     );
   }
 }
-

@@ -14,12 +14,7 @@ class AbBillingPaymentSection extends StatelessWidget {
     final dark = AbHelperFunctions.isDarkMode(context);
     return Column(
       children: [
-        AbSectionHeading(
-          title: 'Payment Methods', 
-          buttonTitle: 'Change', 
-          showActionButton: true,
-          onPressed: (){},
-        ),
+        AbSectionHeading(title: 'Payment Methods', buttonTitle: 'Change', showActionButton: true, onPressed: () {}),
         const SizedBox(height: AbSizes.spaceBtwItems / 2),
         Row(
           children: [
@@ -28,12 +23,12 @@ class AbBillingPaymentSection extends StatelessWidget {
               height: 35,
               backgroundColor: dark ? AbColors.light : AbColors.white,
               padding: const EdgeInsets.all(AbSizes.sm),
-              child: const Image(image: AssetImage(AbImages.paypal), fit: BoxFit.contain,),
+              child: const Image(image: AssetImage(AbImages.paypal), fit: BoxFit.contain),
             ),
             const SizedBox(width: AbSizes.spaceBtwItems / 2),
-            Text('Paypal', style: Theme.of(context).textTheme.bodyLarge,)
-
-        ],)
+            Text('Paypal', style: Theme.of(context).textTheme.bodyLarge),
+          ],
+        ),
       ],
     );
   }

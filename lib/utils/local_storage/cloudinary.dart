@@ -26,9 +26,7 @@ class CloudinaryUpload {
           'file',
           bytes,
           filename: file.name,
-          contentType: mimeTypeData != null
-              ? MediaType(mimeTypeData[0], mimeTypeData[1])
-              : null,
+          contentType: mimeTypeData != null ? MediaType(mimeTypeData[0], mimeTypeData[1]) : null,
         ),
       );
 

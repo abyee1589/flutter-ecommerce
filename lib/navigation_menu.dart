@@ -50,6 +50,4 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [const HomeScreen(), const StoreScreen(), const FavouriteScreen(), const SettingScreen()];
-
-
 }

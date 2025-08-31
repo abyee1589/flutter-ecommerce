@@ -1,36 +1,35 @@
 class AbImages {
+  static const String darkAppLogo = '';
+  static const String lightAppLogo = '';
 
-    static const String darkAppLogo = '';
-    static const String lightAppLogo = '';
+  static const String google = 'images/on_boarding_images/google.png';
+  static const String facebook = 'images/on_boarding_images/facebook.png';
 
-    static const String google = 'images/on_boarding_images/google.png';
-    static const String facebook = 'images/on_boarding_images/facebook.png';
+  static const String onBoardingImage1 = 'images/on_boarding_images/sammyline_searching.gif';
+  static const String onBoardingImage2 = 'images/on_boarding_images/sammyline_searching.gif';
+  static const String onBoardingImage3 = 'images/on_boarding_images/sammyline_delivery.gif';
 
-    static const String onBoardingImage1 = 'images/on_boarding_images/sammyline_searching.gif';
-    static const String onBoardingImage2 = 'images/on_boarding_images/sammyline_searching.gif';
-    static const String onBoardingImage3 = 'images/on_boarding_images/sammyline_delivery.gif';
+  // Animations
+  static const String productdsIllustration = 'images/on_boarding_images/productsIllustration.jpg';
+  static const String productsSaleIllustration = 'images/on_boarding_images/sammyline_searching.gif';
+  static const String productsSuccessIllustraton = 'images/on_boarding_images/sammyline_delivery.gif';
+  static const String deliveredInPlaneIllustration = 'images/on_boarding_images/sammyline_delivery.gif';
+  static const String deliveredEmailIllustration = 'images/on_boarding_images/sammyline_delivery.gif';
+  static const String verifyIllustration = 'images/on_boarding_images/sammyline_delivery.gif';
 
-    // Animations
-    static const String productdsIllustration = 'images/on_boarding_images/productsIllustration.jpg';
-    static const String productsSaleIllustration = 'images/on_boarding_images/sammyline_searching.gif';
-    static const String productsSuccessIllustraton = 'images/on_boarding_images/sammyline_delivery.gif';
-    static const String deliveredInPlaneIllustration = 'images/on_boarding_images/sammyline_delivery.gif';
-    static const String deliveredEmailIllustration = 'images/on_boarding_images/sammyline_delivery.gif';
-    static const String verifyIllustration = 'images/on_boarding_images/sammyline_delivery.gif';
-
-    // Category Icons
-    static const String sportIcon = 'images/icons/categpries/productsIllustration.jpg';
-    static const String clothIcon = 'icons/cloth-icon.png';
-    static const String lottieAnimation = 'images/animations/lottie_animation.json';
-    static const String paypal = 'icons/paypal.png';
-    static const String success = 'icons/SuccessPaymentIcon.png';
-    static const String shoeIcon = 'images/categories/sport-shoes.jpg';
-    static const String cosmeticsIcon = 'images/icons/categpries/sammyline_delivery.gif';
-    static const String animalIcon = 'images/icons/categpries/sammyline_delivery.gif';
-    static const String toyIcon = 'images/icons/categpries/sammyline_delivery.gif';
-    static const String furnitureIcon = 'images/icons/categpries/sammyline_delivery.gif';
-    static const String jewlleryIcon = 'images/icons/categpries/sammyline_delivery.gif';
-    static const String electronicsIcon = 'images/icons/categpries/sammyline_delivery.gif';
+  // Category Icons
+  static const String sportIcon = 'images/icons/categpries/productsIllustration.jpg';
+  static const String clothIcon = 'icons/cloth-icon.png';
+  static const String lottieAnimation = 'images/animations/lottie_animation.json';
+  static const String paypal = 'icons/paypal.png';
+  static const String success = 'icons/SuccessPaymentIcon.png';
+  static const String shoeIcon = 'images/categories/sport-shoes.jpg';
+  static const String cosmeticsIcon = 'images/icons/categpries/sammyline_delivery.gif';
+  static const String animalIcon = 'images/icons/categpries/sammyline_delivery.gif';
+  static const String toyIcon = 'images/icons/categpries/sammyline_delivery.gif';
+  static const String furnitureIcon = 'images/icons/categpries/sammyline_delivery.gif';
+  static const String jewlleryIcon = 'images/icons/categpries/sammyline_delivery.gif';
+  static const String electronicsIcon = 'images/icons/categpries/sammyline_delivery.gif';
 
   /// Banners
   static const String promoBanner1 = 'images/banners/promo-banner-1.jpg';
@@ -40,10 +39,15 @@ class AbImages {
   /// Products
   static const String productImage1 = 'images/products/product-1.jpg';
   static const String productImage2 = 'images/products/product-2.png';
-  static const String nikeLogo = 'images/products/nike_logo.png';
+  
+  /// Brands 
+  static const String nikeLogo = 'images/brands/nike-logo.png';
+  static const String pumaLogo = 'images/brands/puma-logo.png';
+  static const String adidasLogo = 'images/brands/adidas-logo.png';
+  static const String jordanLogo = 'images/brands/jordan-logo.jpg';
+
+
 
   /// User
   static const String user = 'assets/images/user/hacker.png';
- 
-
 }

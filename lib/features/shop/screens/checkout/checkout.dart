@@ -21,14 +21,17 @@ class CheckoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
     return Scaffold(
-      appBar: AbAppBar(showBackArrow: true, title: Text('Order Review', style: Theme.of(context).textTheme.headlineSmall)),
+      appBar: AbAppBar(
+        showBackArrow: true,
+        title: Text('Order Review', style: Theme.of(context).textTheme.headlineSmall),
+      ),
       body: SingleChildScrollView(
-        child: Padding(padding: const EdgeInsets.all(AbSizes.defaultSpace),
+        child: Padding(
+          padding: const EdgeInsets.all(AbSizes.defaultSpace),
           child: Column(
             children: [
-
               ///Items in Cart
-              const AbCartItems(showActionButtons: false,),
+              const AbCartItems(showActionButtons: false),
               const SizedBox(height: AbSizes.spaceBtwSections),
 
               /// Coupon Text Field
@@ -42,7 +45,6 @@ class CheckoutScreen extends StatelessWidget {
                 backgroundColor: dark ? AbColors.black : AbColors.white,
                 child: const Column(
                   children: [
-
                     ///Pricing
                     AbBillingAmountSection(),
                     SizedBox(height: AbSizes.spaceBtwItems),
@@ -50,7 +52,7 @@ class CheckoutScreen extends StatelessWidget {
                     ///Divider
                     Divider(),
                     SizedBox(height: AbSizes.spaceBtwItems),
-                    
+
                     ///Payment Methods
                     AbBillingPaymentSection(),
                     SizedBox(height: AbSizes.spaceBtwItems),
@@ -59,25 +61,27 @@ class CheckoutScreen extends StatelessWidget {
                     ABBillingAddressSection(),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
-      
-       /// Checkout Button
+
+      /// Checkout Button
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(AbSizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () => Get.to(() => SuccessScreen(
-            image: AbImages.success,
-            title: 'Payment Success!',
-            subTitle: 'Your item will be shipped soon!',
-            onPressed: () => Get.offAll(() => const NavigationMenu()),
-           )), 
-          child: const Text('Pay \$256.0')),
+          onPressed: () => Get.to(
+            () => SuccessScreen(
+              image: AbImages.success,
+              title: 'Payment Success!',
+              subTitle: 'Your item will be shipped soon!',
+              onPressed: () => Get.offAll(() => const NavigationMenu()),
+            ),
+          ),
+          child: const Text('Pay \$256.0'),
+        ),
       ),
     );
   }
 }
-

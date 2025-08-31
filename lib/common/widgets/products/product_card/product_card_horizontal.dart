@@ -33,15 +33,13 @@ class AbProductCardHorizontal extends StatelessWidget {
             backgroundColor: dark ? AbColors.dark : AbColors.light,
             child: Stack(
               children: [
-                /// Thubnail image 
+                /// Thubnail image
                 const SizedBox(
-                  // width: 120, 
-                  height: 120, 
-                  child: AbRoundedImage(
-                    imageUrl: AbImages.productImage1, 
-                    applyImageRadius: true,
-                  ),
+                  // width: 120,
+                  height: 120,
+                  child: AbRoundedImage(imageUrl: AbImages.productImage1, applyImageRadius: true),
                 ),
+
                 /// Sale tag
                 Positioned(
                   top: 3,
@@ -49,10 +47,10 @@ class AbProductCardHorizontal extends StatelessWidget {
                     radius: AbSizes.sm,
                     backgroundColor: AbColors.secondary.withOpacity(0.8),
                     padding: const EdgeInsets.symmetric(horizontal: AbSizes.sm, vertical: AbSizes.xs),
-                    child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black),),
+                    child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black)),
                   ),
                 ),
-      
+
                 /// Favourite Icoon Button
                 const Positioned(
                   top: 0,
@@ -61,7 +59,7 @@ class AbProductCardHorizontal extends StatelessWidget {
                 ),
               ],
             ),
-          ), 
+          ),
           SizedBox(
             width: 172,
             child: Padding(
@@ -71,9 +69,9 @@ class AbProductCardHorizontal extends StatelessWidget {
                   const Column(
                     children: [
                       /// Title & Subtitle
-                      AbProductTitleText(title: 'Green Nike Half Sleeves Shirt', smallSize: true,),
+                      AbProductTitleText(title: 'Green Nike Half Sleeves Shirt', smallSize: true),
                       SizedBox(height: AbSizes.spaceBtwItems / 2),
-                      AbBrandTextWithVerifiedIcon(title: 'Nike')
+                      AbBrandTextWithVerifiedIcon(title: 'Nike'),
                     ],
                   ),
                   const Spacer(),
@@ -81,27 +79,28 @@ class AbProductCardHorizontal extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Flexible(child: AbProductPriceText(price: '256.0')),
-                      
+
                       /// Add to Cart
                       Container(
                         decoration: const BoxDecoration(
                           color: AbColors.dark,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(AbSizes.cardRadiusMd),
-                            bottomRight: Radius.circular(AbSizes.productImageRadius)
-                            )
+                            bottomRight: Radius.circular(AbSizes.productImageRadius),
+                          ),
                         ),
                         child: const SizedBox(
                           width: AbSizes.iconLg * 1.2,
                           height: AbSizes.iconLg * 1.2,
-                          child: Icon(Iconsax.add, color: AbColors.white,)),
+                          child: Icon(Iconsax.add, color: AbColors.white),
+                        ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
-          )   
+          ),
         ],
       ),
     );

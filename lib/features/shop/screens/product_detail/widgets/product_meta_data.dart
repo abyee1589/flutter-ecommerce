@@ -19,10 +19,7 @@ class AbProductMetaData extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
     final controller = ProductController.instance;
-    final salePercentage = controller.calculateSalePercentage(
-      product.price,
-      product.salePrice,
-    );
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,35 +30,23 @@ class AbProductMetaData extends StatelessWidget {
             AbRoundedContainer(
               radius: AbSizes.sm,
               backgroundColor: AbColors.secondary.withOpacity(0.8),
-              padding: const EdgeInsets.symmetric(
-                horizontal: AbSizes.sm,
-                vertical: AbSizes.xs,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: AbSizes.sm, vertical: AbSizes.xs),
               child: Text(
                 '$salePercentage%',
-                style: Theme.of(
-                  context,
-                ).textTheme.labelLarge!.apply(color: AbColors.black),
+                style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black),
               ),
             ),
             const SizedBox(width: AbSizes.spaceBtwItems),
 
             ///  Price
-            if (product.productType == ProductType.single.toString() &&
-                product.salePrice > 0)
+            if (product.productType == ProductType.single.toString() && product.salePrice > 0)
               Text(
                 '${product.price}',
-                style: Theme.of(context).textTheme.titleSmall!.apply(
-                  decoration: TextDecoration.lineThrough,
-                ),
+                style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),
               ),
-            if (product.productType == ProductType.single.toString() &&
-                product.salePrice > 0)
+            if (product.productType == ProductType.single.toString() && product.salePrice > 0)
               const SizedBox(width: AbSizes.spaceBtwItems),
-            AbProductPriceText(
-              price: controller.getProductPrice(product),
-              isLarge: true,
-            ),
+            AbProductPriceText(price: controller.getProductPrice(product), isLarge: true),
           ],
         ),
         const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
@@ -75,10 +60,7 @@ class AbProductMetaData extends StatelessWidget {
           children: [
             const AbProductTitleText(title: 'Status'),
             const SizedBox(width: AbSizes.spaceBtwItems),
-            Text(
-              controller.getProductStockStatus(product.stock),
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
+            Text(controller.getProductStockStatus(product.stock), style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
         const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
@@ -90,6 +72,8 @@ class AbProductMetaData extends StatelessWidget {
               imageUrl: product.brand != null ? product.brand!.image : '',
               width: 32,
               height: 32,
+              fit: BoxFit.contain,
+              padding: 0,
               overlayColor: dark ? AbColors.white : AbColors.black,
             ),
             AbBrandTextWithVerifiedIcon(

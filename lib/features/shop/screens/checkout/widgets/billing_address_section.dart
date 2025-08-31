@@ -11,7 +11,7 @@ class ABBillingAddressSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AbSectionHeading(title: 'Shipping Address', buttonTitle: 'Change', onPressed: (){}),
+        AbSectionHeading(title: 'Shipping Address', buttonTitle: 'Change', onPressed: () {}),
         const SizedBox(height: AbSizes.spaceBtwItems / 2),
         Text('Coding with Ab', style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: AbSizes.spaceBtwItems / 2),

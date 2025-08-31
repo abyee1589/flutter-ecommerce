@@ -4,13 +4,7 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AbShimmerEffect extends StatelessWidget {
-  const AbShimmerEffect({
-  super.key, 
-  required this.width, 
-  required this.height, 
-  this.radius = 15, 
-  this.color
-});
+  const AbShimmerEffect({super.key, required this.width, required this.height, this.radius = 15, this.color});
 
   final double width, height, radius;
   final Color? color;

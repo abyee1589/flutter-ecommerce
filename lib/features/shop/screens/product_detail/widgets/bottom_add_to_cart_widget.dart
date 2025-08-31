@@ -12,10 +12,7 @@ class BottomAddToCart extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: AbSizes.defaultSpace / 2,
-        horizontal: AbSizes.defaultSpace
-      ),
+      padding: const EdgeInsets.symmetric(vertical: AbSizes.defaultSpace / 2, horizontal: AbSizes.defaultSpace),
       decoration: BoxDecoration(
         color: dark ? AbColors.darkerGrey : AbColors.light,
         borderRadius: const BorderRadius.only(
@@ -34,7 +31,7 @@ class BottomAddToCart extends StatelessWidget {
                 width: 40,
                 height: 40,
                 color: AbColors.white,
-                ),
+              ),
               const SizedBox(width: AbSizes.spaceBtwItems),
               Text('2', style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(width: AbSizes.spaceBtwItems),
@@ -44,18 +41,18 @@ class BottomAddToCart extends StatelessWidget {
                 width: 40,
                 height: 40,
                 color: AbColors.white,
-                ),
-            ]
+              ),
+            ],
           ),
           ElevatedButton(
-            onPressed: (){}, 
+            onPressed: () {},
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(AbSizes.md),
               backgroundColor: AbColors.black,
-              side: const BorderSide(color: AbColors.black)
+              side: const BorderSide(color: AbColors.black),
             ),
             child: const Text('Add to cart'),
-            )
+          ),
         ],
       ),
     );

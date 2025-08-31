@@ -19,10 +19,7 @@ class BannerRepository extends GetxController {
 
   Future<List<BannerModel>> fetchBanners() async {
     try {
-      final result = await _db
-          .collection('Banners')
-          .where('Active', isEqualTo: true)
-          .get();
+      final result = await _db.collection('Banners').where('Active', isEqualTo: true).get();
       return result.docs.map((doc) => BannerModel.fromSnapshot(doc)).toList();
     } on FirebaseException catch (e) {
       throw AbFirebaseException(e.code).message;
@@ -58,10 +55,7 @@ class BannerRepository extends GetxController {
           final tempDir = await getTemporaryDirectory();
           final tempFile = File('${tempDir.path}/$fileName');
           await tempFile.writeAsBytes(byteData.buffer.asUint8List());
-          url = await cloudinary.uploadFile(
-            XFile(tempFile.path),
-            folderType: 'Banners',
-          );
+          url = await cloudinary.uploadFile(XFile(tempFile.path), folderType: 'Banners');
         }
 
         // Replace asset path with Cloudinary URL

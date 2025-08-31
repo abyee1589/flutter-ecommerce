@@ -17,23 +17,20 @@ class LoginScreen extends StatelessWidget {
     final dark = AbHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
-              child: Padding(
-                padding: AbSpacingStyle.paddingWithAppBarHeight,
-                child: Column(
-                  children: [
-                  /// Log, Title, Sub-title
-                    AbLoginHeader(dark: dark),
-                    const AbLoginForm(),
-                    AbFormDivider(dividerText: AbTexts.orSignInWith.capitalize!),
-                    const SizedBox(height: AbSizes.spaceBtwSections),
-                    const AbSocialButtons(),
-                  ],
-                ),
-              ),
+        child: Padding(
+          padding: AbSpacingStyle.paddingWithAppBarHeight,
+          child: Column(
+            children: [
+              /// Log, Title, Sub-title
+              AbLoginHeader(dark: dark),
+              const AbLoginForm(),
+              AbFormDivider(dividerText: AbTexts.orSignInWith.capitalize!),
+              const SizedBox(height: AbSizes.spaceBtwSections),
+              const AbSocialButtons(),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
-
-
-

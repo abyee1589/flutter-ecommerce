@@ -4,10 +4,10 @@ import 'package:iconsax/iconsax.dart';
 
 class AbProfileMenu extends StatelessWidget {
   const AbProfileMenu({
-    super.key, 
-    required this.onPressed, 
-    required this.title, 
-    required this.value, 
+    super.key,
+    required this.onPressed,
+    required this.title,
+    required this.value,
     this.icon = Iconsax.arrow_right_34,
   });
 
@@ -23,9 +23,15 @@ class AbProfileMenu extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: AbSizes.spaceBtwItems / 1.5),
         child: Row(
           children: [
-            Expanded(flex: 3, child: Text(title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis)),
-            Expanded(flex: 5, child: Text(value, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis)),
-            Expanded(child: Icon(icon))
+            Expanded(
+              flex: 3,
+              child: Text(title, style: Theme.of(context).textTheme.bodySmall, overflow: TextOverflow.ellipsis),
+            ),
+            Expanded(
+              flex: 5,
+              child: Text(value, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
+            ),
+            Expanded(child: Icon(icon)),
           ],
         ),
       ),

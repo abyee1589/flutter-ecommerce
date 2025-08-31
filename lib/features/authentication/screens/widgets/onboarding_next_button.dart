@@ -10,13 +10,15 @@ class OnBoardingNextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-                  right: AbSizes.defaultSpace, 
-                  bottom: AbDeviceUtils.getBottomNavigationBarHeight(),
-                  child: ElevatedButton(
-                    onPressed: (){OnBoardingController.instance.nextPage();}, 
-                    style: ElevatedButton.styleFrom(shape: const CircleBorder(), backgroundColor: Colors.black),
-                    child: const Icon(Iconsax.arrow_right_3),
-                    ),
-                  );
+      right: AbSizes.defaultSpace,
+      bottom: AbDeviceUtils.getBottomNavigationBarHeight(),
+      child: ElevatedButton(
+        onPressed: () {
+          OnBoardingController.instance.nextPage();
+        },
+        style: ElevatedButton.styleFrom(shape: const CircleBorder(), backgroundColor: Colors.black),
+        child: const Icon(Iconsax.arrow_right_3),
+      ),
+    );
   }
 }

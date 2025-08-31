@@ -28,8 +28,7 @@ class AllBrandsScreen extends StatelessWidget {
 
               /// Brands
               Obx(() {
-                if (brandController.isLoading.value)
-                  return const AbBrandShimmer();
+                if (brandController.isLoading.value) return const AbBrandShimmer();
                 if (brandController.allBrands.isEmpty) {
                   return Center(
                     child: Text(
@@ -49,7 +48,7 @@ class AllBrandsScreen extends StatelessWidget {
                     return BrandCard(
                       showBoarder: true,
                       brand: brand,
-                      onTap: () => Get.to(() => const BrandProducts()),
+                      onTap: () => Get.to(() => BrandProducts(brand: brand)),
                     );
                   },
                 );

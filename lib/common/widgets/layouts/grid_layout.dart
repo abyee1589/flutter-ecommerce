@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 
-
 class AbGridLayout extends StatelessWidget {
-  const AbGridLayout({
-    super.key, 
-    required this.itemCount, 
-    this.mainAxisExtent = 288, 
-    required this.itemBuilder
-    });
+  const AbGridLayout({super.key, required this.itemCount, this.mainAxisExtent = 288, required this.itemBuilder});
 
   final int itemCount;
   final double mainAxisExtent;
@@ -22,7 +16,7 @@ class AbGridLayout extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, 
+        crossAxisCount: 2,
         mainAxisSpacing: AbSizes.gridViewSpacing,
         crossAxisSpacing: AbSizes.gridViewSpacing,
         mainAxisExtent: mainAxisExtent,

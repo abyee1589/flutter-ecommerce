@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/appbar/tabbar.dart';
-import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/search_container.dart';
-import 'package:flutter_app/common/widgets/images/ab_circular_image.dart';
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/brand_card/brand_card.dart';
 import 'package:flutter_app/common/widgets/products/cart/cart_icon_menu.dart';
-import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/features/shop/controllers/brand_controller.dart';
 import 'package:flutter_app/features/shop/controllers/category_controller.dart';
-import 'package:flutter_app/features/shop/models/brand_model.dart';
 import 'package:flutter_app/features/shop/screens/brand/all_brands.dart';
+import 'package:flutter_app/features/shop/screens/brand/brand_products.dart';
 import 'package:flutter_app/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
-import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:flutter_app/utils/shimmers/brands_shimmer.dart';
@@ -54,10 +50,7 @@ class StoreScreen extends StatelessWidget {
       length: categories.length,
       child: Scaffold(
         appBar: AbAppBar(
-          title: Text(
-            'Store',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+          title: Text('Store', style: Theme.of(context).textTheme.headlineMedium),
           actions: [AbCartCounterIcon(onPressed: () {})],
         ),
         body: NestedScrollView(
@@ -94,14 +87,12 @@ class StoreScreen extends StatelessWidget {
                       const SizedBox(height: AbSizes.spaceBtwItems / 1.5),
 
                       Obx(() {
-                        if (brandController.isLoading.value)
-                          return const AbBrandShimmer();
+                        if (brandController.isLoading.value) return const AbBrandShimmer();
                         if (brandController.featuredBrands.isEmpty) {
                           return Center(
                             child: Text(
                               'No Data Found',
-                              style: Theme.of(context).textTheme.bodyMedium!
-                                  .apply(color: Colors.white),
+                              style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),
                             ),
                           );
                         }
@@ -110,26 +101,18 @@ class StoreScreen extends StatelessWidget {
                           mainAxisExtent: 80,
                           itemBuilder: (_, index) {
                             final brand = brandController.featuredBrands[index];
-                            return BrandCard(brand: brand, showBoarder: true);
+                            return BrandCard(brand: brand, showBoarder: true, onTap: () => Get.to(() => BrandProducts(brand: brand)));
                           },
                         );
                       }),
                     ],
                   ),
                 ),
-                bottom: AbTabBar(
-                  tabs: categories
-                      .map((category) => Tab(child: Text(category.name)))
-                      .toList(),
-                ),
+                bottom: AbTabBar(tabs: categories.map((category) => Tab(child: Text(category.name))).toList()),
               ),
             ];
           },
-          body: TabBarView(
-            children: categories
-                .map((category) => AbCategoryTab(category: category))
-                .toList(),
-          ),
+          body: TabBarView(children: categories.map((category) => AbCategoryTab(category: category)).toList()),
         ),
       ),
     );
