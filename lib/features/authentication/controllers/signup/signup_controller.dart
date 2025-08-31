@@ -5,7 +5,7 @@ import 'package:flutter_app/features/authentication/models/user_model.dart';
 import 'package:flutter_app/features/authentication/screens/signup/verify_email.dart';
 import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
-import 'package:flutter_app/utils/http/network_manager.dart';
+import 'package:flutter_app/utils/helpers/network_manager.dart';
 import 'package:flutter_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';

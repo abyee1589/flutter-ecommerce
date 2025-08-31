@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_app/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_app/features/authentication/screens/paswword_configuration/reset_password.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
-import 'package:flutter_app/utils/http/network_manager.dart';
+import 'package:flutter_app/utils/helpers/network_manager.dart';
 import 'package:flutter_app/utils/popups/full_screen_loader.dart';
 import 'package:flutter_app/utils/popups/loaders.dart';
 import 'package:get/get.dart';
