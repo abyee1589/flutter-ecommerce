@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
-import 'package:flutter_app/features/shop/controllers/product/all_products_controller.dart';
+import 'package:flutter_app/features/shop/controllers/all_products_controller.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:get/get.dart';

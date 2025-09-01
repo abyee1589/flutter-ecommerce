@@ -3,11 +3,13 @@ import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_horizontal.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 
 class SubCategoriesScreen extends StatelessWidget {
-  const SubCategoriesScreen({super.key});
+  const SubCategoriesScreen({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class SubCategoriesScreen extends StatelessWidget {
                       itemCount: 4,
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, index) => const SizedBox(width: AbSizes.spaceBtwItems),
-                      itemBuilder: (context, index) => const AbProductCardHorizontal(),
+                      itemBuilder: (context, index) => AbProductCardHorizontal(product: product),
                     ),
                   ),
                 ],

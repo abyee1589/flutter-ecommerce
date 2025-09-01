@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/style/shadows.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:flutter_app/common/widgets/custom_shapes/icon/ab_circular_icon.dart';
 import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
+import 'package:flutter_app/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
@@ -47,7 +47,8 @@ class AbProductCardVertical extends StatelessWidget {
               backgroundColor: dark ? AbColors.dark : AbColors.light,
               child: Stack(
                 children: [
-                  /// Thubnail image
+                  
+                  /// Thumbnail image
                   Center(
                     child: AbRoundedImage(
                       imageUrl: product.thumbnail,
@@ -75,10 +76,13 @@ class AbProductCardVertical extends StatelessWidget {
                     ),
 
                   /// Favourite Icoon Button
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: AbCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                    child: SizedBox(
+                       width: 40,
+                       height: 40,
+                      child: AbFavouriteIcon(productId: product.id!,))
                   ),
                 ],
               ),

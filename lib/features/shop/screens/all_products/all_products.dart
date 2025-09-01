@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/products/sortable/sortable_products.dart';
-import 'package:flutter_app/features/shop/controllers/product/all_products_controller.dart';
+import 'package:flutter_app/features/shop/controllers/all_products_controller.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/cloud_helper_functions.dart';

@@ -6,6 +6,7 @@ import 'package:flutter_app/features/authentication/screens/login/login.dart';
 import 'package:flutter_app/features/authentication/screens/onboarding.dart';
 import 'package:flutter_app/features/authentication/screens/signup/signup.dart';
 import 'package:flutter_app/navigation_menu.dart';
+import 'package:flutter_app/utils/local_storage/storage_utitlity.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -30,6 +31,9 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (!user.emailVerified) {
+        /// Create a bucket inside the local storage using the current user firestore unique id
+        await AbLocalStorage.init(user.uid);
+
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => const SignupScreen());

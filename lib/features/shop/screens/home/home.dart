@@ -5,7 +5,7 @@ import 'package:flutter_app/common/widgets/custom_shapes/containers/search_conta
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/common/widgets/texts/section_heading.dart';
-import 'package:flutter_app/features/shop/controllers/product/all_products_controller.dart';
+import 'package:flutter_app/features/shop/controllers/all_products_controller.dart';
 import 'package:flutter_app/features/shop/controllers/product/product_controller.dart';
 import 'package:flutter_app/features/shop/screens/all_products/all_products.dart';
 import 'package:flutter_app/features/shop/screens/home/widgets/home_categories.dart';

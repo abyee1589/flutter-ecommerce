@@ -2,15 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/curved_edges/curved_edge_widget.dart';
-import 'package:flutter_app/common/widgets/custom_shapes/icon/ab_circular_icon.dart';
 import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
+import 'package:flutter_app/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:flutter_app/features/shop/controllers/product/images_controller.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class AbProductImageSlider extends StatelessWidget {
   const AbProductImageSlider({super.key, required this.product});
@@ -76,9 +75,9 @@ class AbProductImageSlider extends StatelessWidget {
             ),
 
             /// Appbar icons
-            const AbAppBar(
+            AbAppBar(
               showBackArrow: true,
-              actions: [AbCircularIcon(icon: Iconsax.heart5, color: Colors.red)],
+              actions: [AbFavouriteIcon(productId: product.id!,)],
             ),
           ],
         ),

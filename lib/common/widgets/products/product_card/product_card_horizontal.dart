@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:flutter_app/common/widgets/custom_shapes/icon/ab_circular_icon.dart';
 import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
+import 'package:flutter_app/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
+import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
@@ -12,7 +13,8 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbProductCardHorizontal extends StatelessWidget {
-  const AbProductCardHorizontal({super.key});
+  const AbProductCardHorizontal({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +54,10 @@ class AbProductCardHorizontal extends StatelessWidget {
                 ),
 
                 /// Favourite Icoon Button
-                const Positioned(
+                Positioned(
                   top: 0,
                   right: 0,
-                  child: AbCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                  child: AbFavouriteIcon(productId: product.id!,)
                 ),
               ],
             ),
