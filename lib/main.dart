@@ -5,6 +5,8 @@ import 'package:get_storage/get_storage.dart';
 import 'app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+
 // import 'package:flutter_web_plugins/url_strategy.dart';
 
 Future<void> main() async {
@@ -22,5 +24,7 @@ Future<void> main() async {
     Get.put(AuthenticationRepository());
   });
   //  setUrlStrategy(const PathUrlStrategy());
+   usePathUrlStrategy();
+
   runApp(const App());
 }

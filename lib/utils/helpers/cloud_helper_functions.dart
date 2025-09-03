@@ -16,7 +16,7 @@ class AbCloudHelperFunctions {
   }
 
   static Widget? checkMultipleRecordState<T>({
-    required AsyncSnapshot<List<T>> snapshot,
+    required snapshot,
     Widget? loader,
     Widget? error,
     Widget? nothingFound,

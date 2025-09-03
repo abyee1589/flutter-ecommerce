@@ -5,9 +5,10 @@ import 'package:flutter_app/common/widgets/products/favourite_icon/favourite_ico
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
+import 'package:flutter_app/features/shop/controllers/product/product_controller.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
-import 'package:flutter_app/utils/constants/image_strings.dart';
+import 'package:flutter_app/utils/constants/enums.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
@@ -18,6 +19,8 @@ class AbProductCardHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     final dark = AbHelperFunctions.isDarkMode(context);
     return Container(
       width: 310,
@@ -36,28 +39,29 @@ class AbProductCardHorizontal extends StatelessWidget {
             child: Stack(
               children: [
                 /// Thubnail image
-                const SizedBox(
+                SizedBox(
                   // width: 120,
                   height: 120,
-                  child: AbRoundedImage(imageUrl: AbImages.productImage1, applyImageRadius: true),
+                  child: AbRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true),
                 ),
 
                 /// Sale tag
-                Positioned(
-                  top: 3,
-                  child: AbRoundedContainer(
-                    radius: AbSizes.sm,
-                    backgroundColor: AbColors.secondary.withOpacity(0.8),
-                    padding: const EdgeInsets.symmetric(horizontal: AbSizes.sm, vertical: AbSizes.xs),
-                    child: Text('25%', style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black)),
+                if(salePercentage !=null)
+                  Positioned(
+                    top: 3,
+                    child: AbRoundedContainer(
+                      radius: AbSizes.sm,
+                      backgroundColor: AbColors.secondary.withOpacity(0.8),
+                      padding: const EdgeInsets.symmetric(horizontal: AbSizes.sm, vertical: AbSizes.xs),
+                      child: Text('$salePercentage%', style: Theme.of(context).textTheme.labelLarge!.apply(color: AbColors.black)),
+                    ),
                   ),
-                ),
 
                 /// Favourite Icoon Button
                 Positioned(
                   top: 0,
                   right: 0,
-                  child: AbFavouriteIcon(productId: product.id!,)
+                  child: AbFavouriteIcon(productId: product.id!)
                 ),
               ],
             ),
@@ -68,19 +72,40 @@ class AbProductCardHorizontal extends StatelessWidget {
               padding: const EdgeInsets.only(top: AbSizes.sm, left: AbSizes.sm),
               child: Column(
                 children: [
-                  const Column(
+                  Column(
                     children: [
                       /// Title & Subtitle
-                      AbProductTitleText(title: 'Green Nike Half Sleeves Shirt', smallSize: true),
-                      SizedBox(height: AbSizes.spaceBtwItems / 2),
-                      AbBrandTextWithVerifiedIcon(title: 'Nike'),
+                      AbProductTitleText(title: product.title, smallSize: true),
+                      const SizedBox(height: AbSizes.spaceBtwItems / 2),
+                      AbBrandTextWithVerifiedIcon(title: product.brand!.name),
                     ],
                   ),
                   const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Flexible(child: AbProductPriceText(price: '256.0')),
+                      /// Price
+                      Flexible(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            if (product.productType == ProductType.single.toString() && product.salePrice > 0)
+                              Padding(
+                                padding: const EdgeInsets.only(left: AbSizes.sm),
+                                child: Text(
+                                  product.price.toString(),
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
+                                ),
+                              ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: AbSizes.sm),
+                              child: AbProductPriceText(price: controller.getProductPrice(product)),
+                            ),
+                          ],
+                        ),
+                      ),
 
                       /// Add to Cart
                       Container(

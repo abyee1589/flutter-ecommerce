@@ -4,9 +4,10 @@ import 'package:flutter_app/common/widgets/custom_shapes/icon/ab_circular_icon.d
 import 'package:flutter_app/common/widgets/layouts/grid_layout.dart';
 import 'package:flutter_app/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:flutter_app/features/shop/controllers/product/favourites_controller.dart';
-import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/features/shop/screens/home/home.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
+import 'package:flutter_app/utils/helpers/cloud_helper_functions.dart';
+import 'package:flutter_app/utils/shimmers/vertical_product_shimmer.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -24,14 +25,21 @@ class FavouriteScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AbSizes.defaultSpace),
-          child: FutureBuilder(
-            future: controller.favouriteProducts(),
-            builder: (context, snapshot) {
-              return AbGridLayout(
-                itemCount: 6,
-                itemBuilder: (_, index) => AbProductCardVertical(product: ProductModel.empty()),
-              );
-            }
+          child: Obx(
+            () => FutureBuilder(
+              future: controller.favouriteProducts(),
+              builder: (context, snapshot) {
+                final loader = const AbVerticalProductShimmer();
+                final widget = AbCloudHelperFunctions.checkMultipleRecordState(snapshot: snapshot, loader: loader);
+                if(widget != null) return widget;
+            
+                final favouriteProducts = snapshot.data!;
+                return AbGridLayout(
+                    itemCount: favouriteProducts.length,
+                    itemBuilder: (_, index) => AbProductCardVertical(product: favouriteProducts[index]),
+                );
+              }
+            ),
           ),
         ),
       ),
