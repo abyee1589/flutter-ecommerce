@@ -23,7 +23,7 @@ class AbProductCardHorizontal extends StatelessWidget {
     final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     final dark = AbHelperFunctions.isDarkMode(context);
     return Container(
-      width: 310,
+      width: 300,
       padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AbSizes.productImageRadius),
@@ -66,13 +66,14 @@ class AbProductCardHorizontal extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            width: 172,
+          Expanded(
             child: Padding(
               padding: const EdgeInsets.only(top: AbSizes.sm, left: AbSizes.sm),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       /// Title & Subtitle
                       AbProductTitleText(title: product.title, smallSize: true),
@@ -99,14 +100,11 @@ class AbProductCardHorizontal extends StatelessWidget {
                                   ).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
                                 ),
                               ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: AbSizes.sm),
-                              child: AbProductPriceText(price: controller.getProductPrice(product)),
-                            ),
+                            AbProductPriceText(price: controller.getProductPrice(product)),
                           ],
                         ),
                       ),
-
+            
                       /// Add to Cart
                       Container(
                         decoration: const BoxDecoration(

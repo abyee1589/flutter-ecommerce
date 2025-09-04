@@ -67,7 +67,8 @@ class SubCategoriesScreen extends StatelessWidget {
                               separatorBuilder: (_, __) => const SizedBox(width: 8),
                               itemBuilder: (_, i) => AbProductCardHorizontal(product: products[i]),
                             ),
-                          )
+                          ),
+                          const SizedBox(height: AbSizes.spaceBtwSections),
                         ],
                       );
                     }).toList(),
