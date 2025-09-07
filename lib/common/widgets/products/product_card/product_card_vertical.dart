@@ -3,6 +3,7 @@ import 'package:flutter_app/common/style/shadows.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:flutter_app/common/widgets/images/ab_rounded_image.dart';
 import 'package:flutter_app/common/widgets/products/favourite_icon/favourite_icon.dart';
+import 'package:flutter_app/common/widgets/products/product_card/add_to_cart_button.dart';
 import 'package:flutter_app/common/widgets/texts/ab_brand_title_text_with_verified_icon.dart';
 import 'package:flutter_app/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_app/common/widgets/texts/product_title_text.dart';
@@ -82,7 +83,7 @@ class AbProductCardVertical extends StatelessWidget {
                     child: SizedBox(
                        width: 40,
                        height: 40,
-                      child: AbFavouriteIcon(productId: product.id!,))
+                      child: AbFavouriteIcon(productId: product.id,))
                   ),
                 ],
               ),
@@ -131,20 +132,8 @@ class AbProductCardVertical extends StatelessWidget {
                 ),
 
                 /// Add to Cart
-                Container(
-                  decoration: const BoxDecoration(
-                    color: AbColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(AbSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(AbSizes.productImageRadius),
-                    ),
-                  ),
-                  child: const SizedBox(
-                    width: AbSizes.iconLg * 1.2,
-                    height: AbSizes.iconLg * 1.2,
-                    child: Icon(Iconsax.add, color: AbColors.white),
-                  ),
-                ),
+                ProductCardAddToCart(product: product),
+                
               ],
             ),
           ],

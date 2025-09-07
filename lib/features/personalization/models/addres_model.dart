@@ -9,7 +9,7 @@ class AddressModel {
   final String state;
   final String postalCode;
   final String country;
-  final DateTime? dateTime;
+  final DateTime dateTime;
   bool isSelected;
 
   AddressModel({
@@ -21,9 +21,9 @@ class AddressModel {
     required this.state,
     required this.postalCode,
     required this.country,
-    this.dateTime,
+    DateTime? dateTime,
     this.isSelected = true,
-  });
+  }) : dateTime = dateTime ?? DateTime.now();
 
   // String get formattedPhoneNumber =>
   //     AbFormatter.formattedPhoneNumber(phoneNumber);
@@ -64,13 +64,23 @@ class AddressModel {
       state: data['State'] as String,
       postalCode: data['PostalCode'] as String,
       country: data['Country'] as String,
-      dateTime: (data['DateTime'] as Timestamp).toDate(),
+      dateTime: data['DateTime'] is Timestamp ? (data['DateTime'] as Timestamp).toDate() : null,
       isSelected: data['IsSelected'] as bool,
     );
   }
 
   factory AddressModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
+    final rawDateTime = data['DateTime'];
+    print('📦 DateTime raw value: $rawDateTime | Type: ${rawDateTime.runtimeType}');
+
+  DateTime? parsedDateTime;
+
+  if (rawDateTime != null && rawDateTime is Timestamp) {
+    parsedDateTime = rawDateTime.toDate();
+  } else {
+    parsedDateTime = null;
+  }
     return AddressModel(
       id: snapshot.id,
       name: data['Name'] ?? '',
@@ -80,7 +90,7 @@ class AddressModel {
       state: data['State'] ?? '',
       postalCode: data['PostalCode'] ?? '',
       country: data['Country'] ?? '',
-      dateTime: (data['DateTime'] as Timestamp).toDate(),
+      dateTime: parsedDateTime,
       isSelected: data['IsSelected'] as bool,
     );
   }

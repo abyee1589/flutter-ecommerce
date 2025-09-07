@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/image_text_widgets/vertical_image_text.dart';
 import 'package:flutter_app/features/shop/controllers/category_controller.dart';
-import 'package:flutter_app/features/shop/screens/cart/cart.dart';
 import 'package:flutter_app/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/shimmers/shimmer_loader.dart';

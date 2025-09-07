@@ -4,7 +4,7 @@ import 'package:flutter_app/features/shop/models/product_attributes_model.dart';
 import 'package:flutter_app/features/shop/models/product_variation_model.dart';
 
 class ProductModel {
-  String? id;
+  String id;
   int stock;
   String? sku;
   double price;

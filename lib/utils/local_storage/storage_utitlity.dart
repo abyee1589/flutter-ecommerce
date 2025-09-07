@@ -18,7 +18,7 @@ class AbLocalStorage {
     _instance!._storage = GetStorage(bucketName);
   }
 
-  Future<void> saveData<T>(String key, T value) async {
+  Future<void> writeData<T>(String key, T value) async {
     await _storage?.write(key, value);
   }
 

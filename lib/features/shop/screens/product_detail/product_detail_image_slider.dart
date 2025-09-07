@@ -77,7 +77,7 @@ class AbProductImageSlider extends StatelessWidget {
             /// Appbar icons
             AbAppBar(
               showBackArrow: true,
-              actions: [AbFavouriteIcon(productId: product.id!,)],
+              actions: [AbFavouriteIcon(productId: product.id,)],
             ),
           ],
         ),

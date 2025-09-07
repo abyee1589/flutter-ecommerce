@@ -1,10 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_app/data/repositories/address/address_repository.dart';
 import 'package:flutter_app/features/personalization/models/addres_model.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/helpers/network_manager.dart';
-import 'package:flutter_app/utils/popups/full_screen_loader.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/circular_loader.dart';
+import 'package:flutter_app/utils/loaders/full_screen_loader.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class AddressController extends GetxController {
@@ -26,12 +27,12 @@ class AddressController extends GetxController {
 
   Future<List<AddressModel>> getAllUserAddresses() async {
     try {
-      final address = await addresRepository.fetchUserAddress();
-      selectedAddress.value = address.firstWhere(
+      final addresses = await addresRepository.fetchUserAddresses();
+      selectedAddress.value = addresses.firstWhere(
         (address) => address.isSelected,
         orElse: () => AddressModel.empty(),
       );
-      return address;
+      return addresses;
     } catch (e) {
       AbLoaders.errorSnackBar(
         title: 'Address Not Found!',
@@ -43,12 +44,24 @@ class AddressController extends GetxController {
 
   Future selectAddress(AddressModel newSelectedAddress) async {
     try {
+      // Show loader dialog
+      Get.defaultDialog(
+        title: '',
+        onWillPop: () async => false,
+        barrierDismissible: false,
+        backgroundColor: Colors.transparent,
+        content: const AbCircularLoader(),
+      );
+
+      // Unselect previous address
       if (selectedAddress.value.id.isNotEmpty) {
         await addresRepository.updateSelectedAddress(
           selectedAddress.value.id,
           false,
         );
       }
+
+      // Update current selection
       newSelectedAddress.isSelected = true;
       selectedAddress.value = newSelectedAddress;
 
@@ -56,7 +69,15 @@ class AddressController extends GetxController {
         selectedAddress.value.id,
         true,
       );
+
+      // Refresh addresses (optional)
+      await getAllUserAddresses();
+
+      // ✅ Close the loader dialog
+      Get.back();
     } catch (e) {
+      // ✅ Also close the dialog if error occurs
+      Get.back();
       AbLoaders.errorSnackBar(
         title: 'Error while selecting address!',
         message: e.toString(),
@@ -64,6 +85,7 @@ class AddressController extends GetxController {
       return [];
     }
   }
+
 
   Future addNewAddress(AddressModel newSelectedAddress) async {
     try {

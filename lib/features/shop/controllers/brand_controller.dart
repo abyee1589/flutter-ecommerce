@@ -3,7 +3,7 @@ import 'package:flutter_app/data/repositories/brand/brand_repository.dart';
 import 'package:flutter_app/data/repositories/product/product_repository.dart';
 import 'package:flutter_app/features/shop/models/brand_model.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class BrandController extends GetxController {

@@ -6,7 +6,6 @@ import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbSingleAddress extends StatelessWidget {
@@ -23,37 +22,36 @@ class AbSingleAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
     final controller = AddressController.instance;
+
     return Obx(() {
-      final selectedAddressId = controller.selectedAddress.value.id;
+      final isSelected = controller.selectedAddress.value.id == address.id;
+
       return InkWell(
         onTap: onTap,
         child: AbRoundedContainer(
           padding: const EdgeInsets.all(AbSizes.md),
           width: double.infinity,
           showBorder: true,
-          backgroundColor: address.isSelected
+          backgroundColor: isSelected
               ? AbColors.primary.withOpacity(0.8)
               : Colors.transparent,
-          borderColor: address.isSelected
+          borderColor: isSelected
               ? Colors.transparent
               : dark
-              ? AbColors.darkerGrey
-              : AbColors.grey,
+                  ? AbColors.darkerGrey
+                  : AbColors.grey,
           margin: const EdgeInsets.only(bottom: AbSizes.spaceBtwItems),
           child: Stack(
             children: [
-              Positioned(
-                right: 5,
-                top: 0,
-                child: Icon(
-                  address.isSelected ? Iconsax.tick_circle : null,
-                  color: address.isSelected
-                      ? dark
-                            ? AbColors.light
-                            : AbColors.dark
-                      : null,
+              if (isSelected)
+                const Positioned(
+                  right: 5,
+                  top: 0,
+                  child: Icon(
+                    Iconsax.tick_circle,
+                    color: AbColors.light,
+                  ),
                 ),
-              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -70,7 +68,7 @@ class AbSingleAddress extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    address.street,
+                    address.toString(),
                     softWrap: true,
                   ),
                   const SizedBox(height: AbSizes.sm / 2),
@@ -81,5 +79,5 @@ class AbSingleAddress extends StatelessWidget {
         ),
       );
     });
-  }
+}
 }

@@ -4,8 +4,8 @@ import 'package:flutter_app/data/repositories/authentication/authentication_repo
 import 'package:flutter_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/helpers/network_manager.dart';
-import 'package:flutter_app/utils/popups/full_screen_loader.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/full_screen_loader.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

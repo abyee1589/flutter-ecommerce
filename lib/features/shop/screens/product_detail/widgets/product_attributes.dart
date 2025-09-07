@@ -18,7 +18,7 @@ class AbProductAttiributes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = AbHelperFunctions.isDarkMode(context);
-    final controller = Get.put(VariationController());
+    final controller = VariationController.instance;
     return Obx(
       () => Column(
         children: [

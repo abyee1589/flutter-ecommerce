@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_app/data/repositories/product/product_repository.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class AllProductsController extends GetxController {

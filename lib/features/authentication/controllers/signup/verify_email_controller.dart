@@ -5,7 +5,7 @@ import 'package:flutter_app/common/widgets/success_screen/success_screen.dart';
 import 'package:flutter_app/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/text_strings.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class VerifyEmailController extends GetxController {

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter_app/data/repositories/product/product_repository.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/utils/local_storage/storage_utitlity.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class FavouritesController extends GetxController{
@@ -48,7 +48,7 @@ class FavouritesController extends GetxController{
 
   void saveFavouritesToStorage() {
     final encodedFavourites = json.encode(favourites);
-    AbLocalStorage.instance().saveData('favourites', encodedFavourites);
+    AbLocalStorage.instance().writeData('favourites', encodedFavourites);
   }
 
   Future<List<ProductModel>> favouriteProducts() async{

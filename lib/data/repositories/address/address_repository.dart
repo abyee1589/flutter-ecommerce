@@ -9,7 +9,7 @@ class AddressRepository extends GetxController {
   /// Variables
   final db = FirebaseFirestore.instance;
 
-  Future<List<AddressModel>> fetchUserAddress() async {
+  Future<List<AddressModel>> fetchUserAddresses() async {
     try {
       final userId = AuthenticationRepository.instance.authUser!.uid;
       if (userId.isEmpty) {
@@ -20,19 +20,20 @@ class AddressRepository extends GetxController {
           .doc(userId)
           .collection('Addresses')
           .get();
-      return result.docs
+      final addresses = result.docs
           .map(
             (documentSnapshot) =>
                 AddressModel.fromDocumentSnapshot(documentSnapshot),
           )
           .toList();
+      return addresses;
     } catch (e) {
       print(e);
       throw 'Something went wrong while fetching user information, please try again later!';
     }
   }
 
-  Future<void> updateSelectedAddress(String addressId, bool selected) async {
+  Future<void> updateSelectedAddress(String addressId, bool isSelected) async {
     try {
       final userId = AuthenticationRepository.instance.authUser!.uid;
       if (userId.isEmpty) {
@@ -43,7 +44,7 @@ class AddressRepository extends GetxController {
           .doc(userId)
           .collection('Addresses')
           .doc(addressId)
-          .update({'selectedAddress': selected});
+          .update({'IsSelected': isSelected});
     } catch (e) {
       throw 'Something went wrong while fetching user information, please try again later!';
     }

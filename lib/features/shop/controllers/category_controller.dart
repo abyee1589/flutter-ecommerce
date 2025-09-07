@@ -4,7 +4,7 @@ import 'package:flutter_app/data/repositories/product/product_repository.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:get/get.dart';
 import 'package:flutter_app/features/shop/models/category_model.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 
 /// Controller to manage categories state and fetching
 class CategoryController extends GetxController {

@@ -61,7 +61,7 @@ class AbProductCardHorizontal extends StatelessWidget {
                 Positioned(
                   top: 0,
                   right: 0,
-                  child: AbFavouriteIcon(productId: product.id!)
+                  child: AbFavouriteIcon(productId: product.id)
                 ),
               ],
             ),

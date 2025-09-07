@@ -1,3 +1,4 @@
+import 'package:flutter_app/features/shop/controllers/product/cart_controller.dart';
 import 'package:flutter_app/features/shop/controllers/product/images_controller.dart';
 import 'package:flutter_app/features/shop/models/product_model.dart';
 import 'package:flutter_app/features/shop/models/product_variation_model.dart';
@@ -20,14 +21,19 @@ class VariationController extends GetxController {
       orElse: () => ProductVariationModel.empty(),
     );
 
-    if (selectedVariation.attributeValues.isNotEmpty) {
+    if (selectedVariation.image.isNotEmpty) {
       final controller = Get.put(ImagesController());
       controller.selectedProductImage.value = selectedVariation.image;
     }
 
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController.getVariationQuantityInCart(product.id, selectedVariation.id);
+    }
+
     this.selectedVariation.value = selectedVariation;
 
-    getVariationStockStatus();
+    getProductVariationStockStatus();
   }
 
   bool isSameAttributesValues(Map<String, dynamic> variationAttributes, Map<String, dynamic> selectedAttributes) {
@@ -58,7 +64,7 @@ class VariationController extends GetxController {
         .toString();
   }
 
-  void getVariationStockStatus() {
+  void getProductVariationStockStatus() {
     variationStockStatus.value = selectedVariation.value.stock > 0 ? 'In Stock' : 'Out of Stock';
   }
 

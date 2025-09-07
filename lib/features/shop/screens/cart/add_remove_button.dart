@@ -6,7 +6,9 @@ import 'package:flutter_app/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AbProductQuantityWithAddRemoveButton extends StatelessWidget {
-  const AbProductQuantityWithAddRemoveButton({super.key});
+  const AbProductQuantityWithAddRemoveButton({super.key, required this.quantity, this.add, this.remove});
+  final int quantity;
+  final VoidCallback? add, remove;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,10 @@ class AbProductQuantityWithAddRemoveButton extends StatelessWidget {
           size: AbSizes.md,
           color: dark ? AbColors.white : AbColors.black,
           backgroundColor: dark ? AbColors.darkerGrey : AbColors.light,
-          onPressed: () {},
+          onPressed: remove,
         ),
         const SizedBox(width: AbSizes.spaceBtwItems),
-        Text('2', style: Theme.of(context).textTheme.titleSmall),
+        Text(quantity.toString(), style: Theme.of(context).textTheme.titleSmall),
         const SizedBox(width: AbSizes.spaceBtwItems),
         AbCircularIcon(
           icon: Iconsax.add,
@@ -33,7 +35,7 @@ class AbProductQuantityWithAddRemoveButton extends StatelessWidget {
           size: AbSizes.md,
           color: AbColors.white,
           backgroundColor: AbColors.primary,
-          onPressed: () {},
+          onPressed: add,
         ),
       ],
     );

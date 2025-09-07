@@ -9,8 +9,8 @@ import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/network_manager.dart';
 import 'package:flutter_app/utils/local_storage/cloudinary.dart';
-import 'package:flutter_app/utils/popups/full_screen_loader.dart';
-import 'package:flutter_app/utils/popups/loaders.dart';
+import 'package:flutter_app/utils/loaders/full_screen_loader.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
