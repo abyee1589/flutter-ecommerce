@@ -22,6 +22,11 @@ class AbImages {
   static const String clothIcon = 'icons/cloth-icon.png';
   static const String lottieAnimation = 'images/animations/lottie_animation.json';
   static const String paypal = 'icons/paypal.png';
+  static const String googlePay = 'icons/google-pay.png';
+  static const String applePay = 'icons/apple-pay.png';
+  static const String visa = 'icons/visa.png';
+  static const String masterCard = 'icons/master-card.png';
+  static const String creditCard = 'icons/credit-card.png';
   static const String success = 'icons/SuccessPaymentIcon.png';
   static const String shoeIcon = 'images/categories/sport-shoes.jpg';
   static const String cosmeticsIcon = 'images/icons/categpries/sammyline_delivery.gif';

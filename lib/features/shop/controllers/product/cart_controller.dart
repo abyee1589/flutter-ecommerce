@@ -15,7 +15,7 @@ class CartController extends GetxController {
   RxInt productQuantityInCart = 0.obs;
   RxDouble totalCartPrice = 0.0.obs;
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
-  final variationController = Get.put(VariationController());
+  final variationController = VariationController.instance;
 
   @override
   void onInit() {

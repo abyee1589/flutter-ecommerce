@@ -3,6 +3,8 @@ import 'package:flutter_app/common/widgets/appbar/appbar.dart';
 import 'package:flutter_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:flutter_app/common/widgets/products/cart/coupon_widget.dart';
 import 'package:flutter_app/common/widgets/success_screen/success_screen.dart';
+import 'package:flutter_app/features/shop/controllers/product/cart_controller.dart';
+import 'package:flutter_app/features/shop/controllers/product/order_controller.dart';
 import 'package:flutter_app/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:flutter_app/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:flutter_app/features/shop/screens/checkout/widgets/billing_amount_section.dart';
@@ -12,6 +14,8 @@ import 'package:flutter_app/utils/constants/colors.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
 import 'package:flutter_app/utils/constants/sizes.dart';
 import 'package:flutter_app/utils/helpers/helper_functions.dart';
+import 'package:flutter_app/utils/helpers/pricing_calculator.dart';
+import 'package:flutter_app/utils/loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -19,6 +23,10 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
+    final orderController = Get.put(OrderController());
+    final subTotal = cartController.totalCartPrice.value;
+    final totalAmount = AbPricingCalculator.calculateTotalPrice(subTotal, 'US');
     final dark = AbHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AbAppBar(
@@ -71,15 +79,10 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(AbSizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () => Get.to(
-            () => SuccessScreen(
-              image: AbImages.success,
-              title: 'Payment Success!',
-              subTitle: 'Your item will be shipped soon!',
-              onPressed: () => Get.offAll(() => const NavigationMenu()),
-            ),
-          ),
-          child: const Text('Pay \$256.0'),
+          onPressed: subTotal > 0 ?
+            () => orderController.processAmount(totalAmount)
+            : AbLoaders.warningSnackBar(title: 'Empty Cart!', message: 'Add some items to cart to process order!'),
+          child:  Text('Pay \$$totalAmount'),
         ),
       ),
     );

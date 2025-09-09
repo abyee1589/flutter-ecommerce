@@ -19,6 +19,7 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -66,7 +67,7 @@ class LoginController extends GetxController {
       );
 
       /// Fetch the user's detail
-      await UserController.instance.fetchUserRecord();
+      await userController.fetchUserRecord();
       print('Logged in user: ${FirebaseAuth.instance.currentUser?.uid}');
 
       /// Remove loader

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/common/widgets/texts/section_heading.dart';
 import 'package:flutter_app/data/repositories/address/address_repository.dart';
 import 'package:flutter_app/features/personalization/models/addres_model.dart';
+import 'package:flutter_app/features/personalization/screens/address/add_new_address.dart';
+import 'package:flutter_app/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:flutter_app/utils/constants/image_strings.dart';
+import 'package:flutter_app/utils/constants/sizes.dart';
+import 'package:flutter_app/utils/helpers/cloud_helper_functions.dart';
 import 'package:flutter_app/utils/helpers/network_manager.dart';
 import 'package:flutter_app/utils/loaders/circular_loader.dart';
 import 'package:flutter_app/utils/loaders/full_screen_loader.dart';
@@ -129,6 +134,44 @@ class AddressController extends GetxController {
       );
       return [];
     }
+  }
+
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+       builder: (_) => Container(
+        padding: const EdgeInsets.all(AbSizes.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const AbSectionHeading(title: 'Select Address'),
+            FutureBuilder(
+              future: getAllUserAddresses(), 
+              builder: (_, snapshot) {
+                final response = AbCloudHelperFunctions.checkMultipleRecordState(snapshot: snapshot);
+                if(response != null) return response;
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (_, index) => AbSingleAddress(
+                    address: snapshot.data![index], 
+                    onTap: () async {
+                      await selectAddress(snapshot.data![index]);
+                      Get.back();
+                    }
+                  )
+                );
+              }
+            ),
+            const SizedBox(height: AbSizes.defaultSpace),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(onPressed: () => Get.to(() => const AddNewAddressScreen()), child: const Text('Select New Address')),
+            )
+          ],
+        ),
+       )
+    );
   }
 
   void refreshFormFields() {
