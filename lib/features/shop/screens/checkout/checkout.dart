@@ -80,7 +80,7 @@ class CheckoutScreen extends StatelessWidget {
         padding: const EdgeInsets.all(AbSizes.defaultSpace),
         child: ElevatedButton(
           onPressed: subTotal > 0 ?
-            () => orderController.processAmount(totalAmount)
+            () => orderController.processOrder(totalAmount)
             : AbLoaders.warningSnackBar(title: 'Empty Cart!', message: 'Add some items to cart to process order!'),
           child:  Text('Pay \$$totalAmount'),
         ),
